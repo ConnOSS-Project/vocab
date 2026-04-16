@@ -1,0 +1,220 @@
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "codemeta": "https://codemeta.github.io/terms/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "connoss": "https://discovery.biothings.io/ns/connoss/"
+  },
+  "@graph": [
+    {
+      "@id": "connoss:Software",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "Extension to schema.org and CodeMeta to describe software source code, software applications, and software releases.",
+      "rdfs:label": "Software",
+      "rdfs:subClassOf": [
+    	{ "@id": "schema:SoftwareApplication" },
+    	{ "@id": "schema:SoftwareSourceCode" }
+  	],
+       "schemaVersion": [
+        "https://schema.org/docs/releases.html#v29.4"
+      ]
+    },
+    {
+      "@id": "codemeta:buildInstructions",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Link to the installation instructions/documentation.",
+      "rdfs:label": "buildInstructions",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:URL"
+        }
+      ]
+    },
+    {
+      "@id": "codemeta:continuousIntegration",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Link to the continuous integration service.",
+      "rdfs:label": "continuousIntegration",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:URL"
+        }
+      ]
+    },
+    {
+      "@id": "codemeta:developmentStatus",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Description of development status, e.g. Active, inactive, suspended. See repostatus.org.",
+      "rdfs:label": "developmentStatus",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:Text"
+        }
+      ]
+    },
+    {
+      "@id": "codemeta:embargoDate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Software may be embargoed from public access until a specified date (e.g. pending publication, 1 year from publication).",
+      "rdfs:label": "embargoDate",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:Date"
+        }
+      ]
+    },
+    {
+      "@id": "codemeta:embargoEndDate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Software may be embargoed from public access until a specified date (e.g. pending publication, 1 year from publication).",
+      "rdfs:label": "embargoEndDate",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:Date"
+        }
+      ]
+    },
+    {
+      "@id": "codemeta:funding",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Funding source (e.g. specific grant).",
+      "rdfs:label": "funding",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:Text"
+        }
+      ]
+    },
+    {
+      "@id": "codemeta:hasSourceCode",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Link that states where the software code is for a given software. For example a software registry may indicate that one of its software entries hasSourceCode in a GitHub repository.",
+      "rdfs:label": "hasSourceCode",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:SoftwareSourceCode"
+        }
+      ]
+    },
+    {
+      "@id": "codemeta:isSourceCodeOf",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Link that states where software application is built from a given source code. This is the reverse property of 'hasSourceCode'.",
+      "rdfs:label": "isSourceCodeOf",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:SoftwareApplication"
+        }
+      ]
+    },
+    {
+      "@id": "codemeta:issueTracker",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Link to software bug reporting or issue tracking system.",
+      "rdfs:label": "issueTracker",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:URL"
+        }
+      ]
+    },
+    {
+      "@id": "codemeta:maintainer",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Individual responsible for maintaining the software (usually includes an email contact address).",
+      "rdfs:label": "maintainer",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:Person"
+        }
+      ]
+    },
+    {
+      "@id": "codemeta:readme",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Link to software Readme file.",
+      "rdfs:label": "readme",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:URL"
+        }
+      ]
+    },
+    {
+      "@id": "codemeta:referencePublication",
+      "@type": "rdf:Property",
+      "rdfs:comment": "An academic publication related to the software.",
+      "rdfs:label": "referencePublication",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:ScholarlyArticle"
+        }
+      ]
+    },
+    {
+      "@id": "codemeta:softwareSuggestions",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Optional dependencies , e.g. for optional features, code development, etc.",
+      "rdfs:label": "softwareSuggestions",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:SoftwareSourceCode"
+        }
+      ]
+    },
+    {
+      "@id": "schema:relatedLink",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A link related to this object, e.g. related web pages.",
+      "rdfs:label": "relatedLink",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:URL"
+        }
+      ]
+    }
+  ]
+}
