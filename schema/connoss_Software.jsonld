@@ -13,12 +13,13 @@
       "rdfs:comment": "Extension to schema.org and CodeMeta to describe software source code, software applications, and software releases.",
       "rdfs:label": "Software",
       "rdfs:subClassOf": [
-    	{ "@id": "schema:SoftwareApplication" },
-    	{ "@id": "schema:SoftwareSourceCode" }
-  	],
-       "schemaVersion": [
-        "https://schema.org/docs/releases.html#v29.4"
-      ]
+        { "@id": "schema:SoftwareApplication" },
+        { "@id": "schema:SoftwareSourceCode" }
+      ],
+      "schema:license": {
+        "@id": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      "schema:schemaVersion": "https://schema.org/docs/releases.html#v29.4"
     },
     {
       "@id": "codemeta:buildInstructions",
