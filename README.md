@@ -24,3 +24,8 @@ The ConnOSS schema builds upon:
 - schema.org as the underlying semantic framework  
 
 The schema extends these standards where necessary to improve coverage.
+
+## License
+
+This vocabulary extends Schema.org and is licensed under
+[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
