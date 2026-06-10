@@ -17,7 +17,7 @@ The name of the software.
 
 ## alternateName
 
-An alias for the software — an alternative name, acronym, or former name by which it is also known.
+An alias for the software.
 
 | Attribute | Value |
 |---|---|
@@ -28,7 +28,7 @@ An alias for the software — an alternative name, acronym, or former name by wh
 
 ## description
 
-A short, clear abstract that describes what the software does and its key features. Conveys both what the software is and what problem it addresses.
+A description of the software.
 
 | Attribute | Value |
 |---|---|
@@ -39,7 +39,7 @@ A short, clear abstract that describes what the software does and its key featur
 
 ## identifier
 
-A unique, persistent identifier for the software or a specific version of it (e.g. a DOI, Software Heritage ID, or other PID).
+The identifier property represents any kind of identifier for any kind of Thing, such as ISBNs, GTIN codes, UUIDs etc.
 
 | Attribute | Value |
 |---|---|
@@ -50,7 +50,7 @@ A unique, persistent identifier for the software or a specific version of it (e.
 
 ## softwareVersion
 
-The version of the software instance being described.
+Version of the software instance.
 
 | Attribute | Value |
 |---|---|
@@ -61,21 +61,18 @@ The version of the software instance being described.
 
 ## url
 
-The URL of the software, typically its project homepage or landing page.
+The URL of the software.
 
 | Attribute | Value |
 |---|---|
 | Range | URL |
 | Source | schema.org |
 
-!!! note "Distinction from related properties"
-    Use `url` for the project homepage, `codeRepository` for the version control location, and `sameAs` for equivalent entries in external registries.
-
 ---
 
 ## sameAs
 
-The URL of a reference page that unambiguously indicates the software's identity — for example a Wikidata entry or an equivalent catalogue record.
+The URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Wikidata entry, or official website.
 
 | Attribute | Value |
 |---|---|
@@ -86,7 +83,7 @@ The URL of a reference page that unambiguously indicates the software's identity
 
 ## keywords
 
-Keywords or tags describing the software. Multiple entries are typically delimited by commas, or expressed as an array.
+Keywords or tags used to describe this content. Multiple entries in a keywords list are typically delimited by commas.
 
 | Attribute | Value |
 |---|---|
