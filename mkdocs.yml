@@ -2,7 +2,6 @@ site_name: ConnOSS Metadata Schema
 site_url:  https://connoss-project.github.io/vocab/
 repo_url: https://github.com/ConnOSS-Project/vocab
 repo_name: vocab
-edit_uri: edit/main/docs/
 
 theme:
   name: material
@@ -13,7 +12,6 @@ theme:
     - navigation.sections
     - navigation.top
     - content.code.copy
-    - content.action.edit
   palette:
     scheme: default
     primary: teal
