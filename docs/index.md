@@ -8,7 +8,27 @@ The ConnOSS schema is centered around a unified *Software* type, which integrate
 
 The schema is further complemented by a metadata profile defining obligation levels (mandatory, recommended, optional), cardinality constraints, and usage guidance. This allows consistent and context-aware metadata descriptions while supporting diverse use cases across domains.
 
-All types and properties of the ConnOSS metadata schema are provided through the Data Discovery Engine (DDE) platform, where they are represented in JSON-LD. The corresponding profiles are also available and define how the schema should be applied in practice. The DDE platform facilitates the creation, maintenance, and reuse of metadata schemas aligned with FAIR principles.
+All types and properties of the ConnOSS metadata schema are provided through the Data Discovery Engine (DDE) platform, where they are represented in JSON-LD.
+
+## Properties
+
+The schema is organized into a **core set** of 68 properties drawn from schema.org and CodeMeta, plus an **extension set** of 12 ConnOSS properties.
+
+### Core properties
+
+- [Core Software Identity](categories/core-identity.md) — basic identification and general metadata
+- [Source Code and Repository](categories/source-code.md) — where the code lives and how it is accessed
+- [Distribution and Packaging](categories/distribution.md) — how the software is packaged and delivered
+- [Authors, Contributors and Maintenance](categories/authorship.md) — people and organizations responsible for the software
+- [Development, Project Status and Management](categories/development.md) — project lifecycle, tracking, and management
+- [Technical Requirements and Environment](categories/technical-requirements.md) — technical dependencies and runtime environment
+- [Software Classification and Type](categories/classification.md) — the nature, purpose, and classification of the software
+- [Documentation, Help and Support](categories/documentation.md) — documentation and supporting resources
+- [Publication and Citation](categories/publication.md) — academic, legal, and citation-related metadata
+
+### Extension properties
+
+- [Extension set](extension.md) — the 12 ConnOSS properties
 
 ## Note
 
