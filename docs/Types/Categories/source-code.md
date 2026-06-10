@@ -6,7 +6,7 @@ Where the code lives and how it is accessed. These properties point to the versi
 
 ## codeRepository
 
-A link to the version control system where the software is developed and maintained (e.g. GitHub, GitLab, SVN).
+Link to the repository where the un-compiled, human readable code and related code is located (SVN, GitHub, CodePlex, institutional GitLab instance, etc.).
 
 | Attribute | Value |
 |---|---|
@@ -17,7 +17,7 @@ A link to the version control system where the software is developed and maintai
 
 ## hasSourceCode
 
-A link stating where the source code for the software is located. For example, a software registry entry may indicate that an application `hasSourceCode` in a given repository.
+Link that states where the software code is for a given software. For example a software registry may indicate that one of its software entries hasSourceCode in a GitHub repository. “This software has this source code.”
 
 | Attribute | Value |
 |---|---|
@@ -28,7 +28,7 @@ A link stating where the source code for the software is located. For example, a
 
 ## isSourceCodeOf
 
-The reverse of `hasSourceCode`. States the software application that is built from a given source code.
+Link that states where software application is built from a given source code. This is the reverse property of 'hasSourceCode'.
 
 | Attribute | Value |
 |---|---|
@@ -39,21 +39,19 @@ The reverse of `hasSourceCode`. States the software application that is built fr
 
 ## buildInstructions
 
-A link to the documentation, scripts, or instructions required to compile, build, or install the software from source.
+A link to installation instructions or build documentation.
 
 | Attribute | Value |
 |---|---|
 | Range | URL |
 | Source | CodeMeta |
 
-!!! note "Distinction from related properties"
-    `buildInstructions` covers compiling from source for developers and CI systems. For installing a pre-built package, use `installUrl`. For general usage documentation, use `softwareHelp` or `documentation`.
-
 ---
 
 ## relatedSoftware
 
-Other software related by functionality, scientific purpose, or ecosystem context (e.g. alternative implementations, comparable tools, or complementary software). Does not imply dependency, citation, or execution requirement — it supports discovery, comparison, and interoperability mapping between software artifacts.
+A link to other software that is related by functionality, scientific purpose, or ecosystem context (e.g. alternative implementations, comparable tools, or complementary software). 
+This property does not imply dependency, citation, or execution requirement. It is intended to support discovery, comparison, and interoperability mapping between software artifacts.
 
 | Attribute | Value |
 |---|---|
