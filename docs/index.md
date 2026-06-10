@@ -28,5 +28,5 @@ The schema is organized into a **core set** of 68 properties drawn from schema.o
 
 ### Extension properties
 
-- [Extension set](Types/extension.md) — the 12 ConnOSS properties
+- [Extension set](Types/extension-set.md) — the 12 ConnOSS properties
 
