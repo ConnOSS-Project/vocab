@@ -16,15 +16,15 @@ The schema is organized into a **core set** of 68 properties drawn from schema.o
 
 ### Core properties
 
-- [Core Software Identity](categories/core-identity.md) — basic identification and general metadata
-- [Source Code and Repository](categories/source-code.md) — where the code lives and how it is accessed
-- [Distribution and Packaging](categories/distribution.md) — how the software is packaged and delivered
-- [Authors, Contributors and Maintenance](categories/authorship.md) — people and organizations responsible for the software
-- [Development, Project Status and Management](categories/development.md) — project lifecycle, tracking, and management
-- [Technical Requirements and Environment](categories/technical-requirements.md) — technical dependencies and runtime environment
-- [Software Classification and Type](categories/classification.md) — the nature, purpose, and classification of the software
-- [Documentation, Help and Support](categories/documentation.md) — documentation and supporting resources
-- [Publication and Citation](categories/publication.md) — academic, legal, and citation-related metadata
+- [Core Software Identity](Types/Categories/core-identity.md) — basic identification and general metadata
+- [Source Code and Repository](Types/Categories/source-code.md) — where the code lives and how it is accessed
+- [Distribution and Packaging](Types/Categories/distribution.md) — how the software is packaged and delivered
+- [Authors, Contributors and Maintenance](Types/Categories/authorship.md) — people and organizations responsible for the software
+- [Development, Project Status and Management](Types/Categories/development.md) — project lifecycle, tracking, and management
+- [Technical Requirements and Environment](Types/Categories/technical-requirements.md) — technical dependencies and runtime environment
+- [Software Classification and Type](Types/Categories/classification.md) — the nature, purpose, and classification of the software
+- [Documentation, Help and Support](Types/Categories/documentation.md) — documentation and supporting resources
+- [Publication and Citation](Types/Categories/publication.md) — academic, legal, and citation-related metadata
 
 ### Extension properties
 
