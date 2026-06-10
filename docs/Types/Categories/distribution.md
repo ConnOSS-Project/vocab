@@ -26,6 +26,17 @@ URL at which the app may be installed, if different from the URL of the item.
 
 ---
 
+## archivedAt
+
+A link to the archived version or archival location where the original content has been preserved (for CreativeWork, MediaReview, etc.)
+
+| Attribute | Value |
+|---|---|
+| Range | URL / WebPage |
+| Source | schema.org |
+
+---
+
 ## encodingFormat
 
 Media type, typically MIME format (see IANA site) of the content e.g. application/zip of a SoftwareApplication binary.
