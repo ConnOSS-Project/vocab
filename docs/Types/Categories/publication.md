@@ -100,3 +100,14 @@ A flag to signal that the publication is accessible for free.
 |---|---|
 | Range | Boolean |
 | Source | schema.org |
+
+---
+
+## conditionsOfAccess
+
+Conditions that affect the availability of, or method(s) of access to an item. Typically used for real world items such as an ArchiveComponent held by an ArchiveOrganization.
+
+| Attribute | Value |
+|---|---|
+| Range | URL / WebPage |
+| Source | schema.org |
