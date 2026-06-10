@@ -33,7 +33,7 @@ Individual responsible for maintaining the software (usually includes an email c
 | Attribute | Value |
 |---|---|
 | Range | Person |
-| Source | CodeMeta |
+| Source | schema.org |
 
 ---
 
