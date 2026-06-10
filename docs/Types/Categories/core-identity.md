@@ -43,7 +43,7 @@ A unique, persistent identifier for the software or a specific version of it (e.
 
 | Attribute | Value |
 |---|---|
-| Range | PropertyValue / URL / Text |
+| Range | PropertyValue / URL |
 | Source | schema.org |
 
 ---
@@ -90,5 +90,5 @@ Keywords or tags describing the software. Multiple entries are typically delimit
 
 | Attribute | Value |
 |---|---|
-| Range | Text / DefinedTerm / URL |
+| Range | Text |
 | Source | schema.org |
