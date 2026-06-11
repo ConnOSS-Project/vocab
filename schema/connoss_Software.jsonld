@@ -1,10 +1,10 @@
 {
   "@context": {
     "schema": "http://schema.org/",
-    "codemeta": "https://codemeta.github.io/terms/",
+    "codemeta": "https://w3id.org/codemeta/",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "fair4ml": "https://w3id.org/fair4ml/",
+    "fair4ml": "https://w3id.org/fair4ml#",
     "bioschemas": "https://bioschemas.org/",
     "connoss": "https://discovery.biothings.io/ns/connoss/"
   },
