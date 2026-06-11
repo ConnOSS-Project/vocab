@@ -14,19 +14,3 @@ All types and properties of the ConnOSS metadata schema are provided through the
 
 The schema is organized into a **core set** of 68 properties drawn from schema.org and CodeMeta, plus an **extension set** of 12 ConnOSS properties.
 
-### Core properties
-
-- [Core Software Identity](Types/Categories/core-identity.md) — basic identification and general metadata
-- [Source Code and Repository](Types/Categories/source-code.md) — where the code lives and how it is accessed
-- [Distribution and Packaging](Types/Categories/distribution.md) — how the software is packaged and delivered
-- [Authors, Contributors and Maintenance](Types/Categories/authorship.md) — people and organizations responsible for the software
-- [Development, Project Status and Management](Types/Categories/development.md) — project lifecycle, tracking, and management
-- [Technical Requirements and Environment](Types/Categories/technical-requirements.md) — technical dependencies and runtime environment
-- [Software Classification and Type](Types/Categories/classification.md) — the nature, purpose, and classification of the software
-- [Documentation, Help and Support](Types/Categories/documentation.md) — documentation and supporting resources
-- [Publication and Citation](Types/Categories/publication.md) — academic, legal, and citation-related metadata
-
-### Extension properties
-
-- [Extension set](Types/extension-set.md) — the 12 ConnOSS properties
-
