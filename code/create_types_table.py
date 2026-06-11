@@ -27,6 +27,17 @@ SCHEMA_RANGE = URIRef(SCHEMA_NS + "rangeIncludes")
 # Output filename per class. Default is the class's local name (Software -> Software.md).
 FILENAME_OVERRIDES = {"Software": "software-type"}
 
+TYPE_NOTES = {
+    "Software": (
+        "This type includes properties from schema.org types: "
+        "[Thing](http://schema.org/Thing){:target='_blank'}, "
+        "[CreativeWork](http://schema.org/CreativeWork){:target='_blank'}, "
+        "[SoftwareApplication](http://schema.org/SoftwareApplication){:target='_blank'} and "
+        "[SoftwareSourceCode](http://schema.org/SoftwareSourceCode){:target='_blank'} "
+        "plus the properties below."
+    ),
+}
+
 HERE = Path(__file__).resolve().parent                      
 REPO = HERE.parent                                          
 DEFAULT_SCHEMA = str(REPO / "schema" / "connoss_Software.jsonld")
@@ -96,6 +107,9 @@ def write_type_pages(g: Graph, out_dir: str) -> None:
 
         parents = " , ".join(convert_to_link(p, md=True) for p in g.objects(s, RDFS.subClassOf)) or "-"
         page = "(parent type) {} - (type) connoss:{}\n\n{}\n\n".format(parents, local, desc)
+        note = TYPE_NOTES.get(local)
+        if note:
+            page += note + "\n\n"
 
         rows = []
         for prop in g.subjects(SCHEMA_DOMAIN, s, unique=True):

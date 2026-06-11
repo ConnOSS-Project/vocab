@@ -2,6 +2,8 @@
 
 Extension to schema.org and CodeMeta to describe software source code, software applications, and software releases.
 
+This type includes properties from schema.org types: [Thing](http://schema.org/Thing){:target='_blank'}, [CreativeWork](http://schema.org/CreativeWork){:target='_blank'}, [SoftwareApplication](http://schema.org/SoftwareApplication){:target='_blank'} and [SoftwareSourceCode](http://schema.org/SoftwareSourceCode){:target='_blank'} plus the properties below.
+
 <table>
 <tr><th>Property</th><th>Expected Type</th><th>Description</th></tr>
 <tr><td><a href='https://codemeta.github.io/terms/buildInstructions' target='_blank'>codemeta:build instructions</a></td>
