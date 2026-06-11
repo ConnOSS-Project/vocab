@@ -143,7 +143,7 @@ def write_type_pages(g: Graph, out_dir: str) -> None:
 def print_nav(g: Graph) -> None:
     print("\n# mkdocs nav block (paste under the Types: key):")
     print("    - Types:")
-    print("      - 'Types/index.md'")
+    print("      - Overview: 'Types/index.md'")
     for s in g.subjects(object=RDFS_CLASS, unique=True):
         if CONNOSS_NS in str(s):
             local = str(s).split("/")[-1]
