@@ -1,43 +1,32 @@
 site_name: ConnOSS Metadata Schema
 site_url:  https://connoss-project.github.io/vocab/
-
 repo_url: https://github.com/ConnOSS-Project/vocab
 repo_name: vocab
 
-nav:
-    - 'index.md'
-    - Types:
-      - 'Types/index.md'
-      - 'Types/Software.md'
-    - Profiles:
-      - 'Profiles/index.md'
-      - 'Profiles/Software.md'
-
 theme:
   name: material
+  language: en
   logo: connoss_logo.png
-
-language: en
-
-theme:
-  name: material
   features:
     - navigation.tabs
     - navigation.sections
     - navigation.top
     - content.code.copy
-    - content.action.edit
   palette:
     scheme: default
     primary: teal
     accent: teal
 
+nav:
+    - 'index.md'
+    - Types:
+      - 'Types/index.md'
+      - 'Types/software-type.md'
 
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
-  - pymdownx.snippets
   - admonition
   - footnotes
   - pymdownx.details
@@ -45,7 +34,6 @@ markdown_extensions:
   - pymdownx.mark
   - attr_list
   - md_in_html
-
 
 plugins:
   - search
