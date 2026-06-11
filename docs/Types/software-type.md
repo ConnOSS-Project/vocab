@@ -6,11 +6,11 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 
 <table>
 <tr><th>Property</th><th>Expected Type</th><th>Description</th></tr>
-<tr><td><a href='https://w3id.org/fair4ml/ethicalSocialConsiderations' target='_blank'>ethicalSocialConsiderations</a></td>
+<tr><td><a href='https://w3id.org/fair4ml/ethicalSocialConsiderations' target='_blank'>fair4ml:ethicalSocialConsiderations</a></td>
 <td><a href='http://schema.org/Text' target='_blank'>schema:Text</a></td>
 <td>A documented concern, requirement, or consideration related to the software's design, deployment, or impact across ethical and social dimensions. Enables transparent disclosure of constraints and mitigation strategies.</td>
 </tr>
-<tr><td><a href='https://w3id.org/fair4ml/LegalConsiderations' target='_blank'>LegalConsiderations</a></td>
+<tr><td><a href='https://w3id.org/fair4ml/LegalConsiderations' target='_blank'>fair4ml:LegalConsiderations</a></td>
 <td><a href='http://schema.org/Text' target='_blank'>schema:Text</a></td>
 <td>A documented concern, requirement, or consideration related to the software's design, deployment, or impact across legal and regulatory dimensions (e.g. licensing constraints, data protection, compliance requirements). Enables transparent disclosure of legal constraints and mitigation strategies.</td>
 </tr>
@@ -55,10 +55,10 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 <td>A specification that a software implements, including a standard, API or legally defined level of conformance. e.g. the HTTP standard, the OpenAPI spec, OAuth2.</td>
 </tr>
 <tr><td>connoss:input</td>
-<td><a href='https://bioschemas.org/FormalParameter' target='_blank'>FormalParameter</a></td>
+<td><a href='https://bioschemas.org/FormalParameter' target='_blank'>bioschemas:FormalParameter</a></td>
 <td>A formal specification of the data, files, or parameters that the software accepts as input, including format, type, and whether the input is required.</td>
 </tr>
-<tr><td><a href='https://w3id.org/fair4ml/intendedUse' target='_blank'>intendedUse</a></td>
+<tr><td><a href='https://w3id.org/fair4ml/intendedUse' target='_blank'>fair4ml:intendedUse</a></td>
 <td><a href='http://schema.org/Text' target='_blank'>schema:Text</a></td>
 <td>A concise summary of the primary objective or intended use case for the software. Distinct from general description; this focuses on 'why' the software exists and what problems it solves.</td>
 </tr>
@@ -71,7 +71,7 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 <td>Link to software bug reporting or issue tracking system.</td>
 </tr>
 <tr><td>connoss:output</td>
-<td><a href='https://bioschemas.org/FormalParameter' target='_blank'>FormalParameter</a></td>
+<td><a href='https://bioschemas.org/FormalParameter' target='_blank'>bioschemas:FormalParameter</a></td>
 <td>A formal specification of the data, files, or results that the software produces, including format and type.</td>
 </tr>
 <tr><td><a href='https://codemeta.github.io/terms/readme' target='_blank'>codemeta:readme</a></td>
