@@ -33,7 +33,7 @@ TYPE_NOTES = {
         "[Thing](http://schema.org/Thing){:target='_blank'}, "
         "[CreativeWork](http://schema.org/CreativeWork){:target='_blank'}, "
         "[SoftwareApplication](http://schema.org/SoftwareApplication){:target='_blank'} and "
-        "[SoftwareSourceCode](http://schema.org/SoftwareSourceCode){:target='_blank'} "
+        "[SoftwareSourceCode](http://schema.org/SoftwareSourceCode){:target='_blank'}, "
         "plus the properties below."
     ),
 }
@@ -66,6 +66,8 @@ def convert_to_link(url, label=None, md=False) -> str:
         return "connoss:" + label
     if CODEMETA_NS in url:
         label = "codemeta:" + label
+    if SCHEMA_NS in url:
+        label = "schema:" + label
     if md:
         return "[{}]({})".format(label, url) + "{:target='_blank'}"
     return "<a href='{}' target='_blank'>{}</a>".format(url, label)
@@ -123,7 +125,7 @@ def write_type_pages(g: Graph, out_dir: str) -> None:
             df = DataFrame(rows).sort_values("label")
             for _, r in df.iterrows():
                 table += "<tr><td>{}</td>\n<td>{}</td>\n<td>{}</td>\n</tr>\n".format(
-                    convert_to_link(r["prop"], label=r["label"]), r["range"], r["desc"])
+                    convert_to_link(r["prop"]), r["range"], r["desc"])
         table += "</table>\n"
 
         path = os.path.join(out_dir, type_filename(local) + ".md")

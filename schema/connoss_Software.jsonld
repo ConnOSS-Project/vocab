@@ -4,6 +4,8 @@
     "codemeta": "https://codemeta.github.io/terms/",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "fair4ml": "https://w3id.org/fair4ml/",
+    "bioschemas": "https://bioschemas.org/",
     "connoss": "https://discovery.biothings.io/ns/connoss/"
   },
   "@graph": [
@@ -156,9 +158,8 @@
         "@id": "connoss:Software"
       },
       "schema:rangeIncludes": [
-        {
-          "@id": "schema:SoftwareSourceCode or schema:SoftwareApplication"
-        }
+    { "@id": "schema:SoftwareSourceCode" },
+    { "@id": "schema:SoftwareApplication" }
       ]
     },
     {
@@ -186,6 +187,180 @@
       "schema:rangeIncludes": [
         {
           "@id": "schema:ContactPoint"
+        }
+      ]
+    },
+    {
+      "@id": "fair4ml:intendedUse",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A concise summary of the primary objective or intended use case for the software. Distinct from general description; this focuses on 'why' the software exists and what problems it solves.",
+      "rdfs:label": "intendedUse",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:Text"
+        }
+      ]
+    },
+    {
+      "@id": "fair4ml:LegalConsiderations",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A documented concern, requirement, or consideration related to the software's design, deployment, or impact across legal and regulatory dimensions (e.g. licensing constraints, data protection, compliance requirements). Enables transparent disclosure of legal constraints and mitigation strategies.",
+      "rdfs:label": "LegalConsiderations",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:Text"
+        }
+      ]
+    },
+    {
+      "@id": "fair4ml:ethicalSocialConsiderations",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A documented concern, requirement, or consideration related to the software's design, deployment, or impact across ethical and social dimensions. Enables transparent disclosure of constraints and mitigation strategies.",
+      "rdfs:label": "LegalConsiderations",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:Text"
+        }
+      ]
+    },
+        {
+      "@id": "connoss:researchDomain",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The discipline, area, or research domain to which this software aligns or belongs to.",
+      "rdfs:label": "researchDomain",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:DefinedTerm"
+        }
+      ]
+    },
+    {
+      "@id": "connoss:acknowledgements",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Text or URL containing the people, organizations and other contributors acknowledged by the authors.",
+      "rdfs:label": "acknowledgements",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:Text"
+        },
+        {
+          "@id": "schema:URL"
+        }
+      ]
+    },
+    {
+      "@id": "connoss:documentation",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Resources that describe the software's installation, usage, configuration, development, and deployment intended to support users and developers in understanding and applying the software.",
+      "rdfs:label": "documentation",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:CreativeWork"
+        }
+      ]
+    },
+    {
+      "@id": "connoss:softwareInterface",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The interaction interfaces through which users or other software systems can access, execute, or integrate with software (e.g., CLI, GUI, WebUI, Notebook, API, Library).",
+      "rdfs:label": "softwareInterface",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:DefinedTerm"
+        }
+      ]
+    },
+     {
+      "@id": "connoss:testingAction",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Links the software to a testing activity describing how the software is validated, including the test type, required inputs, test instructions, and produced test results.",
+      "rdfs:label": "testingAction",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "connoss:TestingAction"
+        }
+      ]
+    },
+    {
+      "@id": "connoss:implementsSpecification",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A specification that a software implements, including a standard, API or legally defined level of conformance. e.g. the HTTP standard, the OpenAPI spec, OAuth2.",
+      "rdfs:label": "implementsSpecification",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:CreativeWork"
+        }
+      ]
+    },
+     {
+      "@id": "connoss:softwareContainer",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A container image or packaged runtime environment of the software.",
+      "rdfs:label": "softwareContainer",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:CreativeWork"
+        },
+        {
+          "@id": "schema:URL"
+        }
+      ]
+    },
+    {
+      "@id": "connoss:input",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A formal specification of the data, files, or parameters that the software accepts as input, including format, type, and whether the input is required.",
+      "rdfs:label": "input",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "bioschemas:FormalParameter"
+        }
+      ]
+    },
+    {
+      "@id": "connoss:output",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A formal specification of the data, files, or results that the software produces, including format and type.",
+      "rdfs:label": "output",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "bioschemas:FormalParameter"
         }
       ]
     },
