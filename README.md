@@ -8,7 +8,7 @@ The ConnOSS schema is centered around a `Software` type, which integrates:
 
 - CodeMeta properties  
 - schema.org properties  
-- Additional extension properties derived from 21 crosswalk mappings
+- Additional extension properties derived from 21 crosswalk mappings. The complete list of crosswalks is publicly available at https://zenodo.org/records/19418049.
 
 The ConnOSS schema can be used to:
 
