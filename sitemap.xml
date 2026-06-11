@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://connoss-project.github.io/vocab/</loc>
+         <lastmod>2026-06-11</lastmod>
+    </url>
+    <url>
+         <loc>https://connoss-project.github.io/vocab/Profiles/</loc>
+         <lastmod>2026-06-11</lastmod>
+    </url>
+    <url>
+         <loc>https://connoss-project.github.io/vocab/Profiles/software-profile/</loc>
+         <lastmod>2026-06-11</lastmod>
+    </url>
+    <url>
+         <loc>https://connoss-project.github.io/vocab/Types/</loc>
+         <lastmod>2026-06-11</lastmod>
+    </url>
+    <url>
+         <loc>https://connoss-project.github.io/vocab/Types/software-type/</loc>
+         <lastmod>2026-06-11</lastmod>
+    </url>
+</urlset>
