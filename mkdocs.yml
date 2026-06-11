@@ -3,6 +3,7 @@ site_url:  https://connoss-project.github.io/vocab/
 repo_url: https://github.com/ConnOSS-Project/vocab
 repo_name: vocab
 nav:
+    - Home: index.md
     - Types:
       - 'Types/index.md'
       - 'Types/software-type.md'
