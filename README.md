@@ -25,6 +25,11 @@ The ConnOSS schema builds upon:
 
 The schema extends these standards where necessary to improve coverage.
 
+## Live Website
+
+The website is automatically deployed to GitHub Pages and available at:
+**https://connoss-project.github.io/vocab**
+
 ## License
 
 This vocabulary extends Schema.org and is licensed under
