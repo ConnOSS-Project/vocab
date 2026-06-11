@@ -6,10 +6,10 @@ nav:
     - Home: index.md
     - Types:
       - Overview: 'Types/index.md'
-      - Software Type: 'Types/software-type.md'
+      - 'Types/software-type.md'
     - Profiles:
       - Overview: 'Profiles/index.md'
-      - Software Profile: 'Profiles/Software.md'
+      - 'Profiles/Software.md'
       
 theme:
   name: material
