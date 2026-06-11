@@ -1,3 +1,5 @@
+# ConnOSS Metadata Schema
+
 ## Description
 
 We have defined a metadata schema for describing research software in a structured and interoperable way within the ConnOSS project. The schema represents metadata elements relevant to research software, including software identity, source code, distribution, contributors, development status, technical requirements, and publication-related information.
