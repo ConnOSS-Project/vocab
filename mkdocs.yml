@@ -5,8 +5,8 @@ repo_name: vocab
 nav:
     - Home: index.md
     - Types:
-      - 'Types/index.md'
-      - 'Types/software-type.md'
+      - Overview: 'Types/index.md'
+      - Software Type: 'Types/software-type.md'
     - Profiles:
       - 'Profiles/index.md'
       - 'Profiles/Software.md'
