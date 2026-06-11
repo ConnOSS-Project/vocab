@@ -8,8 +8,8 @@ nav:
       - Overview: 'Types/index.md'
       - Software Type: 'Types/software-type.md'
     - Profiles:
-      - 'Profiles/index.md'
-      - 'Profiles/Software.md'
+      - Overview: 'Profiles/index.md'
+      - Software Profile: 'Profiles/Software.md'
       
 theme:
   name: material

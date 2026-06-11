@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 This module generates the ConnOSS Types documentation from the JSON-LD schema.
 
