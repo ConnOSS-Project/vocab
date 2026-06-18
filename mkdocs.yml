@@ -6,7 +6,7 @@ nav:
     - Home: index.md
     - Types:
       - Overview: 'Types/index.md'
-      - 'Types/software-type.md'
+      - 'Types/Software.md'
       - 'Types/TestingAction.md'
     - Profiles:
       - Overview: 'Profiles/index.md'
