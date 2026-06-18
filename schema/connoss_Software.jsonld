@@ -6,6 +6,7 @@
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "fair4ml": "https://w3id.org/fair4ml#",
     "bioschemas": "https://bioschemas.org/",
+    "maSMP": "https://discovery.biothings.io/view/maSMP/",
     "connoss": "https://discovery.biothings.io/ns/connoss/"
   },
   "@graph": [
@@ -194,7 +195,7 @@
       "@id": "fair4ml:intendedUse",
       "@type": "rdf:Property",
       "rdfs:comment": "A concise summary of the primary objective or intended use case for the software. Distinct from general description; this focuses on 'why' the software exists and what problems it solves.",
-      "rdfs:label": "intendedUse",
+      "rdfs:label": "intended use",
       "schema:domainIncludes": {
         "@id": "connoss:Software"
       },
@@ -205,10 +206,10 @@
       ]
     },
     {
-      "@id": "fair4ml:LegalConsiderations",
+      "@id": "fair4ml:legalConsiderations",
       "@type": "rdf:Property",
       "rdfs:comment": "A documented concern, requirement, or consideration related to the software's design, deployment, or impact across legal and regulatory dimensions (e.g. licensing constraints, data protection, compliance requirements). Enables transparent disclosure of legal constraints and mitigation strategies.",
-      "rdfs:label": "LegalConsiderations",
+      "rdfs:label": "legal considerations",
       "schema:domainIncludes": {
         "@id": "connoss:Software"
       },
@@ -222,7 +223,7 @@
       "@id": "fair4ml:ethicalSocialConsiderations",
       "@type": "rdf:Property",
       "rdfs:comment": "A documented concern, requirement, or consideration related to the software's design, deployment, or impact across ethical and social dimensions. Enables transparent disclosure of constraints and mitigation strategies.",
-      "rdfs:label": "LegalConsiderations",
+      "rdfs:label": "ethical social considerations",
       "schema:domainIncludes": {
         "@id": "connoss:Software"
       },
@@ -236,7 +237,7 @@
       "@id": "connoss:researchDomain",
       "@type": "rdf:Property",
       "rdfs:comment": "The discipline, area, or research domain to which this software aligns or belongs to.",
-      "rdfs:label": "researchDomain",
+      "rdfs:label": "research domain",
       "schema:domainIncludes": {
         "@id": "connoss:Software"
       },
@@ -281,7 +282,7 @@
       "@id": "connoss:softwareInterface",
       "@type": "rdf:Property",
       "rdfs:comment": "The interaction interfaces through which users or other software systems can access, execute, or integrate with software (e.g., CLI, GUI, WebUI, Notebook, API, Library).",
-      "rdfs:label": "softwareInterface",
+      "rdfs:label": "software interface",
       "schema:domainIncludes": {
         "@id": "connoss:Software"
       },
@@ -295,7 +296,7 @@
       "@id": "connoss:testingAction",
       "@type": "rdf:Property",
       "rdfs:comment": "Links the software to a testing activity describing how the software is validated, including the test type, required inputs, test instructions, and produced test results.",
-      "rdfs:label": "testingAction",
+      "rdfs:label": "testing action",
       "schema:domainIncludes": {
         "@id": "connoss:Software"
       },
@@ -306,12 +307,43 @@
       ]
     },
     {
+      "@id": "connoss:TestingAction",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The act of testing the software according to its specifications, capturing the object tested, the resulting test report or outcome, and the type of test performed.",
+      "rdfs:label": "Testing Action",
+      "rdfs:subClassOf": [ { "@id": "schema:Action" } ]
+    },
+    {
+      "@id": "schema:object",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The object upon which the test is carried out, e.g. the software release being tested.",
+      "rdfs:label": "object",
+      "schema:domainIncludes": { "@id": "connoss:TestingAction" },
+      "schema:rangeIncludes": [ { "@id": "schema:Thing" } ]
+    },
+    {
+      "@id": "schema:result",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The result produced by the testing action, e.g. a test report.",
+      "rdfs:label": "result",
+      "schema:domainIncludes": { "@id": "connoss:TestingAction" },
+      "schema:rangeIncludes": [ { "@id": "schema:Thing" } ]
+        },
+    { 
+      "@id": "maSMP:testType",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The type of test performed on the object (e.g. unit test, integration test).",
+      "rdfs:label": "test type",
+      "schema:domainIncludes": { "@id": "connoss:TestingAction" },
+      "schema:rangeIncludes": [ { "@id": "schema:Text" }, { "@id": "schema:URL" }, { "@id": "schema:DefinedTerm" } ]
+    },
+    {
       "@id": "connoss:implementsSpecification",
       "@type": "rdf:Property",
       "rdfs:comment": "A specification that a software implements, including a standard, API or legally defined level of conformance. e.g. the HTTP standard, the OpenAPI spec, OAuth2.",
-      "rdfs:label": "implementsSpecification",
+      "rdfs:label": "implements specification",
       "schema:domainIncludes": {
-        "@id": "connoss:Software"
+      "@id": "connoss:Software"
       },
       "schema:rangeIncludes": [
         {
@@ -323,7 +355,7 @@
       "@id": "connoss:softwareContainer",
       "@type": "rdf:Property",
       "rdfs:comment": "A container image or packaged runtime environment of the software.",
-      "rdfs:label": "softwareContainer",
+      "rdfs:label": "software container",
       "schema:domainIncludes": {
         "@id": "connoss:Software"
       },
