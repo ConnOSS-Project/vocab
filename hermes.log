@@ -1,0 +1,73 @@
+1781605434.706671:          hermes.cli:     DEBUG | Running hermes with the following command line arguments: Namespace(subcommand='init', path=WindowsPath('.'), config=WindowsPath('hermes.toml'), options=[], template_branch='', command=<hermes.commands.init.base.HermesInitCommand object at 0x0000024120EFDA90>)
+1781605434.706981:          hermes.cli:     DEBUG | Loading settings...
+1781605434.707070:          hermes.cli:     DEBUG | Update settings from command line...
+1781605434.707121:          hermes.cli:      INFO | Run subcommand init
+1781605434.707371:         hermes.init:      INFO | Preparing HERMES initialization
+
+1781605435.024759:         hermes.init:      INFO | Git project using GitHub detected.
+
+1781605435.024874:         hermes.init:      INFO | Starting to initialize HERMES in C:\ConnOSS-Vocab\vocab
+
+1781605435.026446:         hermes.init:      INFO | -- Step 1 of 8: Configure HERMES plugins --
+1781605436.242966:         hermes.init:      INFO | The following plugins are already builtin:
+1781605436.243253:         hermes.init:      INFO | [harvest] [1mCITATION.cff Harvester[0m (builtin)
+1781605436.243381:         hermes.init:      INFO | [harvest] [1mcodemeta.json Harvester[0m (builtin)
+1781605436.243474:         hermes.init:      INFO | [harvest] [1m'file_exists' Harvester[0m (builtin)
+1781605436.243558:         hermes.init:      INFO | [process] [1mMerge[0m (builtin)
+1781605436.243636:         hermes.init:      INFO | [curate] [1mCurate[0m (builtin)
+1781605436.243708:         hermes.init:      INFO | [deposit] [1mInvenio Deposit[0m (builtin)
+1781605436.243794:         hermes.init:      INFO | [deposit] [1mInvenio RDM Deposit[0m (builtin)
+1781605436.243864:         hermes.init:      INFO | [deposit] [1mRodare Deposit[0m (builtin)
+1781605436.243934:         hermes.init:      INFO | [postprocess] [1mInvenio Postprocess[0m (builtin)
+1781605436.243999:         hermes.init:      INFO | [postprocess] [1mInvenio RDM Postprocess[0m (builtin)
+1781605436.244069:         hermes.init:      INFO | The following plugins are available for installation:
+1781605436.244222:         hermes.init:      INFO | Do you want to add a plugin?
+1781605575.255511:          hermes.cli:     DEBUG | Running hermes with the following command line arguments: Namespace(subcommand='init', path=WindowsPath('.'), config=WindowsPath('hermes.toml'), options=[], template_branch='', command=<hermes.commands.init.base.HermesInitCommand object at 0x000002C50965DA90>)
+1781605575.255728:          hermes.cli:     DEBUG | Loading settings...
+1781605575.255775:          hermes.cli:     DEBUG | Update settings from command line...
+1781605575.255807:          hermes.cli:      INFO | Run subcommand init
+1781605575.255999:         hermes.init:      INFO | Preparing HERMES initialization
+
+1781605575.533363:         hermes.init:      INFO | Git project using GitHub detected.
+
+1781605575.533452:         hermes.init:      INFO | Starting to initialize HERMES in C:\ConnOSS-Vocab\vocab
+
+1781605575.533487:         hermes.init:      INFO | -- Step 1 of 8: Configure HERMES plugins --
+1781605576.760389:         hermes.init:      INFO | The following plugins are already builtin:
+1781605576.760630:         hermes.init:      INFO | [harvest] [1mCITATION.cff Harvester[0m (builtin)
+1781605576.760673:         hermes.init:      INFO | [harvest] [1mcodemeta.json Harvester[0m (builtin)
+1781605576.760705:         hermes.init:      INFO | [harvest] [1m'file_exists' Harvester[0m (builtin)
+1781605576.760736:         hermes.init:      INFO | [process] [1mMerge[0m (builtin)
+1781605576.760763:         hermes.init:      INFO | [curate] [1mCurate[0m (builtin)
+1781605576.760789:         hermes.init:      INFO | [deposit] [1mInvenio Deposit[0m (builtin)
+1781605576.760815:         hermes.init:      INFO | [deposit] [1mInvenio RDM Deposit[0m (builtin)
+1781605576.760841:         hermes.init:      INFO | [deposit] [1mRodare Deposit[0m (builtin)
+1781605576.760865:         hermes.init:      INFO | [postprocess] [1mInvenio Postprocess[0m (builtin)
+1781605576.760944:         hermes.init:      INFO | [postprocess] [1mInvenio RDM Postprocess[0m (builtin)
+1781605576.760979:         hermes.init:      INFO | The following plugins are available for installation:
+1781605576.761039:         hermes.init:      INFO | Do you want to add a plugin?
+1781605765.747073:         hermes.init:     ERROR | An error occurred during execution of HERMES init: EOF when reading a line
+1781607118.038333:          hermes.cli:     DEBUG | Running hermes with the following command line arguments: Namespace(subcommand='init', path=WindowsPath('.'), config=WindowsPath('hermes.toml'), options=[], template_branch='', command=<hermes.commands.init.base.HermesInitCommand object at 0x000001D94C03DA90>)
+1781607118.038704:          hermes.cli:     DEBUG | Loading settings...
+1781607118.038781:          hermes.cli:     DEBUG | Update settings from command line...
+1781607118.038836:          hermes.cli:      INFO | Run subcommand init
+1781607118.039137:         hermes.init:      INFO | Preparing HERMES initialization
+
+1781607118.338273:         hermes.init:      INFO | Git project using GitHub detected.
+
+1781607118.338442:         hermes.init:      INFO | Starting to initialize HERMES in C:\ConnOSS-Vocab\vocab
+
+1781607118.338523:         hermes.init:      INFO | -- Step 1 of 8: Configure HERMES plugins --
+1781607119.582518:         hermes.init:      INFO | The following plugins are already builtin:
+1781607119.582791:         hermes.init:      INFO | [harvest] [1mCITATION.cff Harvester[0m (builtin)
+1781607119.582903:         hermes.init:      INFO | [harvest] [1mcodemeta.json Harvester[0m (builtin)
+1781607119.582992:         hermes.init:      INFO | [harvest] [1m'file_exists' Harvester[0m (builtin)
+1781607119.583070:         hermes.init:      INFO | [process] [1mMerge[0m (builtin)
+1781607119.583144:         hermes.init:      INFO | [curate] [1mCurate[0m (builtin)
+1781607119.583213:         hermes.init:      INFO | [deposit] [1mInvenio Deposit[0m (builtin)
+1781607119.583280:         hermes.init:      INFO | [deposit] [1mInvenio RDM Deposit[0m (builtin)
+1781607119.583344:         hermes.init:      INFO | [deposit] [1mRodare Deposit[0m (builtin)
+1781607119.583409:         hermes.init:      INFO | [postprocess] [1mInvenio Postprocess[0m (builtin)
+1781607119.583476:         hermes.init:      INFO | [postprocess] [1mInvenio RDM Postprocess[0m (builtin)
+1781607119.583547:         hermes.init:      INFO | The following plugins are available for installation:
+1781607119.583701:         hermes.init:      INFO | Do you want to add a plugin?
