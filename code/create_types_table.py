@@ -26,9 +26,6 @@ RDFS_CLASS = URIRef("http://www.w3.org/2000/01/rdf-schema#Class")
 SCHEMA_DOMAIN = URIRef(SCHEMA_NS + "domainIncludes")
 SCHEMA_RANGE = URIRef(SCHEMA_NS + "rangeIncludes")
 
-# Output filename per class. Default is the class's local name (Software -> Software.md).
-FILENAME_OVERRIDES = {"Software": "software-type"}
-
 TYPE_NOTES = {
     "Software": (
         "This type includes properties from schema.org types: "
@@ -82,7 +79,7 @@ def convert_to_link(url, label=None, md=False) -> str:
 
 
 def type_filename(local: str) -> str:
-    return FILENAME_OVERRIDES.get(local, local)
+    return local
 
 
 def write_index(g: Graph, out_dir: str) -> None:
