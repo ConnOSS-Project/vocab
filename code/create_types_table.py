@@ -20,6 +20,7 @@ SCHEMA_NS = "http://schema.org/"
 CODEMETA_NS = "https://codemeta.github.io/terms/"
 FAIR4ML_NS = "https://w3id.org/fair4ml/"
 BIOSCHEMAS_NS = "https://bioschemas.org/"
+MASMP_NS = "https://discovery.biothings.io/view/maSMP/"
 
 RDFS_CLASS = URIRef("http://www.w3.org/2000/01/rdf-schema#Class")
 SCHEMA_DOMAIN = URIRef(SCHEMA_NS + "domainIncludes")
@@ -73,6 +74,8 @@ def convert_to_link(url, label=None, md=False) -> str:
         label = "bioschemas:" + label
     if FAIR4ML_NS in url:
         label = "fair4ml:" + label
+    if MASMP_NS in url:
+        label = "maSMP:" + label
     if md:
         return "[{}]({})".format(label, url) + "{:target='_blank'}"
     return "<a href='{}' target='_blank'>{}</a>".format(url, label)

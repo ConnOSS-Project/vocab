@@ -12,7 +12,7 @@ The act of testing the software according to its specifications, capturing the o
 <td><a href='http://schema.org/Thing' target='_blank'>schema:Thing</a></td>
 <td>The result produced by the testing action, e.g. a test report.</td>
 </tr>
-<tr><td><a href='https://discovery.biothings.io/view/maSMP/testType' target='_blank'>testType</a></td>
+<tr><td><a href='https://discovery.biothings.io/view/maSMP/testType' target='_blank'>maSMP:testType</a></td>
 <td><a href='http://schema.org/Text' target='_blank'>schema:Text</a> or <a href='http://schema.org/URL' target='_blank'>schema:URL</a> or <a href='http://schema.org/DefinedTerm' target='_blank'>schema:DefinedTerm</a></td>
 <td>The type of test performed on the object (e.g. unit test, integration test).</td>
 </tr>
