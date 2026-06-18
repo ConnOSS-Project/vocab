@@ -7,6 +7,7 @@ nav:
     - Types:
       - Overview: 'Types/index.md'
       - 'Types/software-type.md'
+      - 'Types/TestingAction.md'
     - Profiles:
       - Overview: 'Profiles/index.md'
       - 'Profiles/Software.md'
