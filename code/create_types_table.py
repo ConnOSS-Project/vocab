@@ -17,7 +17,7 @@ from pandas import DataFrame
 
 CONNOSS_NS = "https://discovery.biothings.io/ns/connoss/"
 SCHEMA_NS = "http://schema.org/"
-CODEMETA_NS = "https://codemeta.github.io/terms/"
+CODEMETA_NS = "https://w3id.org/codemeta/"
 FAIR4ML_NS = "https://w3id.org/fair4ml/"
 BIOSCHEMAS_NS = "https://bioschemas.org/"
 MASMP_NS = "https://discovery.biothings.io/view/maSMP/"
