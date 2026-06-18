@@ -6,14 +6,6 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 
 <table>
 <tr><th>Property</th><th>Expected Type</th><th>Description</th></tr>
-<tr><td><a href='https://w3id.org/fair4ml#ethicalSocialConsiderations' target='_blank'>fair4ml#ethicalSocialConsiderations</a></td>
-<td><a href='http://schema.org/Text' target='_blank'>schema:Text</a></td>
-<td>A documented concern, requirement, or consideration related to the software's design, deployment, or impact across ethical and social dimensions. Enables transparent disclosure of constraints and mitigation strategies.</td>
-</tr>
-<tr><td><a href='https://w3id.org/fair4ml#LegalConsiderations' target='_blank'>fair4ml#LegalConsiderations</a></td>
-<td><a href='http://schema.org/Text' target='_blank'>schema:Text</a></td>
-<td>A documented concern, requirement, or consideration related to the software's design, deployment, or impact across legal and regulatory dimensions (e.g. licensing constraints, data protection, compliance requirements). Enables transparent disclosure of legal constraints and mitigation strategies.</td>
-</tr>
 <tr><td>connoss:acknowledgements</td>
 <td><a href='http://schema.org/Text' target='_blank'>schema:Text</a> or <a href='http://schema.org/URL' target='_blank'>schema:URL</a></td>
 <td>Text or URL containing the people, organizations and other contributors acknowledged by the authors.</td>
@@ -42,6 +34,10 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 <td><a href='http://schema.org/Date' target='_blank'>schema:Date</a></td>
 <td>Software may be embargoed from public access until a specified date (e.g. pending publication, 1 year from publication).</td>
 </tr>
+<tr><td><a href='fair4ml:ethicalSocialConsiderations' target='_blank'>fair4ml:ethicalSocialConsiderations</a></td>
+<td><a href='http://schema.org/Text' target='_blank'>schema:Text</a></td>
+<td>A documented concern, requirement, or consideration related to the software's design, deployment, or impact across ethical and social dimensions. Enables transparent disclosure of constraints and mitigation strategies.</td>
+</tr>
 <tr><td><a href='https://w3id.org/codemeta/funding' target='_blank'>funding</a></td>
 <td><a href='http://schema.org/Text' target='_blank'>schema:Text</a></td>
 <td>Funding source (e.g. specific grant).</td>
@@ -58,7 +54,7 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 <td><a href='https://bioschemas.org/FormalParameter' target='_blank'>bioschemas:FormalParameter</a></td>
 <td>A formal specification of the data, files, or parameters that the software accepts as input, including format, type, and whether the input is required.</td>
 </tr>
-<tr><td><a href='https://w3id.org/fair4ml#intendedUse' target='_blank'>fair4ml#intendedUse</a></td>
+<tr><td><a href='fair4ml:intendedUse' target='_blank'>fair4ml:intendedUse</a></td>
 <td><a href='http://schema.org/Text' target='_blank'>schema:Text</a></td>
 <td>A concise summary of the primary objective or intended use case for the software. Distinct from general description; this focuses on 'why' the software exists and what problems it solves.</td>
 </tr>
@@ -69,6 +65,10 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 <tr><td><a href='https://w3id.org/codemeta/issueTracker' target='_blank'>issueTracker</a></td>
 <td><a href='http://schema.org/URL' target='_blank'>schema:URL</a></td>
 <td>Link to software bug reporting or issue tracking system.</td>
+</tr>
+<tr><td><a href='fair4ml:legalConsiderations' target='_blank'>fair4ml:legalConsiderations</a></td>
+<td><a href='http://schema.org/Text' target='_blank'>schema:Text</a></td>
+<td>A documented concern, requirement, or consideration related to the software's design, deployment, or impact across legal and regulatory dimensions (e.g. licensing constraints, data protection, compliance requirements). Enables transparent disclosure of legal constraints and mitigation strategies.</td>
 </tr>
 <tr><td>connoss:output</td>
 <td><a href='https://bioschemas.org/FormalParameter' target='_blank'>bioschemas:FormalParameter</a></td>
