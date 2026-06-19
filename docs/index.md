@@ -14,5 +14,6 @@ All types and properties of the ConnOSS metadata schema are provided through the
 
 ## Properties
 
-The schema is organized into a **core set** of 68 properties drawn from schema.org and CodeMeta, plus an **extension set** of 12 ConnOSS properties.
+The schema is organized into a **core set** of 68 properties drawn from schema.org and CodeMeta, plus an **extension set** of 12 ConnOSS properties. Below you can see the ConnOSS schema diagram.
 
+![ConnOSS Schema Diagram](ConnOSS_Schema_final.png)
