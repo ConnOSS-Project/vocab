@@ -59,12 +59,15 @@ def load_graph(src: str) -> Graph:
 def convert_to_link(url, label=None, md=False) -> str:
     """ConnOSS terms -> 'connoss:Label'; CodeMeta -> 'codemeta:Label'; else external link."""
     url = str(url)
+    local = url.split("#")[-1].split("/")[-1]
     if label is None:
-        label = url.split("#")[-1].split("/")[-1]
+        label = local
+    href = url
     if CONNOSS_NS in url:
         return "connoss:" + label
     if CODEMETA_NS in url:
         label = "codemeta:" + label
+        href = "https://codemeta.github.io/terms/#" + local
     if BIOSCHEMAS_NS in url:
         label = "bioschemas:" + label
     if FAIR4ML_NS in url:
@@ -72,8 +75,8 @@ def convert_to_link(url, label=None, md=False) -> str:
     if MASMP_NS in url:
         label = "maSMP:" + label
     if md:
-        return "[{}]({})".format(label, url) + "{:target='_blank'}"
-    return "<a href='{}' target='_blank'>{}</a>".format(url, label)
+        return "[{}]({})".format(label, href) + "{:target='_blank'}"
+    return "<a href='{}' target='_blank'>{}</a>".format(href, label)
 
 
 def type_filename(local: str) -> str:

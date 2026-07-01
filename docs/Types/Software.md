@@ -10,7 +10,7 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 <td><a href='http://schema.org/Text' target='_blank'>Text</a> or <a href='http://schema.org/URL' target='_blank'>URL</a></td>
 <td>Text or URL containing the people, organizations and other contributors acknowledged by the authors.</td>
 </tr>
-<tr><td><a href='https://w3id.org/codemeta/buildInstructions' target='_blank'>codemeta:buildInstructions</a></td>
+<tr><td><a href='https://codemeta.github.io/terms/#buildInstructions' target='_blank'>codemeta:buildInstructions</a></td>
 <td><a href='http://schema.org/URL' target='_blank'>URL</a></td>
 <td>Link to the installation instructions/documentation.</td>
 </tr>
@@ -18,11 +18,11 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 <td><a href='http://schema.org/ContactPoint' target='_blank'>ContactPoint</a></td>
 <td>A contact point for a person or organization.</td>
 </tr>
-<tr><td><a href='https://w3id.org/codemeta/continuousIntegration' target='_blank'>codemeta:continuousIntegration</a></td>
+<tr><td><a href='https://codemeta.github.io/terms/#continuousIntegration' target='_blank'>codemeta:continuousIntegration</a></td>
 <td><a href='http://schema.org/URL' target='_blank'>URL</a></td>
 <td>Link to the continuous integration service.</td>
 </tr>
-<tr><td><a href='https://w3id.org/codemeta/developmentStatus' target='_blank'>codemeta:developmentStatus</a></td>
+<tr><td><a href='https://codemeta.github.io/terms/#developmentStatus' target='_blank'>codemeta:developmentStatus</a></td>
 <td><a href='http://schema.org/Text' target='_blank'>Text</a></td>
 <td>Description of development status, e.g. Active, inactive, suspended. See repostatus.org.</td>
 </tr>
@@ -30,7 +30,7 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 <td><a href='http://schema.org/CreativeWork' target='_blank'>CreativeWork</a></td>
 <td>Resources that describe the software's installation, usage, configuration, development, and deployment intended to support users and developers in understanding and applying the software.</td>
 </tr>
-<tr><td><a href='https://w3id.org/codemeta/embargoEndDate' target='_blank'>codemeta:embargoEndDate</a></td>
+<tr><td><a href='https://codemeta.github.io/terms/#embargoEndDate' target='_blank'>codemeta:embargoEndDate</a></td>
 <td><a href='http://schema.org/Date' target='_blank'>Date</a></td>
 <td>Software may be embargoed from public access until a specified date (e.g. pending publication, 1 year from publication).</td>
 </tr>
@@ -38,11 +38,11 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 <td><a href='http://schema.org/Text' target='_blank'>Text</a></td>
 <td>A documented concern, requirement, or consideration related to the software's design, deployment, or impact across ethical and social dimensions. Enables transparent disclosure of constraints and mitigation strategies.</td>
 </tr>
-<tr><td><a href='https://w3id.org/codemeta/funding' target='_blank'>codemeta:funding</a></td>
+<tr><td><a href='https://codemeta.github.io/terms/#funding' target='_blank'>codemeta:funding</a></td>
 <td><a href='http://schema.org/Text' target='_blank'>Text</a></td>
 <td>Funding source (e.g. specific grant).</td>
 </tr>
-<tr><td><a href='https://w3id.org/codemeta/hasSourceCode' target='_blank'>codemeta:hasSourceCode</a></td>
+<tr><td><a href='https://codemeta.github.io/terms/#hasSourceCode' target='_blank'>codemeta:hasSourceCode</a></td>
 <td><a href='http://schema.org/SoftwareSourceCode' target='_blank'>SoftwareSourceCode</a></td>
 <td>Link that states where the software code is for a given software. For example a software registry may indicate that one of its software entries hasSourceCode in a GitHub repository.</td>
 </tr>
@@ -58,11 +58,11 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 <td><a href='http://schema.org/Text' target='_blank'>Text</a></td>
 <td>A concise summary of the primary objective or intended use case for the software. Distinct from general description; this focuses on 'why' the software exists and what problems it solves.</td>
 </tr>
-<tr><td><a href='https://w3id.org/codemeta/isSourceCodeOf' target='_blank'>codemeta:isSourceCodeOf</a></td>
+<tr><td><a href='https://codemeta.github.io/terms/#isSourceCodeOf' target='_blank'>codemeta:isSourceCodeOf</a></td>
 <td><a href='http://schema.org/SoftwareApplication' target='_blank'>SoftwareApplication</a></td>
 <td>Link that states where software application is built from a given source code. This is the reverse property of 'hasSourceCode'.</td>
 </tr>
-<tr><td><a href='https://w3id.org/codemeta/issueTracker' target='_blank'>codemeta:issueTracker</a></td>
+<tr><td><a href='https://codemeta.github.io/terms/#issueTracker' target='_blank'>codemeta:issueTracker</a></td>
 <td><a href='http://schema.org/URL' target='_blank'>URL</a></td>
 <td>Link to software bug reporting or issue tracking system.</td>
 </tr>
@@ -74,11 +74,11 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 <td><a href='https://bioschemas.org/FormalParameter' target='_blank'>bioschemas:FormalParameter</a></td>
 <td>A formal specification of the data, files, or results that the software produces, including format and type.</td>
 </tr>
-<tr><td><a href='https://w3id.org/codemeta/readme' target='_blank'>codemeta:readme</a></td>
+<tr><td><a href='https://codemeta.github.io/terms/#readme' target='_blank'>codemeta:readme</a></td>
 <td><a href='http://schema.org/URL' target='_blank'>URL</a></td>
 <td>Link to software Readme file.</td>
 </tr>
-<tr><td><a href='https://w3id.org/codemeta/referencePublication' target='_blank'>codemeta:referencePublication</a></td>
+<tr><td><a href='https://codemeta.github.io/terms/#referencePublication' target='_blank'>codemeta:referencePublication</a></td>
 <td><a href='http://schema.org/ScholarlyArticle' target='_blank'>ScholarlyArticle</a></td>
 <td>An academic publication related to the software.</td>
 </tr>
@@ -86,7 +86,7 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 <td><a href='http://schema.org/URL' target='_blank'>URL</a></td>
 <td>A link related to this object, e.g. related web pages.</td>
 </tr>
-<tr><td><a href='https://w3id.org/codemeta/relatedSoftware' target='_blank'>codemeta:relatedSoftware</a></td>
+<tr><td><a href='https://codemeta.github.io/terms/#relatedSoftware' target='_blank'>codemeta:relatedSoftware</a></td>
 <td><a href='http://schema.org/SoftwareSourceCode' target='_blank'>SoftwareSourceCode</a> or <a href='http://schema.org/SoftwareApplication' target='_blank'>SoftwareApplication</a></td>
 <td>A link to other software that is related by functionality, scientific purpose, or ecosystem context (e.g. alternative implementations, comparable tools, or complementary software).</td>
 </tr>
