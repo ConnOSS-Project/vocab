@@ -317,11 +317,15 @@
     },
     {
       "@id": "schema:object",
-      "schema:domainIncludes": { "@id": "connoss:TestingAction" }
+      "rdfs:comment": "The object upon which the action is carried out, whose state is kept intact or changed.",
+      "schema:domainIncludes": { "@id": "connoss:TestingAction" },
+      "schema:rangeIncludes": { "@id": "schema:Thing" }
     },
     {
       "@id": "schema:result",
-      "schema:domainIncludes": { "@id": "connoss:TestingAction" }
+      "rdfs:comment": "The result produced in the action.",
+      "schema:domainIncludes": { "@id": "connoss:TestingAction" },
+      "schema:rangeIncludes": { "@id": "schema:Thing" }
     },
     { 
       "@id": "connoss:testType",
