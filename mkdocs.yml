@@ -15,7 +15,7 @@ nav:
 theme:
   name: material
   language: en
-  logo: connoss_logo.png
+  logo: logo.png
   features:
     - navigation.tabs
     - navigation.sections
