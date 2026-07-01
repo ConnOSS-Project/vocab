@@ -1,10 +1,11 @@
 {
   "@context": {
-    "schema": "http://schema.org/",
-    "codemeta": "https://w3id.org/codemeta/",
+    "owl": "http://www.w3.org/2002/07/owl#",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "fair4ml": "https://w3id.org/fair4ml",
+    "schema": "http://schema.org/",
+    "codemeta": "https://w3id.org/codemeta/",
+    "fair4ml": "https://w3id.org/fair4ml#",
     "bioschemas": "https://bioschemas.org/",
     "maSMP": "https://discovery.biothings.io/view/maSMP/",
     "connoss": "https://discovery.biothings.io/ns/connoss/"
@@ -311,31 +312,25 @@
       "@type": "rdfs:Class",
       "rdfs:comment": "The act of testing the software according to its specifications, capturing the object tested, the resulting test report or outcome, and the type of test performed.",
       "rdfs:label": "Testing Action",
-      "rdfs:subClassOf": [ { "@id": "schema:Action" } ]
+      "rdfs:subClassOf": { "@id": "schema:Action" },
+      "owl:equivalentClass": { "@id": "maSMP:SoftwareTestAction" }
     },
     {
       "@id": "schema:object",
-      "@type": "rdf:Property",
-      "rdfs:comment": "The object upon which the test is carried out, e.g. the software release being tested.",
-      "rdfs:label": "object",
-      "schema:domainIncludes": { "@id": "connoss:TestingAction" },
-      "schema:rangeIncludes": [ { "@id": "schema:Thing" } ]
+      "schema:domainIncludes": { "@id": "connoss:TestingAction" }
     },
     {
       "@id": "schema:result",
-      "@type": "rdf:Property",
-      "rdfs:comment": "The result produced by the testing action, e.g. a test report.",
-      "rdfs:label": "result",
-      "schema:domainIncludes": { "@id": "connoss:TestingAction" },
-      "schema:rangeIncludes": [ { "@id": "schema:Thing" } ]
-        },
+      "schema:domainIncludes": { "@id": "connoss:TestingAction" }
+    },
     { 
-      "@id": "maSMP:testType",
+      "@id": "connoss:testType",
       "@type": "rdf:Property",
       "rdfs:comment": "The type of test performed on the object (e.g. unit test, integration test).",
       "rdfs:label": "test type",
       "schema:domainIncludes": { "@id": "connoss:TestingAction" },
-      "schema:rangeIncludes": [ { "@id": "schema:Text" }, { "@id": "schema:URL" }, { "@id": "schema:DefinedTerm" } ]
+      "schema:rangeIncludes": [ { "@id": "schema:Text" }, { "@id": "schema:URL" }, { "@id": "schema:DefinedTerm" } ],
+      "owl:equivalentProperty": { "@id": "maSMP:testType" }
     },
     {
       "@id": "connoss:implementsSpecification",

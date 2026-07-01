@@ -18,7 +18,7 @@ from pandas import DataFrame
 CONNOSS_NS = "https://discovery.biothings.io/ns/connoss/"
 SCHEMA_NS = "http://schema.org/"
 CODEMETA_NS = "https://w3id.org/codemeta/"
-FAIR4ML_NS = "https://w3id.org/fair4ml/"
+FAIR4ML_NS = "https://w3id.org/fair4ml#"
 BIOSCHEMAS_NS = "https://bioschemas.org/"
 MASMP_NS = "https://discovery.biothings.io/view/maSMP/"
 
@@ -60,13 +60,11 @@ def convert_to_link(url, label=None, md=False) -> str:
     """ConnOSS terms -> 'connoss:Label'; CodeMeta -> 'codemeta:Label'; else external link."""
     url = str(url)
     if label is None:
-        label = url.split("/")[-1]
+        label = url.split("#")[-1].split("/")[-1]
     if CONNOSS_NS in url:
         return "connoss:" + label
     if CODEMETA_NS in url:
         label = "codemeta:" + label
-    if SCHEMA_NS in url:
-        label = "schema:" + label
     if BIOSCHEMAS_NS in url:
         label = "bioschemas:" + label
     if FAIR4ML_NS in url:
