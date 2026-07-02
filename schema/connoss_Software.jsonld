@@ -408,6 +408,20 @@
           "@id": "schema:URL"
         }
       ]
-    }
+    },
+    {
+  "@id": "connoss:partOfCommunity",
+  "@type": "rdf:Property",
+  "rdfs:comment": "A (research) community, consortium, or network that this research artifact (e.g., software) is developed within or affiliated with (e.g., EOSC, NFDI).",
+  "rdfs:label": "part of community",
+  "schema:domainIncludes": {
+    "@id": "connoss:Software"
+  },
+  "schema:rangeIncludes": [
+    { "@id": "schema:Organization" },
+    { "@id": "schema:Text" },
+    { "@id": "schema:URL" }
+  ]
+  }
   ]
 }

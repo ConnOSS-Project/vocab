@@ -74,6 +74,10 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 <td><a href='https://bioschemas.org/FormalParameter' target='_blank'>bioschemas:FormalParameter</a></td>
 <td>A formal specification of the data, files, or results that the software produces, including format and type.</td>
 </tr>
+<tr><td>connoss:partOfCommunity</td>
+<td><a href='http://schema.org/Organization' target='_blank'>Organization</a> or <a href='http://schema.org/Text' target='_blank'>Text</a> or <a href='http://schema.org/URL' target='_blank'>URL</a></td>
+<td>A (research) community, consortium, or network that this research artifact (e.g., software) is developed within or affiliated with (e.g., EOSC, NFDI).</td>
+</tr>
 <tr><td><a href='https://codemeta.github.io/terms/#readme' target='_blank'>codemeta:readme</a></td>
 <td><a href='http://schema.org/URL' target='_blank'>URL</a></td>
 <td>Link to software Readme file.</td>
