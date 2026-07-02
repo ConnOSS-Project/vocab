@@ -11,3 +11,6 @@ All types and properties are also available at the [ConnOSS DDE namespace](https
 <tr><td><a href='./TestingAction'>TestingAction</a></td><td>The act of testing the software according to its specifications, capturing the object tested, the resulting test report or outcome, and the type of test performed.</td></tr>
 
 </table>
+
+
+<p style='text-align:center'><img src='../ConnOSS_Schema_final.drawio.png' alt='ConnOSS schema diagram' style='max-width:100%'></p>
