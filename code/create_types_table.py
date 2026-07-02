@@ -100,9 +100,11 @@ def write_index(g: Graph, out_dir: str) -> None:
         "[ConnOSS DDE namespace](https://discovery.biothings.io/ns/connoss){:target=\"_blank\"}.\n\n"
     )
     path = os.path.join(out_dir, "index.md")
+    image = "\n\n<p style='text-align:center'><img src='../ConnOSS_Schema_final.drawio.png' alt='ConnOSS schema diagram' style='max-width:100%'></p>\n"
     with open(path, "w") as f:
         f.write(intro)
         f.write(table)
+        f.write(image)
     print("wrote", path)
 
 
