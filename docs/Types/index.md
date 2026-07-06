@@ -14,4 +14,4 @@
 
 #**ConnOSS Schema Diagram**
 
-<p style='text-align:center'><img src='../ConnOSS_Schema_final.drawio.png' alt='ConnOSS schema diagram' style='max-width:100%'></p>
+<p style='text-align:center'><img src='../ConnOSS_Schema_final-Minimum_schema.drawio.png' alt='ConnOSS schema diagram' style='max-width:100%'></p>
