@@ -82,20 +82,6 @@
       ]
     },
     {
-      "@id": "codemeta:funding",
-      "@type": "rdf:Property",
-      "rdfs:comment": "Funding source (e.g. specific grant).",
-      "rdfs:label": "funding",
-      "schema:domainIncludes": {
-        "@id": "connoss:Software"
-      },
-      "schema:rangeIncludes": [
-        {
-          "@id": "schema:Text"
-        }
-      ]
-    },
-    {
       "@id": "codemeta:hasSourceCode",
       "@type": "rdf:Property",
       "rdfs:comment": "Link that states where the software code is for a given software. For example a software registry may indicate that one of its software entries hasSourceCode in a GitHub repository.",
