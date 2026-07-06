@@ -243,9 +243,9 @@
         "@id": "connoss:Software"
       },
       "schema:rangeIncludes": [
-        {
-          "@id": "schema:DefinedTerm"
-        }
+        {"@id": "schema:DefinedTerm"},
+        { "@id": "schema:Text" },
+        { "@id": "schema:URL" }
       ]
     },
     {
@@ -278,6 +278,40 @@
           "@id": "schema:CreativeWork"
         }
       ]
+    },
+    {
+  "@id": "connoss:userDocumentation",
+  "@type": "rdf:Property",
+  "rdfs:comment": "Documentation for end users of the software.",
+  "rdfs:label": "user documentation",
+  "rdfs:subPropertyOf": {
+    "@id": "connoss:documentation"
+  },
+  "schema:domainIncludes": {
+    "@id": "connoss:Software"
+  },
+  "schema:rangeIncludes": [
+    {
+      "@id": "schema:CreativeWork"
+    }
+  ]
+  },
+  {
+  "@id": "connoss:developerDocumentation",
+  "@type": "rdf:Property",
+  "rdfs:comment": "Documentation for developers, maintainers, and infrastructure people.",
+  "rdfs:label": "developer documentation",
+  "rdfs:subPropertyOf": {
+    "@id": "connoss:documentation"
+  },
+  "schema:domainIncludes": {
+    "@id": "connoss:Software"
+  },
+  "schema:rangeIncludes": [
+    {
+      "@id": "schema:CreativeWork"
+    }
+  ]
     },
     {
       "@id": "connoss:softwareInterface",
