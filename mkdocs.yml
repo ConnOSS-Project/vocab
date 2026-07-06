@@ -43,3 +43,6 @@ plugins:
 
 extra_css:
   - stylesheets/extra.css
+
+hooks:
+  - code/copy_schema.py

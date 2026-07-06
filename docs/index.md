@@ -4,7 +4,7 @@
 
 ##### License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 
-##### Download <a href='../schema/connoss_Software.jsonld' download>JSON-LD</a>
+##### Download <a href="connoss_Software.jsonld" download> JSON-LD </a>
 
 ##### Status: Draft (under review)
 
