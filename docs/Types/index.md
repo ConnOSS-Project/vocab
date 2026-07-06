@@ -1,8 +1,5 @@
 
-<h1>ConnOSS Types</h1>
-
-ConnOSS types extend the schema.org and CodeMeta vocabularies.
-All types and properties are also available at the [ConnOSS DDE namespace](https://discovery.biothings.io/ns/connoss){:target="_blank"}.
+<h1><b>ConnOSS Types</b></h1>
 
 <table>
 <tr><th>Type</th><th>Description</th></tr>
@@ -12,5 +9,9 @@ All types and properties are also available at the [ConnOSS DDE namespace](https
 
 </table>
 
+
+<div style='margin-top:2rem'></div>
+
+#**ConnOSS Schema Diagram**
 
 <p style='text-align:center'><img src='../ConnOSS_Schema_final.drawio.png' alt='ConnOSS schema diagram' style='max-width:100%'></p>

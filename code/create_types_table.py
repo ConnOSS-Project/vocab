@@ -94,13 +94,10 @@ def write_index(g: Graph, out_dir: str) -> None:
     table += "</table>\n"
 
     intro = (
-        "\n<h1>ConnOSS Types</h1>\n\n"
-        "ConnOSS types extend the schema.org and CodeMeta vocabularies.\n"
-        "All types and properties are also available at the "
-        "[ConnOSS DDE namespace](https://discovery.biothings.io/ns/connoss){:target=\"_blank\"}.\n\n"
+        "\n<h1><b>ConnOSS Types</b></h1>\n\n"
     )
     path = os.path.join(out_dir, "index.md")
-    image = "\n\n<p style='text-align:center'><img src='../ConnOSS_Schema_final.drawio.png' alt='ConnOSS schema diagram' style='max-width:100%'></p>\n"
+    image = "\n\n<div style='margin-top:2rem'></div>\n\n#**ConnOSS Schema Diagram**\n\n<p style='text-align:center'><img src='../ConnOSS_Schema_final.drawio.png' alt='ConnOSS schema diagram' style='max-width:100%'></p>\n"
     with open(path, "w") as f:
         f.write(intro)
         f.write(table)

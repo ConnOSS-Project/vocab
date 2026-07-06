@@ -1,6 +1,14 @@
-# ConnOSS Metadata Schema
+# **ConnOSS Metadata Schema**
 
-## Description
+##### Version: 0.0.1
+
+##### License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+
+##### Download: [JSON-LD](../schema/connoss_Software.jsonld)
+
+##### Status: Draft (under review)
+
+## **Description**
 
 We have defined a metadata schema for describing research software in a structured and interoperable way within the ConnOSS project. The schema represents metadata elements relevant to research software, including software identity, source code, distribution, contributors, technical requirements, and publication-related information.
 
@@ -12,6 +20,6 @@ The schema will be further complemented by a metadata profile defining obligatio
 
 All types and properties of the ConnOSS metadata schema are provided through the Data Discovery Engine (DDE) platform, where they are represented in JSON-LD.
 
-## Properties
+## **Properties**
 
 The schema is organized into a **core set** of 68 properties drawn from schema.org and CodeMeta, plus an **extension set** of 13 ConnOSS properties.
