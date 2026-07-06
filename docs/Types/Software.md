@@ -22,6 +22,10 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 <td><a href='http://schema.org/URL' target='_blank'>URL</a></td>
 <td>Link to the continuous integration service.</td>
 </tr>
+<tr><td>connoss:developerDocumentation</td>
+<td><a href='http://schema.org/CreativeWork' target='_blank'>CreativeWork</a></td>
+<td>Documentation for developers, maintainers, and infrastructure people.</td>
+</tr>
 <tr><td><a href='https://codemeta.github.io/terms/#developmentStatus' target='_blank'>codemeta:developmentStatus</a></td>
 <td><a href='http://schema.org/Text' target='_blank'>Text</a></td>
 <td>Description of development status, e.g. Active, inactive, suspended. See repostatus.org.</td>
@@ -37,10 +41,6 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 <tr><td><a href='https://w3id.org/fair4ml#ethicalSocialConsiderations' target='_blank'>fair4ml:ethicalSocialConsiderations</a></td>
 <td><a href='http://schema.org/Text' target='_blank'>Text</a></td>
 <td>A documented concern, requirement, or consideration related to the software's design, deployment, or impact across ethical and social dimensions. Enables transparent disclosure of constraints and mitigation strategies.</td>
-</tr>
-<tr><td><a href='https://codemeta.github.io/terms/#funding' target='_blank'>codemeta:funding</a></td>
-<td><a href='http://schema.org/Text' target='_blank'>Text</a></td>
-<td>Funding source (e.g. specific grant).</td>
 </tr>
 <tr><td><a href='https://codemeta.github.io/terms/#hasSourceCode' target='_blank'>codemeta:hasSourceCode</a></td>
 <td><a href='http://schema.org/SoftwareSourceCode' target='_blank'>SoftwareSourceCode</a></td>
@@ -95,7 +95,7 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 <td>A link to other software that is related by functionality, scientific purpose, or ecosystem context (e.g. alternative implementations, comparable tools, or complementary software).</td>
 </tr>
 <tr><td>connoss:researchDomain</td>
-<td><a href='http://schema.org/DefinedTerm' target='_blank'>DefinedTerm</a></td>
+<td><a href='http://schema.org/DefinedTerm' target='_blank'>DefinedTerm</a> or <a href='http://schema.org/Text' target='_blank'>Text</a> or <a href='http://schema.org/URL' target='_blank'>URL</a></td>
 <td>The discipline, area, or research domain to which this software aligns or belongs to.</td>
 </tr>
 <tr><td>connoss:softwareContainer</td>
@@ -109,5 +109,9 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 <tr><td>connoss:testingAction</td>
 <td>connoss:TestingAction</td>
 <td>Links the software to a testing activity describing how the software is validated, including the test type, required inputs, test instructions, and produced test results.</td>
+</tr>
+<tr><td>connoss:userDocumentation</td>
+<td><a href='http://schema.org/CreativeWork' target='_blank'>CreativeWork</a></td>
+<td>Documentation for end users of the software.</td>
 </tr>
 </table>
