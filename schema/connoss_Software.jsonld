@@ -328,31 +328,32 @@
       ]
     },
     {
-      "@id": "connoss:TestingAction",
+      "@id": "connoss:TestAction",
       "@type": "rdfs:Class",
       "rdfs:comment": "The act of testing the software according to its specifications, capturing the object tested, the resulting test report or outcome, and the type of test performed.",
-      "rdfs:label": "Testing Action",
+      "rdfs:label": "Test Action",
       "rdfs:subClassOf": { "@id": "schema:Action" },
       "owl:equivalentClass": { "@id": "maSMP:SoftwareTestAction" }
     },
     {
-      "@id": "schema:object",
-      "rdfs:comment": "The object upon which the action is carried out, whose state is kept intact or changed.",
-      "schema:domainIncludes": { "@id": "connoss:TestingAction" },
-      "schema:rangeIncludes": { "@id": "schema:Thing" }
+      "@id": "connoss:testInput",
+      "rdfs:comment": "Input used to performed the test. Some tests may not require any input, some may require multiple ones. If order or grouping is important in the case of multiple inputs, a ListItem could help.",
+      "schema:domainIncludes": { "@id": "connoss:TestAction" },
+      "schema:rangeIncludes": [{ "@id": "schema:Thing" }, { "@id": "schema:ListItem" }],
+      "owl:equivalentProperty": { "@id": "maSMP:testInput" }
     },
     {
-      "@id": "schema:result",
-      "rdfs:comment": "The result produced in the action.",
-      "schema:domainIncludes": { "@id": "connoss:TestingAction" },
-      "schema:rangeIncludes": { "@id": "schema:Thing" }
+      "@id": "connoss:testInstructions",
+      "rdfs:comment": "Specific test instructions for testing the software.",
+      "schema:domainIncludes": { "@id": "connoss:TestAction" },
+      "schema:rangeIncludes": [{ "@id": "schema:text" }, { "@id": "schema:CreativeWork" }]
     },
     { 
       "@id": "connoss:testType",
       "@type": "rdf:Property",
-      "rdfs:comment": "The type of test performed on the object (e.g. unit test, integration test).",
+      "rdfs:comment": "The type of test that it is performed on the object.",
       "rdfs:label": "test type",
-      "schema:domainIncludes": { "@id": "connoss:TestingAction" },
+      "schema:domainIncludes": { "@id": "connoss:TestAction" },
       "schema:rangeIncludes": [ { "@id": "schema:Text" }, { "@id": "schema:URL" }, { "@id": "schema:DefinedTerm" } ],
       "owl:equivalentProperty": { "@id": "maSMP:testType" }
     },

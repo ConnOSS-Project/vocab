@@ -97,7 +97,7 @@ def write_index(g: Graph, out_dir: str) -> None:
         "\n<h1><b>ConnOSS Types</b></h1>\n\n"
     )
     path = os.path.join(out_dir, "index.md")
-    image = "\n\n<div style='margin-top:2rem'></div>\n\n#**ConnOSS Schema Diagram**\n\n<p style='text-align:center'><img src='../ConnOSS_Schema_final-Minimum_schema.drawio.png' alt='ConnOSS schema diagram' style='max-width:100%'></p>\n"
+    image = "\n\n<div style='margin-top:2rem'></div>\n\n#**ConnOSS Schema Diagram**\n\n<p style='text-align:center'><img src='../ConnOSS_Schema_final_Minimum.drawio.png' alt='ConnOSS schema diagram' style='max-width:100%'></p>\n"
     with open(path, "w") as f:
         f.write(intro)
         f.write(table)
