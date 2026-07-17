@@ -1,0 +1,448 @@
+{
+  "@context": {
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "http://schema.org/",
+    "codemeta": "https://w3id.org/codemeta/",
+    "fair4ml": "https://w3id.org/fair4ml#",
+    "bioschemas": "https://bioschemas.org/",
+    "maSMP": "https://discovery.biothings.io/view/maSMP/",
+    "connoss": "https://discovery.biothings.io/ns/connoss/"
+  },
+  "@graph": [
+    {
+      "@id": "connoss:Software",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "Extension to schema.org and CodeMeta to describe software source code, software applications, and software releases.",
+      "rdfs:label": "Software",
+      "rdfs:subClassOf": [
+        { "@id": "schema:SoftwareApplication" },
+        { "@id": "schema:SoftwareSourceCode" }
+      ],
+      "schema:license": {
+        "@id": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      "schema:schemaVersion": "https://schema.org/docs/releases.html#v29.4"
+    },
+    {
+      "@id": "codemeta:buildInstructions",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Link to the installation instructions/documentation.",
+      "rdfs:label": "build instructions",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:URL"
+        }
+      ]
+    },
+    {
+      "@id": "codemeta:continuousIntegration",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Link to the continuous integration service.",
+      "rdfs:label": "continuous integration",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:URL"
+        }
+      ]
+    },
+    {
+      "@id": "codemeta:developmentStatus",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Description of development status, e.g. Active, inactive, suspended. See repostatus.org.",
+      "rdfs:label": "development status",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:Text"
+        }
+      ]
+    },
+    {
+      "@id": "codemeta:embargoEndDate",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Software may be embargoed from public access until a specified date (e.g. pending publication, 1 year from publication).",
+      "rdfs:label": "embargo end date",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:Date"
+        }
+      ]
+    },
+    {
+      "@id": "codemeta:hasSourceCode",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Link that states where the software code is for a given software. For example a software registry may indicate that one of its software entries hasSourceCode in a GitHub repository.",
+      "rdfs:label": "has Source Code",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:SoftwareSourceCode"
+        }
+      ]
+    },
+    {
+      "@id": "codemeta:isSourceCodeOf",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Link that states where software application is built from a given source code. This is the reverse property of 'hasSourceCode'.",
+      "rdfs:label": "is Source Code of",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:SoftwareApplication"
+        }
+      ]
+    },
+    {
+      "@id": "codemeta:issueTracker",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Link to software bug reporting or issue tracking system.",
+      "rdfs:label": "issue tracker",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:URL"
+        }
+      ]
+    },
+    {
+      "@id": "codemeta:readme",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Link to software Readme file.",
+      "rdfs:label": "readme",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:URL"
+        }
+      ]
+    },
+     {
+      "@id": "codemeta:relatedSoftware",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A link to other software that is related by functionality, scientific purpose, or ecosystem context (e.g. alternative implementations, comparable tools, or complementary software).",
+      "rdfs:label": "related software",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+    { "@id": "schema:SoftwareSourceCode" },
+    { "@id": "schema:SoftwareApplication" }
+      ]
+    },
+    {
+      "@id": "codemeta:referencePublication",
+      "@type": "rdf:Property",
+      "rdfs:comment": "An academic publication related to the software.",
+      "rdfs:label": "reference publication",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:ScholarlyArticle"
+        }
+      ]
+    },
+    {
+      "@id": "schema:contactPoint",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A contact point for a person or organization.",
+      "rdfs:label": "contact point",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:ContactPoint"
+        }
+      ]
+    },
+    {
+      "@id": "fair4ml:intendedUse",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A concise summary of the primary objective or intended use case for the software. Distinct from general description; this focuses on 'why' the software exists and what problems it solves.",
+      "rdfs:label": "intended use",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:Text"
+        }
+      ]
+    },
+    {
+      "@id": "fair4ml:legalConsiderations",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A documented concern, requirement, or consideration related to the software's design, deployment, or impact across legal and regulatory dimensions (e.g. licensing constraints, data protection, compliance requirements). Enables transparent disclosure of legal constraints and mitigation strategies.",
+      "rdfs:label": "legal considerations",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:Text"
+        }
+      ]
+    },
+    {
+      "@id": "fair4ml:ethicalSocialConsiderations",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A documented concern, requirement, or consideration related to the software's design, deployment, or impact across ethical and social dimensions. Enables transparent disclosure of constraints and mitigation strategies.",
+      "rdfs:label": "ethical social considerations",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:Text"
+        }
+      ]
+    },
+        {
+      "@id": "connoss:researchDomain",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The discipline, area, or research domain to which this software aligns or belongs to.",
+      "rdfs:label": "research domain",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {"@id": "schema:DefinedTerm"},
+        { "@id": "schema:Text" },
+        { "@id": "schema:URL" }
+      ]
+    },
+    {
+      "@id": "connoss:acknowledgements",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Text or URL containing the people, organizations and other contributors acknowledged by the authors.",
+      "rdfs:label": "acknowledgements",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:Text"
+        },
+        {
+          "@id": "schema:URL"
+        }
+      ]
+    },
+    {
+      "@id": "connoss:documentation",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Resources that describe the software's installation, usage, configuration, development, and deployment intended to support users and developers in understanding and applying the software.",
+      "rdfs:label": "documentation",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:CreativeWork"
+        }
+      ]
+    },
+    {
+  "@id": "connoss:userDocumentation",
+  "@type": "rdf:Property",
+  "rdfs:comment": "Documentation for end users of the software.",
+  "rdfs:label": "user documentation",
+  "rdfs:subPropertyOf": {
+    "@id": "connoss:documentation"
+  },
+  "schema:domainIncludes": {
+    "@id": "connoss:Software"
+  },
+  "schema:rangeIncludes": [
+    {
+      "@id": "schema:CreativeWork"
+    }
+  ]
+  },
+  {
+  "@id": "connoss:developerDocumentation",
+  "@type": "rdf:Property",
+  "rdfs:comment": "Documentation for developers, maintainers, and infrastructure people.",
+  "rdfs:label": "developer documentation",
+  "rdfs:subPropertyOf": {
+    "@id": "connoss:documentation"
+  },
+  "schema:domainIncludes": {
+    "@id": "connoss:Software"
+  },
+  "schema:rangeIncludes": [
+    {
+      "@id": "schema:CreativeWork"
+    }
+  ]
+    },
+    {
+      "@id": "connoss:softwareInterface",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The interaction interfaces through which users or other software systems can access, execute, or integrate with software (e.g., CLI, GUI, WebUI, Notebook, API, Library).",
+      "rdfs:label": "software interface",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:DefinedTerm"
+        }
+      ]
+    },
+     {
+      "@id": "connoss:testingAction",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Links the software to a testing activity describing how the software is validated, including the test type, required inputs, test instructions, and produced test results.",
+      "rdfs:label": "testing action",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "connoss:TestingAction"
+        }
+      ]
+    },
+    {
+      "@id": "connoss:TestAction",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The act of testing the software according to its specifications, capturing the object tested, the resulting test report or outcome, and the type of test performed.",
+      "rdfs:label": "Test Action",
+      "rdfs:subClassOf": { "@id": "schema:Action" },
+      "owl:equivalentClass": { "@id": "maSMP:SoftwareTestAction" }
+    },
+    {
+      "@id": "connoss:testInput",
+      "rdfs:comment": "Input used to performed the test. Some tests may not require any input, some may require multiple ones. If order or grouping is important in the case of multiple inputs, a ListItem could help.",
+      "schema:domainIncludes": { "@id": "connoss:TestAction" },
+      "schema:rangeIncludes": [{ "@id": "schema:Thing" }, { "@id": "schema:ListItem" }],
+      "owl:equivalentProperty": { "@id": "maSMP:testInput" }
+    },
+    {
+      "@id": "connoss:testInstructions",
+      "rdfs:comment": "Specific test instructions for testing the software.",
+      "schema:domainIncludes": { "@id": "connoss:TestAction" },
+      "schema:rangeIncludes": [{ "@id": "schema:text" }, { "@id": "schema:CreativeWork" }]
+    },
+    { 
+      "@id": "connoss:testType",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The type of test that it is performed on the object.",
+      "rdfs:label": "test type",
+      "schema:domainIncludes": { "@id": "connoss:TestAction" },
+      "schema:rangeIncludes": [ { "@id": "schema:Text" }, { "@id": "schema:URL" }, { "@id": "schema:DefinedTerm" } ],
+      "owl:equivalentProperty": { "@id": "maSMP:testType" }
+    },
+    {
+      "@id": "connoss:implementsSpecification",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A specification that a software implements, including a standard, API or legally defined level of conformance. e.g. the HTTP standard, the OpenAPI spec, OAuth2.",
+      "rdfs:label": "implements specification",
+      "schema:domainIncludes": {
+      "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:CreativeWork"
+        }
+      ]
+    },
+     {
+      "@id": "connoss:softwareContainer",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A container image or packaged runtime environment of the software.",
+      "rdfs:label": "software container",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:CreativeWork"
+        },
+        {
+          "@id": "schema:URL"
+        }
+      ]
+    },
+    {
+      "@id": "connoss:input",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A formal specification of the data, files, or parameters that the software accepts as input, including format, type, and whether the input is required.",
+      "rdfs:label": "input",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "bioschemas:FormalParameter"
+        }
+      ]
+    },
+    {
+      "@id": "connoss:output",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A formal specification of the data, files, or results that the software produces, including format and type.",
+      "rdfs:label": "output",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "bioschemas:FormalParameter"
+        }
+      ]
+    },
+    {
+      "@id": "schema:relatedLink",
+      "@type": "rdf:Property",
+      "rdfs:comment": "A link related to this object, e.g. related web pages.",
+      "rdfs:label": "related link",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:URL"
+        }
+      ]
+    },
+    {
+  "@id": "connoss:partOfCommunity",
+  "@type": "rdf:Property",
+  "rdfs:comment": "A (research) community, consortium, or network that this research artifact (e.g., software) is developed within or affiliated with (e.g., EOSC, NFDI).",
+  "rdfs:label": "part of community",
+  "schema:domainIncludes": {
+    "@id": "connoss:Software"
+  },
+  "schema:rangeIncludes": [
+    { "@id": "schema:Organization" },
+    { "@id": "schema:Text" },
+    { "@id": "schema:URL" }
+  ]
+  }
+  ]
+}
