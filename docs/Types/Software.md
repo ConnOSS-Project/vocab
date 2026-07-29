@@ -6,7 +6,7 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 
 <table>
 <tr><th>Property</th><th>Expected Type</th><th>Description</th></tr>
-<tr><td>connoss:acknowledgements</td>
+<tr><td><a href='/vocab/Properties/acknowledgements/' target='_blank'>connoss:acknowledgements</a></td>
 <td><a href='http://schema.org/Text' target='_blank'>Text</a> or <a href='http://schema.org/URL' target='_blank'>URL</a></td>
 <td>Text or URL containing the people, organizations and other contributors acknowledged by the authors.</td>
 </tr>
@@ -22,7 +22,7 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 <td><a href='http://schema.org/URL' target='_blank'>URL</a></td>
 <td>Link to the continuous integration service.</td>
 </tr>
-<tr><td>connoss:developerDocumentation</td>
+<tr><td><a href='/vocab/Properties/developerDocumentation/' target='_blank'>connoss:developerDocumentation</a></td>
 <td><a href='http://schema.org/CreativeWork' target='_blank'>CreativeWork</a></td>
 <td>Documentation for developers, maintainers, and infrastructure people.</td>
 </tr>
@@ -30,7 +30,7 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 <td><a href='http://schema.org/Text' target='_blank'>Text</a></td>
 <td>Description of development status, e.g. Active, inactive, suspended. See repostatus.org.</td>
 </tr>
-<tr><td>connoss:documentation</td>
+<tr><td><a href='/vocab/Properties/documentation/' target='_blank'>connoss:documentation</a></td>
 <td><a href='http://schema.org/CreativeWork' target='_blank'>CreativeWork</a></td>
 <td>Resources that describe the software's installation, usage, configuration, development, and deployment intended to support users and developers in understanding and applying the software.</td>
 </tr>
@@ -46,11 +46,11 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 <td><a href='http://schema.org/SoftwareSourceCode' target='_blank'>SoftwareSourceCode</a></td>
 <td>Link that states where the software code is for a given software. For example a software registry may indicate that one of its software entries hasSourceCode in a GitHub repository.</td>
 </tr>
-<tr><td>connoss:implementsSpecification</td>
+<tr><td><a href='/vocab/Properties/implementsSpecification/' target='_blank'>connoss:implementsSpecification</a></td>
 <td><a href='http://schema.org/CreativeWork' target='_blank'>CreativeWork</a></td>
 <td>A specification that a software implements, including a standard, API or legally defined level of conformance. e.g. the HTTP standard, the OpenAPI spec, OAuth2.</td>
 </tr>
-<tr><td>connoss:input</td>
+<tr><td><a href='/vocab/Properties/input/' target='_blank'>connoss:input</a></td>
 <td><a href='https://bioschemas.org/FormalParameter' target='_blank'>bioschemas:FormalParameter</a></td>
 <td>A formal specification of the data, files, or parameters that the software accepts as input, including format, type, and whether the input is required.</td>
 </tr>
@@ -70,11 +70,11 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 <td><a href='http://schema.org/Text' target='_blank'>Text</a></td>
 <td>A documented concern, requirement, or consideration related to the software's design, deployment, or impact across legal and regulatory dimensions (e.g. licensing constraints, data protection, compliance requirements). Enables transparent disclosure of legal constraints and mitigation strategies.</td>
 </tr>
-<tr><td>connoss:output</td>
+<tr><td><a href='/vocab/Properties/output/' target='_blank'>connoss:output</a></td>
 <td><a href='https://bioschemas.org/FormalParameter' target='_blank'>bioschemas:FormalParameter</a></td>
 <td>A formal specification of the data, files, or results that the software produces, including format and type.</td>
 </tr>
-<tr><td>connoss:partOfCommunity</td>
+<tr><td><a href='/vocab/Properties/partOfCommunity/' target='_blank'>connoss:partOfCommunity</a></td>
 <td><a href='http://schema.org/Organization' target='_blank'>Organization</a> or <a href='http://schema.org/Text' target='_blank'>Text</a> or <a href='http://schema.org/URL' target='_blank'>URL</a></td>
 <td>A (research) community, consortium, or network that this research artifact (e.g., software) is developed within or affiliated with (e.g., EOSC, NFDI).</td>
 </tr>
@@ -94,23 +94,23 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 <td><a href='http://schema.org/SoftwareSourceCode' target='_blank'>SoftwareSourceCode</a> or <a href='http://schema.org/SoftwareApplication' target='_blank'>SoftwareApplication</a></td>
 <td>A link to other software that is related by functionality, scientific purpose, or ecosystem context (e.g. alternative implementations, comparable tools, or complementary software).</td>
 </tr>
-<tr><td>connoss:researchDomain</td>
+<tr><td><a href='/vocab/Properties/researchDomain/' target='_blank'>connoss:researchDomain</a></td>
 <td><a href='http://schema.org/DefinedTerm' target='_blank'>DefinedTerm</a> or <a href='http://schema.org/Text' target='_blank'>Text</a> or <a href='http://schema.org/URL' target='_blank'>URL</a></td>
 <td>The discipline, area, or research domain to which this software aligns or belongs to.</td>
 </tr>
-<tr><td>connoss:softwareContainer</td>
+<tr><td><a href='/vocab/Properties/softwareContainer/' target='_blank'>connoss:softwareContainer</a></td>
 <td><a href='http://schema.org/CreativeWork' target='_blank'>CreativeWork</a> or <a href='http://schema.org/URL' target='_blank'>URL</a></td>
 <td>A container image or packaged runtime environment of the software.</td>
 </tr>
-<tr><td>connoss:softwareInterface</td>
+<tr><td><a href='/vocab/Properties/softwareInterface/' target='_blank'>connoss:softwareInterface</a></td>
 <td><a href='http://schema.org/DefinedTerm' target='_blank'>DefinedTerm</a></td>
 <td>The interaction interfaces through which users or other software systems can access, execute, or integrate with software (e.g., CLI, GUI, WebUI, Notebook, API, Library).</td>
 </tr>
-<tr><td>connoss:testingAction</td>
-<td>connoss:TestingAction</td>
+<tr><td><a href='/vocab/Properties/testingAction/' target='_blank'>connoss:testingAction</a></td>
+<td><a href='/vocab/Properties/TestingAction/' target='_blank'>connoss:TestingAction</a></td>
 <td>Links the software to a testing activity describing how the software is validated, including the test type, required inputs, test instructions, and produced test results.</td>
 </tr>
-<tr><td>connoss:userDocumentation</td>
+<tr><td><a href='/vocab/Properties/userDocumentation/' target='_blank'>connoss:userDocumentation</a></td>
 <td><a href='http://schema.org/CreativeWork' target='_blank'>CreativeWork</a></td>
 <td>Documentation for end users of the software.</td>
 </tr>

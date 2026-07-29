@@ -40,9 +40,31 @@ markdown_extensions:
 
 plugins:
   - search
+  - redirects:
+      redirect_maps:
+        'terms/Software.md': 'Types/Software.md'
+        'terms/TestAction.md': 'Types/TestAction.md'
+        'terms/acknowledgements.md': 'Properties/acknowledgements.md'
+        'terms/developerDocumentation.md': 'Properties/developerDocumentation.md'
+        'terms/documentation.md': 'Properties/documentation.md'
+        'terms/implementsSpecification.md': 'Properties/implementsSpecification.md'
+        'terms/input.md': 'Properties/input.md'
+        'terms/output.md': 'Properties/partOfCommunity.md'
+        'terms/partOfCommunity.md': 'Properties/partOfCommunity.md'
+        'terms/researchDomain.md': 'Properties/researchDomain.md'
+        'terms/softwareContainer.md': 'Properties/softwareContainer.md'
+        'terms/softwareInterface.md': 'Properties/softwareInterface.md'
+        'terms/testingAction.md': 'Properties/testingAction.md'
+        'terms/testType.md': 'Properties/testType.md'
+        'terms/userDocumentation.md': 'Properties/userDocumentation.md'
+
 
 extra_css:
   - stylesheets/extra.css
 
 hooks:
   - code/copy_schema.py
+
+validation:
+  nav:
+    omitted_files: ignore
