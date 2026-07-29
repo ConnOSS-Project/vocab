@@ -65,6 +65,7 @@ def convert_to_link(url, label=None, md=False, g=None) -> str:
     if label is None:
         label = local
     href = url
+
     if CONNOSS_NS in url:
         local_name = url.split("/")[-1]
         # classes link to Types/, properties link to Properties/
@@ -73,8 +74,8 @@ def convert_to_link(url, label=None, md=False, g=None) -> str:
         else:
             link = "/vocab/Properties/" + local_name + "/"
         if md:
-            return "[connoss:{}]({})".format(local_name, link) + "{:target='_blank'}"
-        return "<a href='{}' target='_blank'>connoss:{}</a>".format(link, local_name)
+            return "[connoss:{}]({})".format(local_name, link)
+        return "<a href='{}'>connoss:{}</a>".format(link, local_name)
     
     if CODEMETA_NS in url:
         label = "codemeta:" + label

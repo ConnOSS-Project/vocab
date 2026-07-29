@@ -7,5 +7,5 @@ Links the software to a testing activity describing how the software is validate
 <table>
 <tr><th>Attribute</th><th>Value</th></tr>
 <tr><td>Label</td><td>testing action</td></tr>
-<tr><td>Range</td><td><a href='/vocab/Properties/TestingAction/' target='_blank'>connoss:TestingAction</a></td></tr>
+<tr><td>Range</td><td><a href='/vocab/Properties/TestingAction/'>connoss:TestingAction</a></td></tr>
 </table>
