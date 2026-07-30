@@ -302,16 +302,12 @@
     {
       "@id": "connoss:softwareInterface",
       "@type": "rdf:Property",
-      "rdfs:comment": "The interaction interfaces through which users or other software systems can access, execute, or integrate with software (e.g., CLI, GUI, WebUI, Notebook, API, Library).",
+      "rdfs:comment": "The interaction interface (or software product) through which users or other software systems can access, execute, or integrate this software (e.g., CLI, GUI, WebUI, Notebook, API, Library).",
       "rdfs:label": "software interface",
       "schema:domainIncludes": {
         "@id": "connoss:Software"
       },
-      "schema:rangeIncludes": [
-        {
-          "@id": "schema:DefinedTerm"
-        }
-      ]
+      "schema:rangeIncludes": [ { "@id": "schema:DefinedTerm" }, {"@id": "schema:Text"}, , {"@id": "Thing"}, {"@id": "schema:URL"} ]
     },
      {
       "@id": "connoss:testingAction",
@@ -362,7 +358,7 @@
     {
       "@id": "connoss:implementsSpecification",
       "@type": "rdf:Property",
-      "rdfs:comment": "A specification that a software implements, including a standard, API or legally defined level of conformance. e.g. the HTTP standard, the OpenAPI spec, OAuth2.",
+      "rdfs:comment": "A specification that a software implements, including a standard, API or legally defined level of conformance. e.g., the HTTP standard, the OpenAPI spec, OAuth2.",
       "rdfs:label": "implements specification",
       "schema:domainIncludes": {
       "@id": "connoss:Software"
