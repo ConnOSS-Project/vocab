@@ -20,6 +20,4 @@ The schema will be further complemented by a metadata profile defining obligatio
 
 All types and properties of the ConnOSS metadata schema are provided through the Data Discovery Engine (DDE) platform, where they are represented in JSON-LD.
 
-## Properties
-
 The schema is organized into a **core set** of 65 properties drawn from schema.org and CodeMeta, plus an **extension set** of 13 ConnOSS properties.
