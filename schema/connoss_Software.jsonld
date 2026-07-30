@@ -290,7 +290,7 @@
       "schema:domainIncludes": {
         "@id": "connoss:Software"
       },
-      "schema:rangeIncludes": [ { "@id": "schema:DefinedTerm" }, {"@id": "schema:Text"}, , {"@id": "Thing"}, {"@id": "schema:URL"} ]
+      "schema:rangeIncludes": [ { "@id": "schema:DefinedTerm" }, {"@id": "schema:Text"}, {"@id": "Thing"}, {"@id": "schema:URL"} ]
     },
      {
       "@id": "connoss:testingAction",

@@ -2,7 +2,7 @@
 
 (property) connoss:implementsSpecification
 
-A specification that a software implements, including a standard, API or legally defined level of conformance. e.g. the HTTP standard, the OpenAPI spec, OAuth2.
+A specification that a software implements, including a standard, API or legally defined level of conformance. e.g., the HTTP standard, the OpenAPI spec, OAuth2.
 
 <table>
 <tr><th>Attribute</th><th>Value</th></tr>

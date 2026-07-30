@@ -6,9 +6,9 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 
 <table>
 <tr><th>Property</th><th>Expected Type</th><th>Description</th></tr>
-<tr><td><a href='/vocab/Properties/acknowledgements/'>connoss:acknowledgements</a></td>
-<td><a href='http://schema.org/Text' target='_blank'>Text</a> or <a href='http://schema.org/URL' target='_blank'>URL</a></td>
-<td>Text or URL containing the people, organizations and other contributors acknowledged by the authors.</td>
+<tr><td><a href='/vocab/Properties/applicationDomain/'>connoss:applicationDomain</a></td>
+<td><a href='http://schema.org/DefinedTerm' target='_blank'>DefinedTerm</a> or <a href='http://schema.org/Text' target='_blank'>Text</a> or <a href='http://schema.org/URL' target='_blank'>URL</a></td>
+<td>The discipline, area, or research/application domain to which this software aligns or belongs to.</td>
 </tr>
 <tr><td><a href='https://codemeta.github.io/terms/#buildInstructions' target='_blank'>codemeta:buildInstructions</a></td>
 <td><a href='http://schema.org/URL' target='_blank'>URL</a></td>
@@ -48,7 +48,7 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 </tr>
 <tr><td><a href='/vocab/Properties/implementsSpecification/'>connoss:implementsSpecification</a></td>
 <td><a href='http://schema.org/CreativeWork' target='_blank'>CreativeWork</a></td>
-<td>A specification that a software implements, including a standard, API or legally defined level of conformance. e.g. the HTTP standard, the OpenAPI spec, OAuth2.</td>
+<td>A specification that a software implements, including a standard, API or legally defined level of conformance. e.g., the HTTP standard, the OpenAPI spec, OAuth2.</td>
 </tr>
 <tr><td><a href='/vocab/Properties/input/'>connoss:input</a></td>
 <td><a href='https://bioschemas.org/FormalParameter' target='_blank'>bioschemas:FormalParameter</a></td>
@@ -65,6 +65,14 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 <tr><td><a href='https://codemeta.github.io/terms/#issueTracker' target='_blank'>codemeta:issueTracker</a></td>
 <td><a href='http://schema.org/URL' target='_blank'>URL</a></td>
 <td>Link to software bug reporting or issue tracking system.</td>
+</tr>
+<tr><td><a href='/vocab/Properties/latestRelease/'>connoss:latestRelease</a></td>
+<td><a href='/vocab/Properties/Software/'>connoss:Software</a> or <a href='http://schema.org/URL' target='_blank'>URL</a></td>
+<td>Link to the latest release.</td>
+</tr>
+<tr><td><a href='/vocab/Properties/latestReleaseVersion/'>connoss:latestReleaseVersion</a></td>
+<td><a href='http://schema.org/Text' target='_blank'>Text</a></td>
+<td>Version of the latest release.</td>
 </tr>
 <tr><td><a href='https://w3id.org/fair4ml#legalConsiderations' target='_blank'>fair4ml:legalConsiderations</a></td>
 <td><a href='http://schema.org/Text' target='_blank'>Text</a></td>
@@ -94,17 +102,13 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 <td><a href='http://schema.org/SoftwareSourceCode' target='_blank'>SoftwareSourceCode</a> or <a href='http://schema.org/SoftwareApplication' target='_blank'>SoftwareApplication</a></td>
 <td>A link to other software that is related by functionality, scientific purpose, or ecosystem context (e.g. alternative implementations, comparable tools, or complementary software).</td>
 </tr>
-<tr><td><a href='/vocab/Properties/researchDomain/'>connoss:researchDomain</a></td>
-<td><a href='http://schema.org/DefinedTerm' target='_blank'>DefinedTerm</a> or <a href='http://schema.org/Text' target='_blank'>Text</a> or <a href='http://schema.org/URL' target='_blank'>URL</a></td>
-<td>The discipline, area, or research domain to which this software aligns or belongs to.</td>
-</tr>
 <tr><td><a href='/vocab/Properties/softwareContainer/'>connoss:softwareContainer</a></td>
 <td><a href='http://schema.org/CreativeWork' target='_blank'>CreativeWork</a> or <a href='http://schema.org/URL' target='_blank'>URL</a></td>
 <td>A container image or packaged runtime environment of the software.</td>
 </tr>
 <tr><td><a href='/vocab/Properties/softwareInterface/'>connoss:softwareInterface</a></td>
-<td><a href='http://schema.org/DefinedTerm' target='_blank'>DefinedTerm</a></td>
-<td>The interaction interfaces through which users or other software systems can access, execute, or integrate with software (e.g., CLI, GUI, WebUI, Notebook, API, Library).</td>
+<td><a href='http://schema.org/DefinedTerm' target='_blank'>DefinedTerm</a> or <a href='http://schema.org/Text' target='_blank'>Text</a> or <a href='file:///C:/ConnOSS-Vocab/vocab/schema/Thing' target='_blank'>Thing</a> or <a href='http://schema.org/URL' target='_blank'>URL</a></td>
+<td>The interaction interface (or software product) through which users or other software systems can access, execute, or integrate this software (e.g., CLI, GUI, WebUI, Notebook, API, Library).</td>
 </tr>
 <tr><td><a href='/vocab/Properties/testingAction/'>connoss:testingAction</a></td>
 <td><a href='/vocab/Properties/TestingAction/'>connoss:TestingAction</a></td>

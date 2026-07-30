@@ -44,19 +44,19 @@ plugins:
       redirect_maps:
         'terms/Software.md': 'Types/Software.md'
         'terms/TestAction.md': 'Types/TestAction.md'
-        'terms/acknowledgements.md': 'Properties/acknowledgements.md'
         'terms/developerDocumentation.md': 'Properties/developerDocumentation.md'
         'terms/documentation.md': 'Properties/documentation.md'
         'terms/implementsSpecification.md': 'Properties/implementsSpecification.md'
         'terms/input.md': 'Properties/input.md'
         'terms/output.md': 'Properties/output.md'
         'terms/partOfCommunity.md': 'Properties/partOfCommunity.md'
-        'terms/researchDomain.md': 'Properties/researchDomain.md'
+        'terms/applicationDomain.md': 'Properties/applicationDomainDomain.md'
         'terms/softwareContainer.md': 'Properties/softwareContainer.md'
         'terms/softwareInterface.md': 'Properties/softwareInterface.md'
         'terms/testingAction.md': 'Properties/testingAction.md'
         'terms/testType.md': 'Properties/testType.md'
-        'terms/userDocumentation.md': 'Properties/userDocumentation.md'
+        'terms/latestRelease.md': 'Properties/latestRelease.md'
+        'terms/latestReleaseVersion.md': 'Properties/latestReleaseVersion.md'
 
 
 extra_css:
