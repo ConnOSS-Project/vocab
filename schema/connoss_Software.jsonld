@@ -441,6 +441,31 @@
     { "@id": "schema:Text" },
     { "@id": "schema:URL" }
   ]
+  },
+  {
+    "@id": "connoss:latestRelease",
+    "@type": "rdf:Property",
+    "rdfs:comment": "Link to the latest release.",
+    "rdfs:label": "latest release",
+    "schema:domainIncludes": {
+      "@id": "connoss:Software"
+    },
+    "schema:rangeIncludes": [
+      { "@id": "connoss:Software" },
+      { "@id": "schema:URL" }
+    ]
+  },
+  {
+    "@id": "connoss:latestReleaseVersion",
+    "@type": "rdf:Property",
+    "rdfs:comment": "Version of the latest release.",
+    "rdfs:label": "latest release version",
+    "schema:domainIncludes": {
+      "@id": "connoss:Software"
+    },
+    "schema:rangeIncludes": [
+      { "@id": "schema:Text" }
+    ]
   }
   ]
 }
