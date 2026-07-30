@@ -337,6 +337,7 @@
     },
     {
       "@id": "connoss:testInput",
+      "@type": "rdf:Property",
       "rdfs:comment": "Input used to performed the test. Some tests may not require any input, some may require multiple ones. If order or grouping is important in the case of multiple inputs, a ListItem could help.",
       "schema:domainIncludes": { "@id": "connoss:TestAction" },
       "schema:rangeIncludes": [{ "@id": "schema:Thing" }, { "@id": "schema:ListItem" }],
@@ -344,6 +345,7 @@
     },
     {
       "@id": "connoss:testInstructions",
+      "@type": "rdf:Property",
       "rdfs:comment": "Specific test instructions for testing the software.",
       "schema:domainIncludes": { "@id": "connoss:TestAction" },
       "schema:rangeIncludes": [{ "@id": "schema:text" }, { "@id": "schema:CreativeWork" }]
