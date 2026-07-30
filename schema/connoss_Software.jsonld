@@ -221,10 +221,10 @@
       ]
     },
         {
-      "@id": "connoss:researchDomain",
+      "@id": "connoss:applicationDomain",
       "@type": "rdf:Property",
-      "rdfs:comment": "The discipline, area, or research domain to which this software aligns or belongs to.",
-      "rdfs:label": "research domain",
+      "rdfs:comment": "The discipline, area, or research/application domain to which this software aligns or belongs to.",
+      "rdfs:label": "application domain",
       "schema:domainIncludes": {
         "@id": "connoss:Software"
       },
