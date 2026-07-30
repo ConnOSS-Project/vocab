@@ -220,7 +220,7 @@
         }
       ]
     },
-        {
+    {
       "@id": "connoss:applicationDomain",
       "@type": "rdf:Property",
       "rdfs:comment": "The discipline, area, or research/application domain to which this software aligns or belongs to.",
@@ -232,23 +232,6 @@
         {"@id": "schema:DefinedTerm"},
         { "@id": "schema:Text" },
         { "@id": "schema:URL" }
-      ]
-    },
-    {
-      "@id": "connoss:acknowledgements",
-      "@type": "rdf:Property",
-      "rdfs:comment": "Text or URL containing the people, organizations and other contributors acknowledged by the authors.",
-      "rdfs:label": "acknowledgements",
-      "schema:domainIncludes": {
-        "@id": "connoss:Software"
-      },
-      "schema:rangeIncludes": [
-        {
-          "@id": "schema:Text"
-        },
-        {
-          "@id": "schema:URL"
-        }
       ]
     },
     {
