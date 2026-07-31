@@ -2,7 +2,7 @@
 
 (property) connoss:testedWith
 
-Links the software to a testing activity describing how the software is validated, including the test type, required inputs, test instructions, and produced test results.
+Links the software to a testing activity describing how the software is validated, including the test type, required inputs, and test instructions.
 
 <table>
 <tr><th>Attribute</th><th>Value</th></tr>

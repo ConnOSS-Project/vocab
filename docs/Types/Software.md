@@ -112,7 +112,7 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 </tr>
 <tr><td><a href='/vocab/Properties/testedWith/'>connoss:testedWith</a></td>
 <td><a href='/vocab/Properties/TestAction/'>connoss:TestAction</a></td>
-<td>Links the software to a testing activity describing how the software is validated, including the test type, required inputs, test instructions, and produced test results.</td>
+<td>Links the software to a testing activity describing how the software is validated, including the test type, required inputs, and test instructions.</td>
 </tr>
 <tr><td><a href='/vocab/Properties/userDocumentation/'>connoss:userDocumentation</a></td>
 <td><a href='http://schema.org/CreativeWork' target='_blank'>CreativeWork</a></td>

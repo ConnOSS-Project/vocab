@@ -295,7 +295,7 @@
      {
       "@id": "connoss:testedWith",
       "@type": "rdf:Property",
-      "rdfs:comment": "Links the software to a testing activity describing how the software is validated, including the test type, required inputs, test instructions, and produced test results.",
+      "rdfs:comment": "Links the software to a testing activity describing how the software is validated, including the test type, required inputs, and test instructions.",
       "rdfs:label": "tested with",
       "schema:domainIncludes": {
         "@id": "connoss:Software"

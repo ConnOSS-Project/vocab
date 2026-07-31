@@ -121,7 +121,7 @@ connoss:testedWith a rdf:Property ;
     rdfs:label "tested with" ;
     schema:domainIncludes connoss:Software ;
     schema:rangeIncludes connoss:TestAction ;
-    rdfs:comment "Links the software to a testing activity describing how the software is validated, including the test type, required inputs, test instructions, and produced test results." .
+    rdfs:comment "Links the software to a testing activity describing how the software is validated, including the test type, required inputs, and test instructions." .
 
 connoss:testInput a rdf:Property ;
     schema:domainIncludes connoss:TestAction ;
