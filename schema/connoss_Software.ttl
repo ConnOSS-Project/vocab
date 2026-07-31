@@ -117,8 +117,8 @@ connoss:softwareInterface a rdf:Property ;
         schema:URL ;
     rdfs:comment "The interaction interface (or software product) through which users or other software systems can access, execute, or integrate this software (e.g., CLI, GUI, WebUI, Notebook, API, Library)." .
 
-connoss:testAction a rdf:Property ;
-    rdfs:label "test action" ;
+connoss:testedWith a rdf:Property ;
+    rdfs:label "tested with" ;
     schema:domainIncludes connoss:Software ;
     schema:rangeIncludes connoss:TestAction ;
     rdfs:comment "Links the software to a testing activity describing how the software is validated, including the test type, required inputs, test instructions, and produced test results." .

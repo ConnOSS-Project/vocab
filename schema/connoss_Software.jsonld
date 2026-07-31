@@ -293,16 +293,16 @@
       "schema:rangeIncludes": [ { "@id": "schema:DefinedTerm" }, {"@id": "schema:Text"}, {"@id": "Thing"}, {"@id": "schema:URL"} ]
     },
      {
-      "@id": "connoss:testingAction",
+      "@id": "connoss:testedWith",
       "@type": "rdf:Property",
       "rdfs:comment": "Links the software to a testing activity describing how the software is validated, including the test type, required inputs, test instructions, and produced test results.",
-      "rdfs:label": "testing action",
+      "rdfs:label": "tested with",
       "schema:domainIncludes": {
         "@id": "connoss:Software"
       },
       "schema:rangeIncludes": [
         {
-          "@id": "connoss:TestingAction"
+          "@id": "connoss:TestAction"
         }
       ]
     },

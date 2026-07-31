@@ -110,8 +110,8 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 <td><a href='http://schema.org/DefinedTerm' target='_blank'>DefinedTerm</a> or <a href='http://schema.org/Text' target='_blank'>Text</a> or <a href='file:///C:/ConnOSS-Vocab/vocab/schema/Thing' target='_blank'>Thing</a> or <a href='http://schema.org/URL' target='_blank'>URL</a></td>
 <td>The interaction interface (or software product) through which users or other software systems can access, execute, or integrate this software (e.g., CLI, GUI, WebUI, Notebook, API, Library).</td>
 </tr>
-<tr><td><a href='/vocab/Properties/testingAction/'>connoss:testingAction</a></td>
-<td><a href='/vocab/Properties/TestingAction/'>connoss:TestingAction</a></td>
+<tr><td><a href='/vocab/Properties/testedWith/'>connoss:testedWith</a></td>
+<td><a href='/vocab/Properties/TestAction/'>connoss:TestAction</a></td>
 <td>Links the software to a testing activity describing how the software is validated, including the test type, required inputs, test instructions, and produced test results.</td>
 </tr>
 <tr><td><a href='/vocab/Properties/userDocumentation/'>connoss:userDocumentation</a></td>
