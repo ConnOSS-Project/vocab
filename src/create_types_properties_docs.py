@@ -240,7 +240,7 @@ def write_terms_page(g: Graph, docs_dir: str) -> None:
 
         content += (
             "<details>\n"
-            "<summary>Properties ({} )</summary>\n\n".format(len(rows))
+            "<summary>Properties</summary>\n\n"
             + table +
             "\n</details>\n\n"
         )

@@ -12,7 +12,7 @@ Extension to schema.org and CodeMeta to describe software source code, software 
 This type includes properties from schema.org types: [Thing](http://schema.org/Thing){:target='_blank'}, [CreativeWork](http://schema.org/CreativeWork){:target='_blank'}, [SoftwareApplication](http://schema.org/SoftwareApplication){:target='_blank'} and [SoftwareSourceCode](http://schema.org/SoftwareSourceCode){:target='_blank'}, plus the properties below.
 
 <details>
-<summary>Properties (28 )</summary>
+<summary>Properties</summary>
 
 <table>
 <tr><th>Property</th><th>Expected Type</th><th>Description</th></tr>
@@ -139,7 +139,7 @@ This type includes properties from schema.org types: [Thing](http://schema.org/T
 The act of testing the software according to its specifications, capturing the object tested, the resulting test report or outcome, and the type of test performed.
 
 <details>
-<summary>Properties (3 )</summary>
+<summary>Properties</summary>
 
 <table>
 <tr><th>Property</th><th>Expected Type</th><th>Description</th></tr>
