@@ -239,8 +239,8 @@ def write_terms_page(g: Graph, docs_dir: str) -> None:
         table += "</table>\n"
 
         content += (
-            "<details>\n"
-            "<summary>Properties</summary>\n\n"
+            '<details style="border: none;">\n'
+            '<summary style="background-color: rgb(41, 168, 147); color: white; padding: 6px;">Properties</summary>\n\n'
             + table +
             "\n</details>\n\n"
         )

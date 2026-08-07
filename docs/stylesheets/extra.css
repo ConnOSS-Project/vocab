@@ -10,3 +10,6 @@
   text-align: justify;
   hyphens: auto;
 }
+details summary::before {
+    display: none;
+}
