@@ -154,7 +154,7 @@ def write_type_pages(g: Graph, out_dir: str) -> None:
         print("wrote", path, "(%d properties)" % len(rows))
 
 
-# ConnOSS Properties
+# Properties
  
 def connoss_properties(g: Graph):
     """Yield all rdf:Property subjects in the connoss: namespace."""
@@ -197,6 +197,59 @@ def write_property_pages(g: Graph, out_dir: str) -> None:
             f.write(page)
         print("wrote", path)
 
+# Terms
+
+def write_terms_page(g: Graph, docs_dir: str) -> None:
+    """Writes docs/terms.md — every ConnOSS type with its property table, all in one page."""
+    content = "\n<h1><b>ConnOSS Terms</b></h1>\n\n"
+    content += "ConnOSS types and their properties.\n\n"
+
+    for s in g.subjects(object=RDFS_CLASS, unique=True):
+        if CONNOSS_NS not in str(s):
+            continue
+        local = str(s).split("/")[-1]
+        desc = g.value(subject=s, predicate=RDFS.comment)
+        parents = " , ".join(convert_to_link(p, md=True, g=g) for p in g.objects(s, RDFS.subClassOf)) or "-"
+
+        content += "## connoss:{}\n\n".format(local)
+        content += "(parent type) {} - (type) connoss:{}\n\n{}\n\n".format(parents, local, desc)
+        note = TYPE_NOTES.get(local)
+        if note:
+            content += note + "\n\n"
+
+        rows = []
+        for prop in g.subjects(SCHEMA_DOMAIN, s, unique=True):
+            label = g.value(prop, RDFS.label) or str(prop).split("/")[-1]
+            pdesc = g.value(prop, RDFS.comment) or ""
+            ranges = " or ".join(convert_to_link(r, g=g) for r in g.objects(prop, SCHEMA_RANGE))
+            rows.append({"prop": prop, "label": str(label), "desc": str(pdesc), "range": ranges})
+
+        table = "<table>\n<tr><th>Property</th><th>Expected Type</th><th>Description</th></tr>\n"
+        if rows:
+            df = DataFrame(rows).sort_values("label")
+            for _, r in df.iterrows():
+                table += "<tr><td>{}</td>\n<td>{}</td>\n<td>{}</td>\n</tr>\n".format(
+                    convert_to_link(r["prop"], g=g), r["range"], r["desc"])
+        table = "<table>\n<tr><th>Property</th><th>Expected Type</th><th>Description</th></tr>\n"
+        if rows:
+            df = DataFrame(rows).sort_values("label")
+            for _, r in df.iterrows():
+                table += "<tr><td>{}</td>\n<td>{}</td>\n<td>{}</td>\n</tr>\n".format(
+                    convert_to_link(r["prop"], g=g), r["range"], r["desc"])
+        table += "</table>\n"
+
+        content += (
+            "<details>\n"
+            "<summary>Properties ({} )</summary>\n\n".format(len(rows))
+            + table +
+            "\n</details>\n\n"
+        )
+
+    path = os.path.join(docs_dir, "terms.md")
+    with open(path, "w") as f:
+        f.write(content)
+    print("wrote", path, "(%d types)" % sum(1 for s in g.subjects(object=RDFS_CLASS, unique=True) if CONNOSS_NS in str(s)))
+
 # CLI
 
 def print_nav(g: Graph) -> None:
@@ -226,6 +279,7 @@ def main() -> None:
     write_index(g, args.out)
     write_type_pages(g, args.out)
     write_property_pages(g, args.out_props)
+    write_terms_page(g, str(REPO / "docs"))
  
     if args.nav:
         print_nav(g)

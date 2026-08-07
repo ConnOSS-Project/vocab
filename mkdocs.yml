@@ -4,6 +4,7 @@ repo_url: https://github.com/ConnOSS-Project/vocab
 repo_name: vocab
 nav:
     - Home: index.md
+    - Vocabulary: terms.md
     - Types:
       - Overview: 'Types/index.md'
       - 'Types/Software.md'
