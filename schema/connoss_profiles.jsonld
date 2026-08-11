@@ -287,12 +287,88 @@
           "schema:alternateName": {
             "description": "An alias for the resource.",
             "owl:cardinality": "one"
+          },
+          "connoss:intendedUse": {
+            "description": "A concise summary of the primary objective or intended use case for the software. Distinct from general description; this focuses on 'why' the software exists and what problems it solves.",
+            "owl:cardinality": "one"
+          },
+          "connoss:applicationDomain": {
+            "description": "The discipline, area, or research domain to which this software aligns or belongs to.",
+            "owl:cardinality": "many"
+          },
+          "connoss:legalConsiderations": {
+            "description": "A documented concern, requirement, or consideration related to the software's design, deployment, or impact across legal and regulatory dimensions (e.g. licensing constraints, data protection, compliance requirements). Enables transparent disclosure of legal constraints and mitigation strategies.",
+            "owl:cardinality": "many"
+          },
+          "connoss:ethicalSocialConsiderations": {
+            "description": "A documented concern, requirement, or consideration related to the software's design, deployment, or impact across ethical and social dimensions. Enables transparent disclosure of constraints and mitigation strategies.",
+            "owl:cardinality": "many"
+          },
+          "schema:archivedAt": {
+            "description": "A link to the archived version or archival location where the original content has been preserved (for CreativeWork, MediaReview, etc.)",
+            "owl:cardinality": "one"
+          },
+          "schema:conditionsOfAccess": {
+            "description": "Conditions that affect the availability of, or method(s) of access to an item. Typically used for real world items such as an ArchiveComponent held by an ArchiveOrganization.",
+            "owl:cardinality": "one"
+          },
+          "schema:documentation": {
+            "description": "Resources that describe the software's installation, usage, configuration, development, and deployment intended to support users and developers in understanding and applying the software.",
+            "owl:cardinality": "many"
+          },
+          "connoss:developerDocumentation": {
+            "description": "Documentation for developers, maintainers, and infrastructure people.",
+            "owl:cardinality": "many",
+            "rdfs:subPropertyOf": { "@id": "schema:documentation" }
+          },
+          "connoss:userDocumentation": {
+            "description": "Documentation for end users of the software.",
+            "owl:cardinality": "many",
+            "rdfs:subPropertyOf": { "@id": "schema:documentation" }
+          },
+          "connoss:softwareInterface": {
+            "description": "The interaction interfaces through which users or other software systems can access, execute, or integrate with software (e.g., CLI, GUI, WebUI, Notebook, API, Library).",
+            "owl:cardinality": "many"
+          },
+          "connoss:testedWith": {
+            "description": "Links the software to a testing activity describing how the software is validated, including the test type, required inputs, and produced test results.",
+            "owl:cardinality": "many"
+          },
+          "connoss:implementsSpecification": {
+            "description": "A specification that a software implements, including a standard, API or legally defined level of conformance. e.g. the HTTP standard, the OpenAPI spec, OAuth2.",
+            "owl:cardinality": "many"
+          },
+          "connoss:softwareContainer": {
+            "description": "A container image or packaged runtime environment of the software.",
+            "owl:cardinality": "many"
+          },
+          "connoss:input": {
+            "description": "A formal specification of the data, files, or parameters that the software accepts as input, including format, type, and whether the input is required.",
+            "owl:cardinality": "many"
+          },
+          "connoss:output": {
+            "description": "A formal specification of the data, files, or results that the software produces, including format and type.",
+            "owl:cardinality": "many"
+          },
+          "connoss:partOfCommunity": {
+            "description": "A (research) community, consortium, or network that this research artifact (e.g., software) is developed within or affiliated with (e.g., EOSC, NFDI).",
+            "owl:cardinality": "many"
+          },
+          "connoss:latestRelease": {
+            "description": "Link to the latest release.",
+            "owl:cardinality": "one"
+          },
+          "connoss:latestReleaseVersion": {
+            "description": "Version of the latest release.",
+            "owl:cardinality": "one"
           }
         },
-        "required": ["schema:name",
+        "required": [
+		"schema:name",
 		"schema:description",
 		"schema:url",
-		"schema:license"
+		"schema:license",
+		"connoss:applicationDomain"
 		],
         "recommended": [
 		"schema:codeRepository",
@@ -318,12 +394,22 @@
 		"schema:keywords",
 		"schema:publisher",
 		"schema:identifier",
+		"schema:documentation",
+		"schema:contactPoint",
 		"codemeta:buildInstructions",
 		"codemeta:developmentStatus",
 		"codemeta:maintainer",
         "codemeta:readme",
         "codemeta:referencePublication",
-		"schema:contactPoint"
+		"connoss:intendedUse",
+        "connoss:developerDocumentation",
+        "connoss:userDocumentation",
+        "connoss:softwareInterface",
+		"connoss:input",
+        "connoss:output",
+        "connoss:partOfCommunity",
+        "connoss:latestRelease",
+        "connoss:latestReleaseVersion"
 		],
         "optional": [     
           "schema:codeSampleType",
@@ -342,8 +428,6 @@
           "schema:copyrightYear",
           "schema:dateCreated",
           "schema:dateModified",
-          "schema:editor",
-          "schema:encoding",
           "schema:encodingFormat",
           "schema:hasPart",
           "schema:isAccessibleForFree",
@@ -352,23 +436,60 @@
           "schema:sponsor",
           "schema:sameAs",
           "schema:relatedLink",
+          "schema:creditText",
+          "schema:alternateName",
+          "schema:archivedAt",
+          "schema:conditionsOfAccess",
           "codemeta:continuousIntegration",
-          "codemeta:embargoDate",
           "codemeta:embargoEndDate",
-          "codemeta:funding",
           "codemeta:hasSourceCode",
           "codemeta:isSourceCodeOf",
           "codemeta:issueTracker",
-          "codemeta:softwareSuggestions",
           "codemeta:relatedSoftware",
-          "schema:creditText",
-          "schema:alternateName"
+          "connoss:legalConsiderations",
+          "connoss:ethicalSocialConsiderations",
+          "connoss:testedWith",
+          "connoss:implementsSpecification",
+          "connoss:softwareContainer"
         ]
       },
-  	  "schema:schemaVersion": "https://schema.org/docs/releases.html#v29.4",
-      "schema:license": {
-    "@id": "https://creativecommons.org/licenses/by-sa/4.0/"
-  		}
+      "schemaVersion":"https://schema.org/docs/releases.html#v29.4"
+    },
+	  
+{
+      "@id": "connossProfiles:TestActionProfile",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "The act of testing the software according to its specifications, capturing the object tested, the resulting test report or outcome, and the type of test performed.",
+      "rdfs:label": "Test Action",
+      "rdfs:subClassOf": {
+          "@id": "connoss:TestAction"
+      },
+      "$validation": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "testInput": {
+            "description": "Input used to performed the test. Some tests may not require any input, some may require multiple ones. If order or grouping is important in the case of multiple inputs, a ListItem could help.",
+            "owl:cardinality": "many"
+          },
+          "testInstructions": {
+            "description": "Specific test instructions for testing the software.",
+            "owl:cardinality": "many"
+          },
+          "testType": {
+            "description": "The type of test that it is performed on the object.",
+            "owl:cardinality": "many"
+          }
+        },
+        "required": [
+			"testInput"
+        ],
+        "optional": [
+			"testInstructions",
+			"testType"
+        ]
+      },
+      "schemaVersion":"https://schema.org/docs/releases.html#v29.4"
     }
   ]
 }
