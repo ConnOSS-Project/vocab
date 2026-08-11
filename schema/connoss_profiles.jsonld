@@ -273,7 +273,7 @@
             "owl:cardinality": "many"
           },
           "codemeta:relatedSoftware": {
-            "description": "A link to other software that is related by functionality, scientific purpose, or ecosystem context (e.g. alternative implementations, comparable tools, or complementary software). This property does not imply dependency, citation, or 			execution requirement. It is intended to support discovery, comparison, and interoperability mapping between software artifacts.",
+            "description": "A link to other software that is related by functionality, scientific purpose, or ecosystem context (e.g. alternative implementations, comparable tools, or complementary software). This property does not imply dependency, citation, or execution requirement. It is intended to support discovery, comparison, and interoperability mapping between software artifacts.",
             "owl:cardinality": "many"
           },
           "schema:contactPoint": {
@@ -298,21 +298,21 @@
 		"schema:codeRepository",
 		"schema:programmingLanguage",
 		"schema:runtimePlatform",
-                "schema:applicationCategory",
-          	"schema:applicationSubCategory",
+        "schema:applicationCategory",
+        "schema:applicationSubCategory",
 		"schema:availableOnDevice",
 		"schema:downloadUrl",
 		"schema:memoryRequirements",
-          	"schema:operatingSystem",
-          	"schema:processorRequirements",
-          	"schema:releaseNotes",
+        "schema:operatingSystem",
+        "schema:processorRequirements",
+        "schema:releaseNotes",
 		"schema:softwareHelp",
-          	"schema:softwareRequirements",
-          	"schema:softwareVersion",
-          	"schema:storageRequirements",
+        "schema:softwareRequirements",
+        "schema:softwareVersion",
+        "schema:storageRequirements",
 		"schema:author",
-          	"schema:contributor",
-          	"schema:copyrightHolder",
+        "schema:contributor",
+        "schema:copyrightHolder",
 		"schema:datePublished",
 		"schema:funder",
 		"schema:keywords",
@@ -321,8 +321,8 @@
 		"codemeta:buildInstructions",
 		"codemeta:developmentStatus",
 		"codemeta:maintainer",
-          	"codemeta:readme",
-          	"codemeta:referencePublication",
+        "codemeta:readme",
+        "codemeta:referencePublication",
 		"schema:contactPoint"
 		],
         "optional": [     
@@ -365,9 +365,10 @@
           "schema:alternateName"
         ]
       },
-  	  "schema:schemaVersion": "https://schema.org/docs/releases.html#v29.4"
-    },
+  	  "schema:schemaVersion": "https://schema.org/docs/releases.html#v29.4",
       "schema:license": {
     "@id": "https://creativecommons.org/licenses/by-sa/4.0/"
-  }
+  		}
+    }
+  ]
 }
