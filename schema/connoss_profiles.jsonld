@@ -1,0 +1,374 @@
+{
+  "@context": {
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "http://schema.org/",
+    "codemeta": "https://w3id.org/codemeta/",
+    "fair4ml": "https://w3id.org/fair4ml#",
+    "bioschemas": "https://bioschemas.org/",
+    "maSMP": "https://discovery.biothings.io/view/maSMP/",
+    "connoss": "https://discovery.biothings.io/ns/connoss/",
+    "connossProfiles": "https://discovery.biothings.io/ns/connossProfiles/"
+  },
+  "@graph": [
+    {
+      "@id": "connossProfiles:SoftwareProfile",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "Extension to schema.org and CodeMeta to describe software source code, software applications, and software releases.",
+      "rdfs:label": "Software Profile",
+      "rdfs:subClassOf": {
+        "@id": "connoss:Software"
+      },
+      "$validation": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "schema:codeRepository": {
+            "description": "Link to the version control system where the software is developed and maintained (e.g. SVN, GitHub, CodePlex, institutional GitLab instance, etc.).",
+            "owl:cardinality": "many"
+          },
+          "schema:codeSampleType": {
+            "description": "The classification of the provided source code sample, indicating its completeness, execution readiness, and intended use case. Expected Values: full solution (or compile ready / executable), code snippet, inline code, script, template.",
+            "owl:cardinality": "many"
+          },
+          "schema:programmingLanguage": {
+            "description": "The computer programming languages used to write the software or source code.",
+            "owl:cardinality": "many"
+          },
+          "schema:runtimePlatform": {
+            "description": "The execution environment required to run the software, including script interpreters (e.g., Python 3.9), virtual machines (e.g., Java Virtual Machine v17), and managed frameworks (e.g. .NET Core 6.0).",
+            "owl:cardinality": "many"
+          },
+          "schema:targetProduct": {
+            "description": "The specific operating system, platform, or parent software application to which the code or software applies, indicating compatibility or a target ecosystem (e.g., Linux, Windows 11, WordPress, MATLAB). If the software is compatible across 		multiple versions, the general product name can be used alone.",
+            "owl:cardinality": "many"
+          },
+          "schema:applicationCategory": {
+            "description": "The high-level functional classification of the software application, indicating its primary computational purpose or technical utility (e.g., Simulation, Data Visualization, Statistical Analysis).",
+            "owl:cardinality": "many"
+          },
+          "schema:applicationSubCategory": {
+            "description": "A more granular technical or computational classification of the software (e.g., Agent-Based Modeling as a subcategory of Simulation & Modeling).",
+            "owl:cardinality": "many"
+          },
+          "schema:applicationSuite": {
+            "description": "The name of the overarching software suite, distribution, or cohesive ecosystem to which the individual software application belongs.",
+            "owl:cardinality": "many"
+          },
+          "schema:availableOnDevice": {
+            "description": "The specific hardware device, architecture, or machine model required to execute the software. This property is used when the software cannot run on standard generic hardware and explicitly depends on specialized physical machinery, 			processors, or laboratory equipment.",
+            "owl:cardinality": "many"
+          },
+          "schema:countriesNotSupported": {
+            "description": "The list of countries where the software application is not supported, cannot be legally distributed, or is technically restricted from operating.",
+            "owl:cardinality": "many"
+          },
+          "schema:countriesSupported": {
+            "description": "The list of countries where the software application is explicitly supported, verified to work, or legally cleared for distribution.",
+            "owl:cardinality": "many"
+          },
+          "schema:downloadUrl": {
+            "description": "The direct URL from which the software binary, compiled package, executable, or compressed distribution archive (e.g., .tar.gz, .whl, .exe, .dmg) can be downloaded.",
+            "owl:cardinality": "many"
+          },
+          "schema:featureList": {
+            "description": "A list of the core functionalities or modules provided by the software, including components that external pipelines or applications can depend upon.",
+            "owl:cardinality": "many"
+          },
+          "schema:fileSize": {
+            "description": "The total digital size of the downloadable software package or binary. In the absence of an explicit unit (e.g. MB or KB), the value is assumed to be KB.",
+            "owl:cardinality": "one"
+          },
+          "schema:installUrl": {
+            "description": "URL at which the app may be installed, if different from the URL of the item.",
+            "owl:cardinality": "many"
+          },
+          "schema:memoryRequirements": {
+            "description": "The minimum amount of Random Access Memory (RAM) required to run the software or execute the pipeline.",
+            "owl:cardinality": "one"
+          },
+          "schema:operatingSystem": {
+            "description": "The operating system(s) required to execute the software (e.g. Windows 7, OSX 10.6, Android 1.6).",
+            "owl:cardinality": "many"
+          },
+          "schema:permissions": {
+            "description": "The explicit security privileges, access rights, or network authorizations required by the software to execute its functions successfully.",
+            "owl:cardinality": "many"
+          },
+          "schema:processorRequirements": {
+            "description": "Processor architecture required to run the application (e.g. IA64).",
+            "owl:cardinality": "one"
+          },
+          "schema:releaseNotes": {
+            "description": "Description of what changed in this version.",
+            "owl:cardinality": "many"
+          },
+          "schema:screenshot": {
+            "description": "A URL pointing to an image demonstrating the software's user interface, command-line execution, or visual data output.",
+            "owl:cardinality": "many"
+          },
+          "schema:softwareAddOn": {
+            "description": "A software application, plugin, extension, or module that extends the functionality of the primary application.",
+            "owl:cardinality": "many"
+          },
+          "schema:softwareHelp": {
+            "description": "User guides, manuals, wikis, or help center pages that assist users in configuring and operating the software.",
+            "owl:cardinality": "many"
+          },
+          "schema:softwareRequirements": {
+            "description": "External software components, libraries, frameworks, or runtime environments required for the application to function.",
+            "owl:cardinality": "many"
+          },
+          "schema:softwareVersion": {
+            "description": "Version of the software instance.",
+            "owl:cardinality": "one"
+          },
+          "schema:storageRequirements": {
+            "description": "The minimum amount of persistent storage (disk space) required to install and execute the software.",
+            "owl:cardinality": "one"
+          },
+          "schema:supportingData": {
+            "description": "Reference datasets, auxiliary data streams, or data feeds that are bundled with, or required by the software.",
+            "owl:cardinality": "many"
+          },
+          "schema:author": {
+            "description": "The person or organization that created the software.",
+            "owl:cardinality": "many"
+          },
+          "schema:citation": {
+            "description": "A citation or reference to another creative work, such as another publication, web page, scholarly article, etc.",
+            "owl:cardinality": "many"
+          },
+          "schema:contributor": {
+            "description": "The person or organization that provided secondary contributions to the software.",
+            "owl:cardinality": "many"
+          },
+          "schema:copyrightHolder": {
+            "description": "The person or organization that holds the legal copyright and intellectual property rights to the software application.",
+            "owl:cardinality": "many"
+          },
+          "schema:copyrightYear": {
+            "description": "The year during which the claimed copyright for the software application was first asserted.",
+            "owl:cardinality": "many"
+          },
+          "schema:dateCreated": {
+            "description": "The date on which the software application repository or initial source code project was first created.",
+            "owl:cardinality": "one"
+          },
+          "schema:dateModified": {
+            "description": "The date on which the software application, source code repository, or specific release metadata was last updated or changed.",
+            "owl:cardinality": "one"
+          },
+          "schema:datePublished": {
+            "description": "The date on which this specific version or release of the software application was officially made publicly available.",
+            "owl:cardinality": "one"
+          },
+          "schema:editor": {
+            "description": "The person responsible for compiling, curating, or refining the software or its associated metadata, without necessarily writing the primary source code.",
+            "owl:cardinality": "many"
+          },
+          "schema:encodingFormat": {
+            "description": "The media type, serialization format, or specific data profile used to represent the software application or its associated packages.",
+            "owl:cardinality": "many"
+          },
+          "schema:funder": {
+            "description": "A person or organization that supports the development and maintenance of the software through financial contributions, grants, or sponsorships.",
+            "owl:cardinality": "many"
+          },
+          "schema:hasPart": {
+            "description": "Indicates a distinct creative work, component, or sub-module that is contained within this software application.",
+            "owl:cardinality": "many"
+          },
+          "schema:isAccessibleForFree": {
+            "description": "A flag to signal that the publication is accessible for free.",
+            "owl:cardinality": "one"
+          },
+          "schema:isPartOf": {
+            "description": "Indicates a larger software ecosystem or overarching project that this software application is a sub-module, component, or integrated piece of.",
+            "owl:cardinality": "many"
+          },
+          "schema:keywords": {
+            "description": "Keywords, tags, or terms that describe the software application.",
+            "owl:cardinality": "many"
+          },
+          "schema:license": {
+            "description": "The legal license that governs the copying, modification, distribution, and execution of the software application, typically indicated by URL.",
+            "owl:cardinality": "many"
+          },
+          "schema:publisher": {
+            "description": "The person or organization responsible for making the software application publicly available, distributing it, or managing its official archival publication.",
+            "owl:cardinality": "many"
+          },
+          "schema:review": {
+            "description": "An evaluation, critique, or formal assessment of the software application",
+            "owl:cardinality": "many"
+          },
+          "schema:sponsor": {
+            "description": "A person or organization that provides promotional, logistical, institutional, or financial backing for the software, often through an ongoing partnership, pledge, or endorsement.",
+            "owl:cardinality": "many"
+          },
+          "schema:description": {
+            "description": "A short, clear text abstract or summary that describes what the software application does and its key features.",
+            "owl:cardinality": "one"
+          },
+          "schema:identifier": {
+            "description": "A unique, unambiguous string, URL, or token that permanently and globally identifies the software application or a specific version of it, such as ISBNs, GTIN codes, UUIDs etc.",
+            "owl:cardinality": "many"
+          },
+          "schema:name": {
+            "description": "The name of the item (software, Organization).",
+            "owl:cardinality": "one"
+          },
+          "schema:sameAs": {
+            "description": "URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Wikidata entry, or official website.",
+            "owl:cardinality": "many"
+          },
+          "schema:url": {
+            "description": "URL of the item.",
+            "owl:cardinality": "one"
+          },
+          "schema:relatedLink": {
+            "description": "A link related to this object, e.g. related web pages",
+            "owl:cardinality": "many"
+          },
+          "codemeta:buildInstructions": {
+            "description": "A link to the specific documentation, scripts, or instructions required to compile, build, or install the software application.",
+            "owl:cardinality": "many"
+          },
+          "codemeta:continuousIntegration": {
+            "description": "A link to the continuous integration (CI) service or build automation platform.",
+            "owl:cardinality": "many"
+          },
+          "codemeta:developmentStatus": {
+            "description": "A term describing the current maintenance and lifecycle status of the software application (e.g., active, inactive, suspended).",
+            "owl:cardinality": "one"
+          },
+          "codemeta:embargoEndDate": {
+            "description": "Software may be embargoed from public access until a specified date (e.g. pending publication, 1 year from publication)",
+            "owl:cardinality": "one"
+          },
+          "codemeta:hasSourceCode": {
+            "description": "Link that states where the software code is for a given software. For example a software registry may indicate that one of its software entries hasSourceCode in a GitHub repository.",
+            "owl:cardinality": "many"
+          },
+          "codemeta:isSourceCodeOf": {
+            "description": "Link that states where software application is built from a given source code. This is the reverse property of 'hasSourceCode'.",
+            "owl:cardinality": "many"
+          },
+          "codemeta:issueTracker": {
+            "description": "link to software bug reporting or issue tracking system.",
+            "owl:cardinality": "many"
+          },
+          "codemeta:maintainer": {
+            "description": "Individual responsible for maintaining the software (usually includes an email contact address)",
+            "owl:cardinality": "many"
+          },
+          "codemeta:readme": {
+            "description": "link to software Readme file",
+            "owl:cardinality": "many"
+          },
+          "codemeta:referencePublication": {
+            "description": "An academic publication related to the software.",
+            "owl:cardinality": "many"
+          },
+          "codemeta:relatedSoftware": {
+            "description": "A link to other software that is related by functionality, scientific purpose, or ecosystem context (e.g. alternative implementations, comparable tools, or complementary software). This property does not imply dependency, citation, or 			execution requirement. It is intended to support discovery, comparison, and interoperability mapping between software artifacts.",
+            "owl:cardinality": "many"
+          },
+          "schema:contactPoint": {
+            "description": "A contact point for this resource.",
+            "owl:cardinality": "many"
+          },
+          "schema:creditText": {
+            "description": "Text that can be used to credit person(s) and/or organization(s) associated with a published Creative Work.",
+            "owl:cardinality": "many"
+          },
+          "schema:alternateName": {
+            "description": "An alias for the resource.",
+            "owl:cardinality": "one"
+          }
+        },
+        "required": [],
+        "recommended": [],
+        "optional": [
+          "schema:codeRepository",
+          "schema:codeSampleType",
+          "schema:programmingLanguage",
+          "schema:runtimePlatform",
+          "schema:targetProduct",
+          "schema:applicationCategory",
+          "schema:applicationSubCategory",
+          "schema:applicationSuite",
+          "schema:availableOnDevice",
+          "schema:countriesNotSupported",
+          "schema:countriesSupported",
+          "schema:downloadUrl",
+          "schema:featureList",
+          "schema:fileSize",
+          "schema:installUrl",
+          "schema:memoryRequirements",
+          "schema:operatingSystem",
+          "schema:permissions",
+          "schema:processorRequirements",
+          "schema:releaseNotes",
+          "schema:screenshot",
+          "schema:softwareAddOn",
+          "schema:softwareHelp",
+          "schema:softwareRequirements",
+          "schema:softwareVersion",
+          "schema:storageRequirements",
+          "schema:supportingData",
+          "schema:author",
+          "schema:citation",
+          "schema:contributor",
+          "schema:copyrightHolder",
+          "schema:copyrightYear",
+          "schema:dateCreated",
+          "schema:dateModified",
+          "schema:datePublished",
+          "schema:editor",
+          "schema:encoding",
+          "schema:encodingFormat",
+          "schema:funder",
+          "schema:hasPart",
+          "schema:isAccessibleForFree",
+          "schema:isPartOf",
+          "schema:keywords",
+          "schema:license",
+          "schema:producer",
+          "schema:provider",
+          "schema:publisher",
+          "schema:review",
+          "schema:sponsor",
+          "schema:description",
+          "schema:identifier",
+          "schema:name",
+          "schema:sameAs",
+          "schema:url",
+          "schema:relatedLink",
+          "codemeta:buildInstructions",
+          "codemeta:continuousIntegration",
+          "codemeta:developmentStatus",
+          "codemeta:embargoDate",
+          "codemeta:embargoEndDate",
+          "codemeta:funding",
+          "codemeta:hasSourceCode",
+          "codemeta:isSourceCodeOf",
+          "codemeta:issueTracker",
+          "codemeta:maintainer",
+          "codemeta:readme",
+          "codemeta:referencePublication",
+          "codemeta:softwareSuggestions",
+          "codemeta:relatedSoftware",
+          "schema:contactPoint",
+          "schema:creditText",
+          "schema:alternateName"
+        ]
+      },
+  	  "schema:schemaVersion": "https://schema.org/docs/releases.html#v29.4"
+    },
+      "schema:license": {
+    "@id": "https://creativecommons.org/licenses/by-sa/4.0/"
+  }
+}
