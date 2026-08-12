@@ -164,10 +164,6 @@
             "description": "The date on which this specific version or release of the software application was officially made publicly available.",
             "owl:cardinality": "one"
           },
-          "schema:editor": {
-            "description": "The person responsible for compiling, curating, or refining the software or its associated metadata, without necessarily writing the primary source code.",
-            "owl:cardinality": "many"
-          },
           "schema:encodingFormat": {
             "description": "The media type, serialization format, or specific data profile used to represent the software application or its associated packages.",
             "owl:cardinality": "many"
@@ -484,7 +480,7 @@
         "required": [
 			"testInput"
         ],
-        "optional": [
+        "recommended": [
 			"testInstructions",
 			"testType"
         ]
