@@ -1,5 +1,5 @@
 site_name: ConnOSS Metadata Schema
-site_url:  https://connoss-project.github.io/vocab/
+site_url:  https://purls.helmholtz-metadaten.de/connoss/
 repo_url: https://github.com/ConnOSS-Project/vocab
 repo_name: vocab
 nav:
