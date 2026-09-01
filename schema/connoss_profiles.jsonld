@@ -8,8 +8,8 @@
     "fair4ml": "https://w3id.org/fair4ml#",
     "bioschemas": "https://bioschemas.org/",
     "maSMP": "https://discovery.biothings.io/view/maSMP/",
-    "connoss": "https://discovery.biothings.io/ns/connoss/",
-    "connossProfiles": "https://discovery.biothings.io/ns/connossProfiles/"
+    "connoss": "https://purls.helmholtz-metadaten.de/connoss/",
+    "connossProfiles": "https://purls.helmholtz-metadaten.de/connoss/connossProfiles/"
   },
   "@graph": [
     {
