@@ -1,6 +1,6 @@
 @prefix bioschemas: <https://bioschemas.org/> .
 @prefix codemeta: <https://w3id.org/codemeta/> .
-@prefix connoss: <https://discovery.biothings.io/ns/connoss/> .
+@prefix connoss: <https://purls.helmholtz-metadaten.de/connoss/> .
 @prefix fair4ml: <https://w3id.org/fair4ml#> .
 @prefix maSMP: <https://discovery.biothings.io/view/maSMP/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
