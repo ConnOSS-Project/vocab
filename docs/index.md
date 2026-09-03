@@ -16,6 +16,7 @@ The ConnOSS schema is centered around a unified `Software` type, which integrate
 
 The schema is organized into a core set of 65 properties drawn from Schema.org and CodeMeta, plus an extension set of 13 ConnOSS-specific properties. It will be further complemented by a metadata profile defining obligation levels (mandatory, recommended, optional), cardinality constraints, and usage guidance — enabling consistent, context-aware metadata descriptions while supporting diverse use cases across domains.
 
+---
 
 ## ConnOSS Types
 
