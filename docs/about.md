@@ -1,4 +1,4 @@
-# About
+# **About**
 
 ConnOSS vocabulary is a metadata schema for describing research software in a structured, machine-actionable, and interoperable way. It reuses and extends established vocabularies — including schema.org and CodeMeta — to capture the properties that matter most for discovering, reusing, and citing research software across scientific domains and communities.
 
