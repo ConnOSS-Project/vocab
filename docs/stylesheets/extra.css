@@ -13,3 +13,7 @@
 details summary::before {
     display: none;
 }
+
+.md-sidebar--primary {
+  display: none;
+}

@@ -41,7 +41,6 @@ TYPE_NOTES = {
 HERE = Path(__file__).resolve().parent                      
 REPO = HERE.parent                                          
 DEFAULT_SCHEMA = str(REPO / "schema" / "connoss_Software.jsonld")
-DEFAULT_OUT = str(REPO / "docs" / "Types")
 DEFAULT_OUT_PROPS = str(REPO / "docs" / "Properties")
 
 
@@ -58,7 +57,7 @@ def load_graph(src: str) -> Graph:
         return g
 
 
-def convert_to_link(url, label=None, md=False, g=None) -> str:
+def convert_to_link(url, label=None, md=False, g=None, base="../") -> str:
     """ConnOSS terms -> 'connoss:Label'; CodeMeta -> 'codemeta:Label'; else external link."""
     url = str(url)
     local = url.split("#")[-1].split("/")[-1]
@@ -69,10 +68,10 @@ def convert_to_link(url, label=None, md=False, g=None) -> str:
     if CONNOSS_NS in url:
         local_name = url.split("/")[-1]
         # classes link to Types/, properties link to Properties/
-        if g is not None and (URIRef(url), RDF.type,OWL.Class) in g:
-            link = "/vocab/Types/" + local_name + "/"
+        if g is not None and (URIRef(url), RDF.type, RDFS_CLASS) in g:
+            link = base + "Types/" + local_name + "/"
         else:
-            link = "/vocab/Properties/" + local_name + "/"
+            link = base + "Properties/" + local_name + "/"
         if md:
             return "[connoss:{}]({})".format(local_name, link)
         return "<a href='{}'>connoss:{}</a>".format(link, local_name)
@@ -94,66 +93,6 @@ def convert_to_link(url, label=None, md=False, g=None) -> str:
 def type_filename(local: str) -> str:
     return local
 
-
-# Types
-
-def write_index(g: Graph, out_dir: str) -> None:
-    table = "<table>\n<tr><th>Type</th><th>Description</th></tr>\n"
-    for s in g.subjects(object=RDFS_CLASS, unique=True):
-        if CONNOSS_NS in str(s):
-            local = str(s).split("/")[-1]
-            desc = g.value(subject=s, predicate=RDFS.comment)
-            table += "<tr><td><a href='./{}'>{}</a></td><td>{}</td></tr>\n\n".format(
-                type_filename(local), local, desc)
-    table += "</table>\n"
-
-    intro = (
-        "\n<h1><b>ConnOSS Types</b></h1>\n\n"
-    )
-    path = os.path.join(out_dir, "index.md")
-    image = "\n\n<div style='margin-top:2rem'></div>\n\n#**ConnOSS Schema Diagram**\n\n<p style='text-align:center'><img src='../ConnOSS_Schema_final_Minimum.drawio.png' alt='ConnOSS schema diagram' style='max-width:100%'></p>\n"
-    with open(path, "w") as f:
-        f.write(intro)
-        f.write(table)
-        f.write(image)
-    print("wrote", path)
-
-
-def write_type_pages(g: Graph, out_dir: str) -> None:
-    for s in g.subjects(object=RDFS_CLASS, unique=True):
-        if CONNOSS_NS not in str(s):
-            continue
-        local = str(s).split("/")[-1]
-        desc = g.value(subject=s, predicate=RDFS.comment)
-
-        parents = " , ".join(convert_to_link(p, md=True, g=g) for p in g.objects(s, RDFS.subClassOf))
-        page = "(parent type) {} - (type) connoss:{}\n\n{}\n\n".format(parents, local, desc)
-        note = TYPE_NOTES.get(local)
-        if note:
-            page += note + "\n\n"
-
-        rows = []
-        for prop in g.subjects(SCHEMA_DOMAIN, s, unique=True):
-            label = g.value(prop, RDFS.label) or str(prop).split("/")[-1]
-            pdesc = g.value(prop, RDFS.comment) or ""
-            ranges = " or ".join(convert_to_link(r, g=g) for r in g.objects(prop, SCHEMA_RANGE))
-            rows.append({"prop": prop, "label": str(label), "desc": str(pdesc), "range": ranges})
-
-        table = "<table>\n<tr><th>Property</th><th>Expected Type</th><th>Description</th></tr>\n"
-        if rows:
-            df = DataFrame(rows).sort_values("label")
-            for _, r in df.iterrows():
-                table += "<tr><td>{}</td>\n<td>{}</td>\n<td>{}</td>\n</tr>\n".format(
-                    convert_to_link(r["prop"]), r["range"], r["desc"])
-        table += "</table>\n"
-
-        path = os.path.join(out_dir, type_filename(local) + ".md")
-        with open(path, "w") as f:
-            f.write(page)
-            f.write(table)
-        print("wrote", path, "(%d properties)" % len(rows))
-
-
 # Properties
  
 def connoss_properties(g: Graph):
@@ -170,7 +109,7 @@ def write_property_pages(g: Graph, out_dir: str) -> None:
         desc  = g.value(p, RDFS.comment) or ""
  
         # range(s)
-        ranges = " or ".join(convert_to_link(r, g=g) for r in g.objects(p, SCHEMA_RANGE))
+        ranges = " or ".join(convert_to_link(r, g=g, base="../") for r in g.objects(p, SCHEMA_RANGE))
         # subPropertyOf (if any)
         parents = list(g.objects(p, RDFS.subPropertyOf))
         # equivalentProperty (if any)
@@ -185,10 +124,10 @@ def write_property_pages(g: Graph, out_dir: str) -> None:
         page += "<tr><td>Label</td><td>{}</td></tr>\n".format(label)
         page += "<tr><td>Range</td><td>{}</td></tr>\n".format(ranges)
         if parents:
-            parent_links = " , ".join(convert_to_link(x, g=g) for x in parents)
+            parent_links = " , ".join(convert_to_link(x, g=g, base="../") for x in parents)
             page += "<tr><td>Sub-property of</td><td>{}</td></tr>\n".format(parent_links)
         if equivs:
-            equiv_links = " , ".join(convert_to_link(x, g=g) for x in equivs)
+            equiv_links = " , ".join(convert_to_link(x, g=g, base="") for x in equivs)
             page += "<tr><td>Equivalent property</td><td>{}</td></tr>\n".format(equiv_links)
         page += "</table>\n"
  
@@ -200,28 +139,31 @@ def write_property_pages(g: Graph, out_dir: str) -> None:
 # Terms
 
 def write_terms_page(g: Graph, docs_dir: str) -> None:
-    """Writes docs/terms.md — every ConnOSS type with its property table, all in one page."""
-    content = "\n<h1><b>ConnOSS Terms</b></h1>\n\n"
-    content += "ConnOSS types and their properties.\n\n"
+    """Regenerates the Types+Properties section inside docs/index.md,
+    between the TERMS:START / TERMS:END markers, leaving everything
+    above the markers (the hand-written homepage text) untouched."""
+    start_marker = "<!-- TERMS:START -->"
+    end_marker = "<!-- TERMS:END -->"
 
+    generated = "\n\n"
     for s in g.subjects(object=RDFS_CLASS, unique=True):
         if CONNOSS_NS not in str(s):
             continue
         local = str(s).split("/")[-1]
         desc = g.value(subject=s, predicate=RDFS.comment)
-        parents = " , ".join(convert_to_link(p, md=True, g=g) for p in g.objects(s, RDFS.subClassOf)) or "-"
+        parents = " , ".join(convert_to_link(p, md=True, g=g, base="") for p in g.objects(s, RDFS.subClassOf)) or "-"
 
-        content += "## connoss:{}\n\n".format(local)
-        content += "(parent type) {} - (type) connoss:{}\n\n{}\n\n".format(parents, local, desc)
+        generated += "## connoss:{}\n\n".format(local)
+        generated += "(parent type) {} - (type) connoss:{}\n\n{}\n\n".format(parents, local, desc)
         note = TYPE_NOTES.get(local)
         if note:
-            content += note + "\n\n"
+            generated += note + "\n\n"
 
         rows = []
         for prop in g.subjects(SCHEMA_DOMAIN, s, unique=True):
             label = g.value(prop, RDFS.label) or str(prop).split("/")[-1]
             pdesc = g.value(prop, RDFS.comment) or ""
-            ranges = " or ".join(convert_to_link(r, g=g) for r in g.objects(prop, SCHEMA_RANGE))
+            ranges = " or ".join(convert_to_link(r, g=g, base="") for r in g.objects(prop, SCHEMA_RANGE))
             rows.append({"prop": prop, "label": str(label), "desc": str(pdesc), "range": ranges})
 
         table = "<table>\n<tr><th>Property</th><th>Expected Type</th><th>Description</th></tr>\n"
@@ -229,60 +171,42 @@ def write_terms_page(g: Graph, docs_dir: str) -> None:
             df = DataFrame(rows).sort_values("label")
             for _, r in df.iterrows():
                 table += "<tr><td>{}</td>\n<td>{}</td>\n<td>{}</td>\n</tr>\n".format(
-                    convert_to_link(r["prop"], g=g), r["range"], r["desc"])
-        table = "<table>\n<tr><th>Property</th><th>Expected Type</th><th>Description</th></tr>\n"
-        if rows:
-            df = DataFrame(rows).sort_values("label")
-            for _, r in df.iterrows():
-                table += "<tr><td>{}</td>\n<td>{}</td>\n<td>{}</td>\n</tr>\n".format(
-                    convert_to_link(r["prop"], g=g), r["range"], r["desc"])
+                    convert_to_link(r["prop"], g=g, base=""), r["range"], r["desc"])
         table += "</table>\n"
 
-        content += (
-            '<details style="border: none;">\n'
-            '<summary style="background-color: rgb(41, 168, 147); color: white; padding: 6px;">Properties</summary>\n\n'
-            + table +
-            "\n</details>\n\n"
-        )
+        generated += "<details>\n<summary>Properties</summary>\n\n" + table + "\n</details>\n\n"
 
-    path = os.path.join(docs_dir, "terms.md")
-    with open(path, "w") as f:
-        f.write(content)
-    print("wrote", path, "(%d types)" % sum(1 for s in g.subjects(object=RDFS_CLASS, unique=True) if CONNOSS_NS in str(s)))
+    path = os.path.join(docs_dir, "index.md")
+    with open(path, "r", encoding="utf-8") as f:
+        current = f.read()
 
-# CLI
+    if start_marker not in current or end_marker not in current:
+        print("WARNING: markers not found in", path, "- add", start_marker, "and", end_marker, "manually first.")
+        return
 
-def print_nav(g: Graph) -> None:
-    print("\n# mkdocs nav block:")
-    print("    - Types:")
-    print("      - Overview: 'Types/index.md'")
-    for s in g.subjects(object=RDFS_CLASS, unique=True):
-        if CONNOSS_NS in str(s):
-            local = str(s).split("/")[-1]
-            print("      - 'Types/%s.md'" % type_filename(local))
+    before = current.split(start_marker)[0]
+    after = current.split(end_marker)[1]
+    new_content = before + start_marker + generated + end_marker + after
+
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(new_content)
+    print("wrote (merged into)", path)
 
 
 def main() -> None:
     ap = argparse.ArgumentParser(description="Generate ConnOSS Types and Properties documentation.")
     ap.add_argument("--schema", default=DEFAULT_SCHEMA, help="path or URL to the JSON-LD schema")
-    ap.add_argument("--out",    default=DEFAULT_OUT,    help="output directory for Types .md files")
     ap.add_argument("--out-props", default=DEFAULT_OUT_PROPS, help="output directory for Properties .md files")
     ap.add_argument("--nav", action="store_true", help="also print the mkdocs nav block")
     args = ap.parse_args()
  
-    os.makedirs(args.out, exist_ok=True)
     os.makedirs(args.out_props, exist_ok=True)
  
     g = load_graph(args.schema)
     print(len(g), "triples loaded from", args.schema)
  
-    write_index(g, args.out)
-    write_type_pages(g, args.out)
     write_property_pages(g, args.out_props)
     write_terms_page(g, str(REPO / "docs"))
- 
-    if args.nav:
-        print_nav(g)
 
 
 if __name__ == "__main__":
