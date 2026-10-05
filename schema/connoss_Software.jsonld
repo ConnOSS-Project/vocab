@@ -290,7 +290,7 @@
       "schema:domainIncludes": {
         "@id": "connoss:Software"
       },
-      "schema:rangeIncludes": [ { "@id": "schema:DefinedTerm" }, {"@id": "schema:Text"}, {"@id": "Thing"}, {"@id": "schema:URL"} ]
+      "schema:rangeIncludes": [ { "@id": "schema:DefinedTerm" }, {"@id": "schema:Text"}, {"@id": "schema:Thing"}, {"@id": "schema:URL"} ]
     },
      {
       "@id": "connoss:testedWith",
@@ -327,7 +327,7 @@
       "@type": "rdf:Property",
       "rdfs:comment": "Specific test instructions for testing the software.",
       "schema:domainIncludes": { "@id": "connoss:TestAction" },
-      "schema:rangeIncludes": [{ "@id": "schema:text" }, { "@id": "schema:CreativeWork" }]
+      "schema:rangeIncludes": [{ "@id": "schema:Text" }, { "@id": "schema:CreativeWork" }]
     },
     { 
       "@id": "connoss:testType",
