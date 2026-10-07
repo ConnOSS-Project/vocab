@@ -1,0 +1,1316 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://purls.helmholtz-metadaten.de/connoss/Profiles/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../crosswalks/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Profiles - ConnOSS Metadata Schema</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#connoss-profiles" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="ConnOSS Metadata Schema" class="md-header__button md-logo" aria-label="ConnOSS Metadata Schema" data-md-component="logo">
+      
+  <img src="../logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ConnOSS Metadata Schema
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Profiles
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ConnOSS-Project/vocab" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    vocab
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Schema
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Profiles
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../crosswalks/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Crosswalks
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="ConnOSS Metadata Schema" class="md-nav__button md-logo" aria-label="ConnOSS Metadata Schema" data-md-component="logo">
+      
+  <img src="../logo.png" alt="logo">
+
+    </a>
+    ConnOSS Metadata Schema
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ConnOSS-Project/vocab" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    vocab
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiles
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#profile-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Software Profile
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Software Profile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#profile-software-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Software Required properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profile-software-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Software Recommended properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profile-software-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Software Optional properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#profile-testaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TestAction Profile
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TestAction Profile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#profile-testaction-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TestAction Required properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profile-testaction-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TestAction Recommended properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../crosswalks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Crosswalks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#profile-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Software Profile
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Software Profile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#profile-software-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Software Required properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profile-software-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Software Recommended properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profile-software-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Software Optional properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#profile-testaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TestAction Profile
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TestAction Profile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#profile-testaction-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TestAction Required properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profile-testaction-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TestAction Recommended properties
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="connoss-profiles">ConnOSS Profiles</h1>
+<p><strong>Key to the specification tables</strong></p>
+<ul>
+<li><span class="term-connoss">Green</span> properties are introduced by ConnOSS</li>
+<li><span class="term-schema">Red</span> properties exist in schema.org</li>
+<li><span class="term-external">Black</span> properties are reused from external vocabularies (e.g. CodeMeta)</li>
+</ul>
+<p>CD = Cardinality</p>
+<h2 id="profile-software">Software Profile</h2>
+<p><strong>Version:</strong> 1.0</p>
+<p><strong>Schema.org hierarchy:</strong> <a href="https://schema.org/Thing" target="_blank">Thing</a> &gt; <a href="https://schema.org/CreativeWork" target="_blank">CreativeWork</a> &gt; <a href="https://schema.org/SoftwareApplication" target="_blank">SoftwareApplication</a> / <a href="https://schema.org/SoftwareSourceCode" target="_blank">SoftwareSourceCode</a> &gt; connoss:Software</p>
+<p>Extension to schema.org and CodeMeta to describe software source code, software applications, and software releases.</p>
+<h3 id="profile-software-required">Software Required properties</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Expected Type</th>
+<th>Description</th>
+<th>CD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="term-schema" href="https://schema.org/name" target="_blank">name</a></td>
+<td><a href="https://schema.org/Text" target="_blank">Text</a></td>
+<td>The name of the item (software, Organization).</td>
+<td>ONE</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/description" target="_blank">description</a></td>
+<td><a href="https://schema.org/Text" target="_blank">Text</a></td>
+<td>A short, clear text abstract or summary that describes what the software application does and its key features.</td>
+<td>ONE</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/url" target="_blank">url</a></td>
+<td><a href="https://schema.org/URL" target="_blank">URL</a></td>
+<td>URL of the item.</td>
+<td>ONE</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/license" target="_blank">license</a></td>
+<td><a href="https://schema.org/CreativeWork" target="_blank">CreativeWork</a> or <a href="https://schema.org/URL" target="_blank">URL</a></td>
+<td>The legal license that governs the copying, modification, distribution, and execution of the software application, typically indicated by URL.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-connoss" href="../Properties/applicationDomain/">applicationDomain</a></td>
+<td><a href="https://schema.org/DefinedTerm" target="_blank">DefinedTerm</a> or <a href="https://schema.org/Text" target="_blank">Text</a> or <a href="https://schema.org/URL" target="_blank">URL</a></td>
+<td>The discipline, area, or research domain to which this software aligns or belongs to.</td>
+<td>MANY</td>
+</tr>
+</tbody>
+</table>
+<h3 id="profile-software-recommended">Software Recommended properties</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Expected Type</th>
+<th>Description</th>
+<th>CD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="term-schema" href="https://schema.org/codeRepository" target="_blank">codeRepository</a></td>
+<td><a href="https://schema.org/URL" target="_blank">URL</a></td>
+<td>Link to the version control system where the software is developed and maintained (e.g. SVN, GitHub, CodePlex, institutional GitLab instance, etc.).</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/programmingLanguage" target="_blank">programmingLanguage</a></td>
+<td><a href="https://schema.org/ComputerLanguage" target="_blank">ComputerLanguage</a> or <a href="https://schema.org/Text" target="_blank">Text</a></td>
+<td>The computer programming languages used to write the software or source code.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/runtimePlatform" target="_blank">runtimePlatform</a></td>
+<td><a href="https://schema.org/Text" target="_blank">Text</a></td>
+<td>The execution environment required to run the software, including script interpreters (e.g., Python 3.9), virtual machines (e.g., Java Virtual Machine v17), and managed frameworks (e.g. .NET Core 6.0).</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/applicationCategory" target="_blank">applicationCategory</a></td>
+<td><a href="https://schema.org/Text" target="_blank">Text</a> or <a href="https://schema.org/URL" target="_blank">URL</a></td>
+<td>The high-level functional classification of the software application, indicating its primary computational purpose or technical utility (e.g., Simulation, Data Visualization, Statistical Analysis).</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/applicationSubCategory" target="_blank">applicationSubCategory</a></td>
+<td><a href="https://schema.org/Text" target="_blank">Text</a> or <a href="https://schema.org/URL" target="_blank">URL</a></td>
+<td>A more granular technical or computational classification of the software (e.g., Agent-Based Modeling as a subcategory of Simulation &amp; Modeling).</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/availableOnDevice" target="_blank">availableOnDevice</a></td>
+<td><a href="https://schema.org/Text" target="_blank">Text</a></td>
+<td>The specific hardware device, architecture, or machine model required to execute the software. This property is used when the software cannot run on standard generic hardware and explicitly depends on specialized physical machinery, processors, or laboratory equipment.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/downloadUrl" target="_blank">downloadUrl</a></td>
+<td><a href="https://schema.org/URL" target="_blank">URL</a></td>
+<td>The direct URL from which the software binary, compiled package, executable, or compressed distribution archive (e.g., .tar.gz, .whl, .exe, .dmg) can be downloaded.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/memoryRequirements" target="_blank">memoryRequirements</a></td>
+<td><a href="https://schema.org/Text" target="_blank">Text</a> or <a href="https://schema.org/URL" target="_blank">URL</a></td>
+<td>The minimum amount of Random Access Memory (RAM) required to run the software or execute the pipeline.</td>
+<td>ONE</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/operatingSystem" target="_blank">operatingSystem</a></td>
+<td><a href="https://schema.org/Text" target="_blank">Text</a></td>
+<td>The operating system(s) required to execute the software (e.g. Windows 7, OSX 10.6, Android 1.6).</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/processorRequirements" target="_blank">processorRequirements</a></td>
+<td><a href="https://schema.org/Text" target="_blank">Text</a></td>
+<td>Processor architecture required to run the application (e.g. IA64).</td>
+<td>ONE</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/releaseNotes" target="_blank">releaseNotes</a></td>
+<td><a href="https://schema.org/Text" target="_blank">Text</a> or <a href="https://schema.org/URL" target="_blank">URL</a></td>
+<td>Description of what changed in this version.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/softwareHelp" target="_blank">softwareHelp</a></td>
+<td><a href="https://schema.org/CreativeWork" target="_blank">CreativeWork</a></td>
+<td>User guides, manuals, wikis, or help center pages that assist users in configuring and operating the software.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/softwareRequirements" target="_blank">softwareRequirements</a></td>
+<td><a href="https://schema.org/SoftwareSourceCode" target="_blank">SoftwareSourceCode</a></td>
+<td>External software components, libraries, frameworks, or runtime environments required for the application to function.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/softwareVersion" target="_blank">softwareVersion</a></td>
+<td><a href="https://schema.org/Text" target="_blank">Text</a></td>
+<td>Version of the software instance.</td>
+<td>ONE</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/storageRequirements" target="_blank">storageRequirements</a></td>
+<td><a href="https://schema.org/Text" target="_blank">Text</a> or <a href="https://schema.org/URL" target="_blank">URL</a></td>
+<td>The minimum amount of persistent storage (disk space) required to install and execute the software.</td>
+<td>ONE</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/author" target="_blank">author</a></td>
+<td><a href="https://schema.org/Organization" target="_blank">Organization</a> or <a href="https://schema.org/Person" target="_blank">Person</a></td>
+<td>The person or organization that created the software.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/contributor" target="_blank">contributor</a></td>
+<td><a href="https://schema.org/Organization" target="_blank">Organization</a> or <a href="https://schema.org/Person" target="_blank">Person</a></td>
+<td>The person or organization that provided secondary contributions to the software.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/copyrightHolder" target="_blank">copyrightHolder</a></td>
+<td><a href="https://schema.org/Organization" target="_blank">Organization</a> or <a href="https://schema.org/Person" target="_blank">Person</a></td>
+<td>The person or organization that holds the legal copyright and intellectual property rights to the software application.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/datePublished" target="_blank">datePublished</a></td>
+<td><a href="https://schema.org/Date" target="_blank">Date</a></td>
+<td>The date on which this specific version or release of the software application was officially made publicly available.</td>
+<td>ONE</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/funder" target="_blank">funder</a></td>
+<td><a href="https://schema.org/Organization" target="_blank">Organization</a> or <a href="https://schema.org/Person" target="_blank">Person</a></td>
+<td>A person or organization that supports the development and maintenance of the software through financial contributions, grants, or sponsorships.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/keywords" target="_blank">keywords</a></td>
+<td><a href="https://schema.org/Text" target="_blank">Text</a></td>
+<td>Keywords, tags, or terms that describe the software application.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/publisher" target="_blank">publisher</a></td>
+<td><a href="https://schema.org/Organization" target="_blank">Organization</a> or <a href="https://schema.org/Person" target="_blank">Person</a></td>
+<td>The person or organization responsible for making the software application publicly available, distributing it, or managing its official archival publication.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/identifier" target="_blank">identifier</a></td>
+<td><a href="https://schema.org/PropertyValue" target="_blank">PropertyValue</a> or <a href="https://schema.org/URL" target="_blank">URL</a></td>
+<td>A unique, unambiguous string, URL, or token that permanently and globally identifies the software application or a specific version of it, such as ISBNs, GTIN codes, UUIDs etc.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/documentation" target="_blank">documentation</a></td>
+<td><a href="https://schema.org/CreativeWork" target="_blank">CreativeWork</a></td>
+<td>Resources that describe the software's installation, usage, configuration, development, and deployment intended to support users and developers in understanding and applying the software.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/contactPoint" target="_blank">contactPoint</a></td>
+<td><a href="https://schema.org/ContactPoint" target="_blank">ContactPoint</a></td>
+<td>A contact point for this resource.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-external" href="https://codemeta.github.io/terms/#buildInstructions" target="_blank">codemeta:buildInstructions</a></td>
+<td><a href="https://schema.org/URL" target="_blank">URL</a> or <a href="https://schema.org/CreativeWork" target="_blank">CreativeWork</a></td>
+<td>A link to the specific documentation, scripts, or instructions required to compile, build, or install the software application.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-external" href="https://codemeta.github.io/terms/#developmentStatus" target="_blank">codemeta:developmentStatus</a></td>
+<td><a href="https://schema.org/Text" target="_blank">Text</a></td>
+<td>A term describing the current maintenance and lifecycle status of the software application (e.g., active, inactive, suspended).</td>
+<td>ONE</td>
+</tr>
+<tr>
+<td><a class="term-external" href="https://codemeta.github.io/terms/#maintainer" target="_blank">codemeta:maintainer</a></td>
+<td><a href="https://schema.org/Person" target="_blank">Person</a></td>
+<td>Individual responsible for maintaining the software (usually includes an email contact address)</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-external" href="https://codemeta.github.io/terms/#readme" target="_blank">codemeta:readme</a></td>
+<td><a href="https://schema.org/URL" target="_blank">URL</a></td>
+<td>link to software Readme file</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-external" href="https://codemeta.github.io/terms/#referencePublication" target="_blank">codemeta:referencePublication</a></td>
+<td><a href="https://schema.org/ScholarlyArticle" target="_blank">ScholarlyArticle</a></td>
+<td>An academic publication related to the software.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-connoss" href="../Properties/intendedUse.md">intendedUse</a></td>
+<td><a href="https://schema.org/Text" target="_blank">Text</a></td>
+<td>A concise summary of the primary objective or intended use case for the software. Distinct from general description; this focuses on 'why' the software exists and what problems it solves.</td>
+<td>ONE</td>
+</tr>
+<tr>
+<td><a class="term-connoss" href="../Properties/developerDocumentation/">developerDocumentation</a></td>
+<td><a href="https://schema.org/CreativeWork" target="_blank">CreativeWork</a></td>
+<td>Documentation for developers, maintainers, and infrastructure people.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-connoss" href="../Properties/userDocumentation/">userDocumentation</a></td>
+<td><a href="https://schema.org/CreativeWork" target="_blank">CreativeWork</a></td>
+<td>Documentation for end users of the software.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-connoss" href="../Properties/softwareInterface/">softwareInterface</a></td>
+<td><a href="https://schema.org/DefinedTerm" target="_blank">DefinedTerm</a> or <a href="https://schema.org/Text" target="_blank">Text</a> or <a href="https://schema.org/Thing" target="_blank">Thing</a> or <a href="https://schema.org/URL" target="_blank">URL</a></td>
+<td>The interaction interfaces through which users or other software systems can access, execute, or integrate with software (e.g., CLI, GUI, WebUI, Notebook, API, Library).</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-connoss" href="../Properties/input/">input</a></td>
+<td><a href="https://bioschemas.org/types/FormalParameter" target="_blank">FormalParameter</a></td>
+<td>A formal specification of the data, files, or parameters that the software accepts as input, including format, type, and whether the input is required.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-connoss" href="../Properties/output/">output</a></td>
+<td><a href="https://bioschemas.org/types/FormalParameter" target="_blank">FormalParameter</a></td>
+<td>A formal specification of the data, files, or results that the software produces, including format and type.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-connoss" href="../Properties/partOfCommunity/">partOfCommunity</a></td>
+<td><a href="https://schema.org/Organization" target="_blank">Organization</a> or <a href="https://schema.org/Text" target="_blank">Text</a> or <a href="https://schema.org/URL" target="_blank">URL</a></td>
+<td>A (research) community, consortium, or network that this research artifact (e.g., software) is developed within or affiliated with (e.g., EOSC, NFDI).</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-connoss" href="../Properties/latestRelease/">latestRelease</a></td>
+<td><a href="#profile-software">Software</a> or <a href="https://schema.org/URL" target="_blank">URL</a></td>
+<td>Link to the latest release.</td>
+<td>ONE</td>
+</tr>
+<tr>
+<td><a class="term-connoss" href="../Properties/latestReleaseVersion/">latestReleaseVersion</a></td>
+<td><a href="https://schema.org/Text" target="_blank">Text</a></td>
+<td>Version of the latest release.</td>
+<td>ONE</td>
+</tr>
+</tbody>
+</table>
+<h3 id="profile-software-optional">Software Optional properties</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Expected Type</th>
+<th>Description</th>
+<th>CD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="term-schema" href="https://schema.org/targetProduct" target="_blank">targetProduct</a></td>
+<td><a href="https://schema.org/SoftwareApplication" target="_blank">SoftwareApplication</a></td>
+<td>The specific operating system, platform, or parent software application to which the code or software applies, indicating compatibility or a target ecosystem (e.g., Linux, Windows 11, WordPress, MATLAB). If the software is compatible across multiple versions, the general product name can be used alone.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/applicationSuite" target="_blank">applicationSuite</a></td>
+<td><a href="https://schema.org/Text" target="_blank">Text</a></td>
+<td>The name of the overarching software suite, distribution, or cohesive ecosystem to which the individual software application belongs.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/countriesNotSupported" target="_blank">countriesNotSupported</a></td>
+<td><a href="https://schema.org/Text" target="_blank">Text</a></td>
+<td>The list of countries where the software application is not supported, cannot be legally distributed, or is technically restricted from operating.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/countriesSupported" target="_blank">countriesSupported</a></td>
+<td><a href="https://schema.org/Text" target="_blank">Text</a></td>
+<td>The list of countries where the software application is explicitly supported, verified to work, or legally cleared for distribution.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/featureList" target="_blank">featureList</a></td>
+<td><a href="https://schema.org/Text" target="_blank">Text</a> or <a href="https://schema.org/URL" target="_blank">URL</a></td>
+<td>A list of the core functionalities or modules provided by the software, including components that external pipelines or applications can depend upon.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/installUrl" target="_blank">installUrl</a></td>
+<td><a href="https://schema.org/URL" target="_blank">URL</a></td>
+<td>URL at which the app may be installed, if different from the URL of the item.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/permissions" target="_blank">permissions</a></td>
+<td><a href="https://schema.org/Text" target="_blank">Text</a></td>
+<td>The explicit security privileges, access rights, or network authorizations required by the software to execute its functions successfully.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/screenshot" target="_blank">screenshot</a></td>
+<td><a href="https://schema.org/ImageObject" target="_blank">ImageObject</a> or <a href="https://schema.org/URL" target="_blank">URL</a></td>
+<td>A URL pointing to an image demonstrating the software's user interface, command-line execution, or visual data output.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/supportingData" target="_blank">supportingData</a></td>
+<td><a href="https://schema.org/DataFeed" target="_blank">DataFeed</a></td>
+<td>Reference datasets, auxiliary data streams, or data feeds that are bundled with, or required by the software.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/citation" target="_blank">citation</a></td>
+<td><a href="https://schema.org/CreativeWork" target="_blank">CreativeWork</a> or <a href="https://schema.org/URL" target="_blank">URL</a></td>
+<td>A citation or reference to another creative work, such as another publication, web page, scholarly article, etc.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/copyrightYear" target="_blank">copyrightYear</a></td>
+<td><a href="https://schema.org/Number" target="_blank">Number</a></td>
+<td>The year during which the claimed copyright for the software application was first asserted.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/dateCreated" target="_blank">dateCreated</a></td>
+<td><a href="https://schema.org/Date" target="_blank">Date</a></td>
+<td>The date on which the software application repository or initial source code project was first created.</td>
+<td>ONE</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/dateModified" target="_blank">dateModified</a></td>
+<td><a href="https://schema.org/Date" target="_blank">Date</a></td>
+<td>The date on which the software application, source code repository, or specific release metadata was last updated or changed.</td>
+<td>ONE</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/encodingFormat" target="_blank">encodingFormat</a></td>
+<td><a href="https://schema.org/Text" target="_blank">Text</a> or <a href="https://schema.org/URL" target="_blank">URL</a></td>
+<td>The media type, serialization format, or specific data profile used to represent the software application or its associated packages.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/hasPart" target="_blank">hasPart</a></td>
+<td><a href="https://schema.org/CreativeWork" target="_blank">CreativeWork</a></td>
+<td>Indicates a distinct creative work, component, or sub-module that is contained within this software application.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/isAccessibleForFree" target="_blank">isAccessibleForFree</a></td>
+<td>-</td>
+<td>A flag to signal that the publication is accessible for free.</td>
+<td>ONE</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/isPartOf" target="_blank">isPartOf</a></td>
+<td><a href="https://schema.org/CreativeWork" target="_blank">CreativeWork</a></td>
+<td>Indicates a larger software ecosystem or overarching project that this software application is a sub-module, component, or integrated piece of.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/sameAs" target="_blank">sameAs</a></td>
+<td><a href="https://schema.org/URL" target="_blank">URL</a></td>
+<td>URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Wikidata entry, or official website.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/relatedLink" target="_blank">relatedLink</a></td>
+<td><a href="https://schema.org/URL" target="_blank">URL</a></td>
+<td>A link related to this object, e.g. related web pages</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/creditText" target="_blank">creditText</a></td>
+<td><a href="https://schema.org/Text" target="_blank">Text</a></td>
+<td>Text that can be used to credit person(s) and/or organization(s) associated with a published Creative Work.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/alternateName" target="_blank">alternateName</a></td>
+<td><a href="https://schema.org/Text" target="_blank">Text</a></td>
+<td>An alias for the resource.</td>
+<td>ONE</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/archivedAt" target="_blank">archivedAt</a></td>
+<td><a href="https://schema.org/URL" target="_blank">URL</a> or <a href="https://schema.org/WebPage" target="_blank">WebPage</a></td>
+<td>A link to the archived version or archival location where the original content has been preserved (for CreativeWork, MediaReview, etc.)</td>
+<td>ONE</td>
+</tr>
+<tr>
+<td><a class="term-schema" href="https://schema.org/conditionsOfAccess" target="_blank">conditionsOfAccess</a></td>
+<td><a href="https://schema.org/Text" target="_blank">Text</a></td>
+<td>Conditions that affect the availability of, or method(s) of access to an item. Typically used for real world items such as an ArchiveComponent held by an ArchiveOrganization.</td>
+<td>ONE</td>
+</tr>
+<tr>
+<td><a class="term-external" href="https://codemeta.github.io/terms/#continuousIntegration" target="_blank">codemeta:continuousIntegration</a></td>
+<td><a href="https://schema.org/URL" target="_blank">URL</a></td>
+<td>A link to the continuous integration (CI) service or build automation platform.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-external" href="https://codemeta.github.io/terms/#embargoEndDate" target="_blank">codemeta:embargoEndDate</a></td>
+<td><a href="https://schema.org/Date" target="_blank">Date</a></td>
+<td>Software may be embargoed from public access until a specified date (e.g. pending publication, 1 year from publication)</td>
+<td>ONE</td>
+</tr>
+<tr>
+<td><a class="term-external" href="https://codemeta.github.io/terms/#hasSourceCode" target="_blank">codemeta:hasSourceCode</a></td>
+<td><a href="https://schema.org/SoftwareSourceCode" target="_blank">SoftwareSourceCode</a></td>
+<td>Link that states where the software code is for a given software. For example a software registry may indicate that one of its software entries hasSourceCode in a GitHub repository.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-external" href="https://codemeta.github.io/terms/#isSourceCodeOf" target="_blank">codemeta:isSourceCodeOf</a></td>
+<td><a href="https://schema.org/SoftwareApplication" target="_blank">SoftwareApplication</a></td>
+<td>Link that states where software application is built from a given source code. This is the reverse property of 'hasSourceCode'.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-external" href="https://codemeta.github.io/terms/#issueTracker" target="_blank">codemeta:issueTracker</a></td>
+<td><a href="https://schema.org/URL" target="_blank">URL</a></td>
+<td>link to software bug reporting or issue tracking system.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-connoss" href="../Properties/legalConsiderations.md">legalConsiderations</a></td>
+<td><a href="https://schema.org/Text" target="_blank">Text</a></td>
+<td>A documented concern, requirement, or consideration related to the software's design, deployment, or impact across legal and regulatory dimensions (e.g. licensing constraints, data protection, compliance requirements). Enables transparent disclosure of legal constraints and mitigation strategies.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-connoss" href="../Properties/ethicalSocialConsiderations.md">ethicalSocialConsiderations</a></td>
+<td><a href="https://schema.org/Text" target="_blank">Text</a></td>
+<td>A documented concern, requirement, or consideration related to the software's design, deployment, or impact across ethical and social dimensions. Enables transparent disclosure of constraints and mitigation strategies.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-connoss" href="../Properties/testedWith/">testedWith</a></td>
+<td><a href="#profile-testaction">TestAction</a></td>
+<td>Links the software to a testing activity describing how the software is validated, including the test type, required inputs, and produced test results.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-connoss" href="../Properties/implementsSpecification/">implementsSpecification</a></td>
+<td><a href="https://schema.org/CreativeWork" target="_blank">CreativeWork</a></td>
+<td>A specification that a software implements, including a standard, API or legally defined level of conformance. e.g. the HTTP standard, the OpenAPI spec, OAuth2.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-connoss" href="../Properties/softwareContainer/">softwareContainer</a></td>
+<td><a href="https://schema.org/URL" target="_blank">URL</a> or <a href="https://schema.org/CreativeWork" target="_blank">CreativeWork</a></td>
+<td>A container image or packaged runtime environment of the software.</td>
+<td>MANY</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="profile-testaction">TestAction Profile</h2>
+<p><strong>Version:</strong> 1.0</p>
+<p><strong>Schema.org hierarchy:</strong> <a href="https://schema.org/Thing" target="_blank">Thing</a> &gt; <a href="https://schema.org/Action" target="_blank">Action</a> &gt; connoss:TestAction</p>
+<p>The act of testing the software according to its specifications, capturing the object tested, the resulting test report or outcome, and the type of test performed.</p>
+<h3 id="profile-testaction-required">TestAction Required properties</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Expected Type</th>
+<th>Description</th>
+<th>CD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="term-connoss" href="../Properties/testInput/">testInput</a></td>
+<td>-</td>
+<td>Input used to performed the test. Some tests may not require any input, some may require multiple ones. If order or grouping is important in the case of multiple inputs, a ListItem could help.</td>
+<td>MANY</td>
+</tr>
+</tbody>
+</table>
+<h3 id="profile-testaction-recommended">TestAction Recommended properties</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Expected Type</th>
+<th>Description</th>
+<th>CD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="term-connoss" href="../Properties/testInstructions/">testInstructions</a></td>
+<td>-</td>
+<td>Specific test instructions for testing the software.</td>
+<td>MANY</td>
+</tr>
+<tr>
+<td><a class="term-connoss" href="../Properties/testType/">testType</a></td>
+<td>-</td>
+<td>The type of test that it is performed on the object.</td>
+<td>MANY</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
