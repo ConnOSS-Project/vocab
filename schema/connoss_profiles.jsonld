@@ -28,10 +28,6 @@
             "description": "Link to the version control system where the software is developed and maintained (e.g. SVN, GitHub, CodePlex, institutional GitLab instance, etc.).",
             "owl:cardinality": "many"
           },
-          "schema:codeSampleType": {
-            "description": "The classification of the provided source code sample, indicating its completeness, execution readiness, and intended use case. Expected Values: full solution (or compile ready / executable), code snippet, inline code, script, template.",
-            "owl:cardinality": "many"
-          },
           "schema:programmingLanguage": {
             "description": "The computer programming languages used to write the software or source code.",
             "owl:cardinality": "many"
@@ -76,10 +72,6 @@
             "description": "A list of the core functionalities or modules provided by the software, including components that external pipelines or applications can depend upon.",
             "owl:cardinality": "many"
           },
-          "schema:fileSize": {
-            "description": "The total digital size of the downloadable software package or binary. In the absence of an explicit unit (e.g. MB or KB), the value is assumed to be KB.",
-            "owl:cardinality": "one"
-          },
           "schema:installUrl": {
             "description": "URL at which the app may be installed, if different from the URL of the item.",
             "owl:cardinality": "many"
@@ -106,10 +98,6 @@
           },
           "schema:screenshot": {
             "description": "A URL pointing to an image demonstrating the software's user interface, command-line execution, or visual data output.",
-            "owl:cardinality": "many"
-          },
-          "schema:softwareAddOn": {
-            "description": "A software application, plugin, extension, or module that extends the functionality of the primary application.",
             "owl:cardinality": "many"
           },
           "schema:softwareHelp": {
@@ -196,14 +184,6 @@
             "description": "The person or organization responsible for making the software application publicly available, distributing it, or managing its official archival publication.",
             "owl:cardinality": "many"
           },
-          "schema:review": {
-            "description": "An evaluation, critique, or formal assessment of the software application",
-            "owl:cardinality": "many"
-          },
-          "schema:sponsor": {
-            "description": "A person or organization that provides promotional, logistical, institutional, or financial backing for the software, often through an ongoing partnership, pledge, or endorsement.",
-            "owl:cardinality": "many"
-          },
           "schema:description": {
             "description": "A short, clear text abstract or summary that describes what the software application does and its key features.",
             "owl:cardinality": "one"
@@ -266,10 +246,6 @@
           },
           "codemeta:referencePublication": {
             "description": "An academic publication related to the software.",
-            "owl:cardinality": "many"
-          },
-          "codemeta:relatedSoftware": {
-            "description": "A link to other software that is related by functionality, scientific purpose, or ecosystem context (e.g. alternative implementations, comparable tools, or complementary software). This property does not imply dependency, citation, or execution requirement. It is intended to support discovery, comparison, and interoperability mapping between software artifacts.",
             "owl:cardinality": "many"
           },
           "schema:contactPoint": {
