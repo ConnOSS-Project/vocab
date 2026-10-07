@@ -464,25 +464,25 @@
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "type": "object",
         "properties": {
-          "testInput": {
+          "connoss:testInput": {
             "description": "Input used to performed the test. Some tests may not require any input, some may require multiple ones. If order or grouping is important in the case of multiple inputs, a ListItem could help.",
             "owl:cardinality": "many"
           },
-          "testInstructions": {
+          "connoss:testInstructions": {
             "description": "Specific test instructions for testing the software.",
             "owl:cardinality": "many"
           },
-          "testType": {
+          "connoss:testType": {
             "description": "The type of test that it is performed on the object.",
             "owl:cardinality": "many"
           }
         },
         "required": [
-			"testInput"
+			"connoss:testInput"
         ],
         "recommended": [
-			"testInstructions",
-			"testType"
+			"connoss:testInstructions",
+			"connoss:testType"
         ]
       },
       "schemaVersion":"https://schema.org/docs/releases.html#v29.4"
