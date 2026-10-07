@@ -9,7 +9,7 @@
     "bioschemas": "https://bioschemas.org/",
     "maSMP": "https://discovery.biothings.io/view/maSMP/",
     "connoss": "https://purls.helmholtz-metadaten.de/connoss/",
-    "connossProfiles": "https://purls.helmholtz-metadaten.de/connoss/connossProfiles/"
+    "connossProfiles": "https://purls.helmholtz-metadaten.de/connoss/Profiles/"
   },
   "@graph": [
     {
