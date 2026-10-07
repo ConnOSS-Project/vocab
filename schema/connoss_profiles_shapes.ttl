@@ -4,6 +4,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix codemeta: <https://w3id.org/codemeta/> .
+@prefix bioschemas: <https://bioschemas.org/> .
 @prefix connoss: <https://purls.helmholtz-metadaten.de/connoss/> .
 @prefix connossProfiles: <https://purls.helmholtz-metadaten.de/connoss/Profiles/> .
 
@@ -107,8 +108,9 @@ connossProfiles:SoftwareProfileShape
         sh:group connossProfiles:RequiredGroup ;
         sh:order 4 ;
         sh:minCount 1 ;
+        sh:or ( [ sh:class schema:DefinedTerm ] [ sh:node connossProfiles:TextValue ] [ sh:node connossProfiles:URLValue ] ) ;
         sh:severity sh:Violation ;
-        sh:message "applicationDomain is required." ;
+        sh:message "applicationDomain is required and its values must be of type DefinedTerm, Text or URL." ;
     ] ;
     sh:property [
         sh:path schema:codeRepository ;
@@ -116,12 +118,6 @@ connossProfiles:SoftwareProfileShape
         sh:description "Link to the version control system where the software is developed and maintained (e.g. SVN, GitHub, CodePlex, institutional GitLab instance, etc.)." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 5 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "codeRepository is recommended." ;
-    ] ;
-    sh:property [
-        sh:path schema:codeRepository ;
         sh:node connossProfiles:URLValue ;
         sh:severity sh:Violation ;
         sh:message "codeRepository values must be of type URL." ;
@@ -132,12 +128,6 @@ connossProfiles:SoftwareProfileShape
         sh:description "The computer programming languages used to write the software or source code." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 6 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "programmingLanguage is recommended." ;
-    ] ;
-    sh:property [
-        sh:path schema:programmingLanguage ;
         sh:or ( [ sh:class schema:ComputerLanguage ] [ sh:node connossProfiles:TextValue ] ) ;
         sh:severity sh:Violation ;
         sh:message "programmingLanguage values must be of type ComputerLanguage or Text." ;
@@ -148,12 +138,6 @@ connossProfiles:SoftwareProfileShape
         sh:description "The execution environment required to run the software, including script interpreters (e.g., Python 3.9), virtual machines (e.g., Java Virtual Machine v17), and managed frameworks (e.g. .NET Core 6.0)." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 7 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "runtimePlatform is recommended." ;
-    ] ;
-    sh:property [
-        sh:path schema:runtimePlatform ;
         sh:node connossProfiles:TextValue ;
         sh:severity sh:Violation ;
         sh:message "runtimePlatform values must be of type Text." ;
@@ -164,12 +148,6 @@ connossProfiles:SoftwareProfileShape
         sh:description "The high-level functional classification of the software application, indicating its primary computational purpose or technical utility (e.g., Simulation, Data Visualization, Statistical Analysis)." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 8 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "applicationCategory is recommended." ;
-    ] ;
-    sh:property [
-        sh:path schema:applicationCategory ;
         sh:or ( [ sh:node connossProfiles:TextValue ] [ sh:node connossProfiles:URLValue ] ) ;
         sh:severity sh:Violation ;
         sh:message "applicationCategory values must be of type Text or URL." ;
@@ -180,12 +158,6 @@ connossProfiles:SoftwareProfileShape
         sh:description "A more granular technical or computational classification of the software (e.g., Agent-Based Modeling as a subcategory of Simulation & Modeling)." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 9 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "applicationSubCategory is recommended." ;
-    ] ;
-    sh:property [
-        sh:path schema:applicationSubCategory ;
         sh:or ( [ sh:node connossProfiles:TextValue ] [ sh:node connossProfiles:URLValue ] ) ;
         sh:severity sh:Violation ;
         sh:message "applicationSubCategory values must be of type Text or URL." ;
@@ -196,12 +168,6 @@ connossProfiles:SoftwareProfileShape
         sh:description "The specific hardware device, architecture, or machine model required to execute the software. This property is used when the software cannot run on standard generic hardware and explicitly depends on specialized physical machinery, processors, or laboratory equipment." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 10 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "availableOnDevice is recommended." ;
-    ] ;
-    sh:property [
-        sh:path schema:availableOnDevice ;
         sh:node connossProfiles:TextValue ;
         sh:severity sh:Violation ;
         sh:message "availableOnDevice values must be of type Text." ;
@@ -212,12 +178,6 @@ connossProfiles:SoftwareProfileShape
         sh:description "The direct URL from which the software binary, compiled package, executable, or compressed distribution archive (e.g., .tar.gz, .whl, .exe, .dmg) can be downloaded." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 11 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "downloadUrl is recommended." ;
-    ] ;
-    sh:property [
-        sh:path schema:downloadUrl ;
         sh:node connossProfiles:URLValue ;
         sh:severity sh:Violation ;
         sh:message "downloadUrl values must be of type URL." ;
@@ -228,12 +188,6 @@ connossProfiles:SoftwareProfileShape
         sh:description "The minimum amount of Random Access Memory (RAM) required to run the software or execute the pipeline." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 12 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "memoryRequirements is recommended." ;
-    ] ;
-    sh:property [
-        sh:path schema:memoryRequirements ;
         sh:maxCount 1 ;
         sh:or ( [ sh:node connossProfiles:TextValue ] [ sh:node connossProfiles:URLValue ] ) ;
         sh:severity sh:Violation ;
@@ -245,12 +199,6 @@ connossProfiles:SoftwareProfileShape
         sh:description "The operating system(s) required to execute the software (e.g. Windows 7, OSX 10.6, Android 1.6)." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 13 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "operatingSystem is recommended." ;
-    ] ;
-    sh:property [
-        sh:path schema:operatingSystem ;
         sh:node connossProfiles:TextValue ;
         sh:severity sh:Violation ;
         sh:message "operatingSystem values must be of type Text." ;
@@ -261,12 +209,6 @@ connossProfiles:SoftwareProfileShape
         sh:description "Processor architecture required to run the application (e.g. IA64)." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 14 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "processorRequirements is recommended." ;
-    ] ;
-    sh:property [
-        sh:path schema:processorRequirements ;
         sh:maxCount 1 ;
         sh:node connossProfiles:TextValue ;
         sh:severity sh:Violation ;
@@ -278,12 +220,6 @@ connossProfiles:SoftwareProfileShape
         sh:description "Description of what changed in this version." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 15 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "releaseNotes is recommended." ;
-    ] ;
-    sh:property [
-        sh:path schema:releaseNotes ;
         sh:or ( [ sh:node connossProfiles:TextValue ] [ sh:node connossProfiles:URLValue ] ) ;
         sh:severity sh:Violation ;
         sh:message "releaseNotes values must be of type Text or URL." ;
@@ -294,12 +230,6 @@ connossProfiles:SoftwareProfileShape
         sh:description "User guides, manuals, wikis, or help center pages that assist users in configuring and operating the software." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 16 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "softwareHelp is recommended." ;
-    ] ;
-    sh:property [
-        sh:path schema:softwareHelp ;
         sh:class schema:CreativeWork ;
         sh:severity sh:Violation ;
         sh:message "softwareHelp values must be of type CreativeWork." ;
@@ -310,12 +240,6 @@ connossProfiles:SoftwareProfileShape
         sh:description "External software components, libraries, frameworks, or runtime environments required for the application to function." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 17 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "softwareRequirements is recommended." ;
-    ] ;
-    sh:property [
-        sh:path schema:softwareRequirements ;
         sh:class schema:SoftwareSourceCode ;
         sh:severity sh:Violation ;
         sh:message "softwareRequirements values must be of type SoftwareSourceCode." ;
@@ -326,12 +250,6 @@ connossProfiles:SoftwareProfileShape
         sh:description "Version of the software instance." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 18 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "softwareVersion is recommended." ;
-    ] ;
-    sh:property [
-        sh:path schema:softwareVersion ;
         sh:maxCount 1 ;
         sh:node connossProfiles:TextValue ;
         sh:severity sh:Violation ;
@@ -343,12 +261,6 @@ connossProfiles:SoftwareProfileShape
         sh:description "The minimum amount of persistent storage (disk space) required to install and execute the software." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 19 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "storageRequirements is recommended." ;
-    ] ;
-    sh:property [
-        sh:path schema:storageRequirements ;
         sh:maxCount 1 ;
         sh:or ( [ sh:node connossProfiles:TextValue ] [ sh:node connossProfiles:URLValue ] ) ;
         sh:severity sh:Violation ;
@@ -360,12 +272,6 @@ connossProfiles:SoftwareProfileShape
         sh:description "The person or organization that created the software." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 20 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "author is recommended." ;
-    ] ;
-    sh:property [
-        sh:path schema:author ;
         sh:or ( [ sh:class schema:Organization ] [ sh:class schema:Person ] ) ;
         sh:severity sh:Violation ;
         sh:message "author values must be of type Organization or Person." ;
@@ -376,12 +282,6 @@ connossProfiles:SoftwareProfileShape
         sh:description "The person or organization that provided secondary contributions to the software." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 21 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "contributor is recommended." ;
-    ] ;
-    sh:property [
-        sh:path schema:contributor ;
         sh:or ( [ sh:class schema:Organization ] [ sh:class schema:Person ] ) ;
         sh:severity sh:Violation ;
         sh:message "contributor values must be of type Organization or Person." ;
@@ -392,12 +292,6 @@ connossProfiles:SoftwareProfileShape
         sh:description "The person or organization that holds the legal copyright and intellectual property rights to the software application." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 22 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "copyrightHolder is recommended." ;
-    ] ;
-    sh:property [
-        sh:path schema:copyrightHolder ;
         sh:or ( [ sh:class schema:Organization ] [ sh:class schema:Person ] ) ;
         sh:severity sh:Violation ;
         sh:message "copyrightHolder values must be of type Organization or Person." ;
@@ -408,12 +302,6 @@ connossProfiles:SoftwareProfileShape
         sh:description "The date on which this specific version or release of the software application was officially made publicly available." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 23 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "datePublished is recommended." ;
-    ] ;
-    sh:property [
-        sh:path schema:datePublished ;
         sh:maxCount 1 ;
         sh:node connossProfiles:DateValue ;
         sh:severity sh:Violation ;
@@ -425,12 +313,6 @@ connossProfiles:SoftwareProfileShape
         sh:description "A person or organization that supports the development and maintenance of the software through financial contributions, grants, or sponsorships." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 24 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "funder is recommended." ;
-    ] ;
-    sh:property [
-        sh:path schema:funder ;
         sh:or ( [ sh:class schema:Organization ] [ sh:class schema:Person ] ) ;
         sh:severity sh:Violation ;
         sh:message "funder values must be of type Organization or Person." ;
@@ -441,12 +323,6 @@ connossProfiles:SoftwareProfileShape
         sh:description "Keywords, tags, or terms that describe the software application." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 25 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "keywords is recommended." ;
-    ] ;
-    sh:property [
-        sh:path schema:keywords ;
         sh:node connossProfiles:TextValue ;
         sh:severity sh:Violation ;
         sh:message "keywords values must be of type Text." ;
@@ -457,12 +333,6 @@ connossProfiles:SoftwareProfileShape
         sh:description "The person or organization responsible for making the software application publicly available, distributing it, or managing its official archival publication." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 26 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "publisher is recommended." ;
-    ] ;
-    sh:property [
-        sh:path schema:publisher ;
         sh:or ( [ sh:class schema:Organization ] [ sh:class schema:Person ] ) ;
         sh:severity sh:Violation ;
         sh:message "publisher values must be of type Organization or Person." ;
@@ -473,12 +343,6 @@ connossProfiles:SoftwareProfileShape
         sh:description "A unique, unambiguous string, URL, or token that permanently and globally identifies the software application or a specific version of it, such as ISBNs, GTIN codes, UUIDs etc." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 27 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "identifier is recommended." ;
-    ] ;
-    sh:property [
-        sh:path schema:identifier ;
         sh:or ( [ sh:class schema:PropertyValue ] [ sh:node connossProfiles:URLValue ] ) ;
         sh:severity sh:Violation ;
         sh:message "identifier values must be of type PropertyValue or URL." ;
@@ -489,9 +353,9 @@ connossProfiles:SoftwareProfileShape
         sh:description "Resources that describe the software's installation, usage, configuration, development, and deployment intended to support users and developers in understanding and applying the software." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 28 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "documentation is recommended." ;
+        sh:class schema:CreativeWork ;
+        sh:severity sh:Violation ;
+        sh:message "documentation values must be of type CreativeWork." ;
     ] ;
     sh:property [
         sh:path schema:contactPoint ;
@@ -499,12 +363,6 @@ connossProfiles:SoftwareProfileShape
         sh:description "A contact point for this resource." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 29 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "contactPoint is recommended." ;
-    ] ;
-    sh:property [
-        sh:path schema:contactPoint ;
         sh:class schema:ContactPoint ;
         sh:severity sh:Violation ;
         sh:message "contactPoint values must be of type ContactPoint." ;
@@ -515,12 +373,6 @@ connossProfiles:SoftwareProfileShape
         sh:description "A link to the specific documentation, scripts, or instructions required to compile, build, or install the software application." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 30 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "buildInstructions is recommended." ;
-    ] ;
-    sh:property [
-        sh:path codemeta:buildInstructions ;
         sh:or ( [ sh:node connossProfiles:URLValue ] [ sh:class schema:CreativeWork ] ) ;
         sh:severity sh:Violation ;
         sh:message "buildInstructions values must be of type URL or CreativeWork." ;
@@ -531,12 +383,6 @@ connossProfiles:SoftwareProfileShape
         sh:description "A term describing the current maintenance and lifecycle status of the software application (e.g., active, inactive, suspended)." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 31 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "developmentStatus is recommended." ;
-    ] ;
-    sh:property [
-        sh:path codemeta:developmentStatus ;
         sh:maxCount 1 ;
         sh:node connossProfiles:TextValue ;
         sh:severity sh:Violation ;
@@ -548,12 +394,6 @@ connossProfiles:SoftwareProfileShape
         sh:description "Individual responsible for maintaining the software (usually includes an email contact address)" ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 32 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "maintainer is recommended." ;
-    ] ;
-    sh:property [
-        sh:path codemeta:maintainer ;
         sh:class schema:Person ;
         sh:severity sh:Violation ;
         sh:message "maintainer values must be of type Person." ;
@@ -564,12 +404,6 @@ connossProfiles:SoftwareProfileShape
         sh:description "link to software Readme file" ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 33 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "readme is recommended." ;
-    ] ;
-    sh:property [
-        sh:path codemeta:readme ;
         sh:node connossProfiles:URLValue ;
         sh:severity sh:Violation ;
         sh:message "readme values must be of type URL." ;
@@ -580,12 +414,6 @@ connossProfiles:SoftwareProfileShape
         sh:description "An academic publication related to the software." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 34 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "referencePublication is recommended." ;
-    ] ;
-    sh:property [
-        sh:path codemeta:referencePublication ;
         sh:class schema:ScholarlyArticle ;
         sh:severity sh:Violation ;
         sh:message "referencePublication values must be of type ScholarlyArticle." ;
@@ -596,15 +424,10 @@ connossProfiles:SoftwareProfileShape
         sh:description "A concise summary of the primary objective or intended use case for the software. Distinct from general description; this focuses on 'why' the software exists and what problems it solves." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 35 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "intendedUse is recommended." ;
-    ] ;
-    sh:property [
-        sh:path connoss:intendedUse ;
         sh:maxCount 1 ;
+        sh:node connossProfiles:TextValue ;
         sh:severity sh:Violation ;
-        sh:message "intendedUse must not have more than one value." ;
+        sh:message "intendedUse must have at most one value, of type Text." ;
     ] ;
     sh:property [
         sh:path connoss:developerDocumentation ;
@@ -612,9 +435,9 @@ connossProfiles:SoftwareProfileShape
         sh:description "Documentation for developers, maintainers, and infrastructure people." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 36 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "developerDocumentation is recommended." ;
+        sh:class schema:CreativeWork ;
+        sh:severity sh:Violation ;
+        sh:message "developerDocumentation values must be of type CreativeWork." ;
     ] ;
     sh:property [
         sh:path connoss:userDocumentation ;
@@ -622,9 +445,9 @@ connossProfiles:SoftwareProfileShape
         sh:description "Documentation for end users of the software." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 37 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "userDocumentation is recommended." ;
+        sh:class schema:CreativeWork ;
+        sh:severity sh:Violation ;
+        sh:message "userDocumentation values must be of type CreativeWork." ;
     ] ;
     sh:property [
         sh:path connoss:softwareInterface ;
@@ -632,9 +455,9 @@ connossProfiles:SoftwareProfileShape
         sh:description "The interaction interfaces through which users or other software systems can access, execute, or integrate with software (e.g., CLI, GUI, WebUI, Notebook, API, Library)." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 38 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "softwareInterface is recommended." ;
+        sh:or ( [ sh:class schema:DefinedTerm ] [ sh:node connossProfiles:TextValue ] [ sh:nodeKind sh:BlankNodeOrIRI ] [ sh:node connossProfiles:URLValue ] ) ;
+        sh:severity sh:Violation ;
+        sh:message "softwareInterface values must be of type DefinedTerm, Text, Thing or URL." ;
     ] ;
     sh:property [
         sh:path connoss:input ;
@@ -642,9 +465,9 @@ connossProfiles:SoftwareProfileShape
         sh:description "A formal specification of the data, files, or parameters that the software accepts as input, including format, type, and whether the input is required." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 39 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "input is recommended." ;
+        sh:class bioschemas:FormalParameter ;
+        sh:severity sh:Violation ;
+        sh:message "input values must be of type FormalParameter." ;
     ] ;
     sh:property [
         sh:path connoss:output ;
@@ -652,9 +475,9 @@ connossProfiles:SoftwareProfileShape
         sh:description "A formal specification of the data, files, or results that the software produces, including format and type." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 40 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "output is recommended." ;
+        sh:class bioschemas:FormalParameter ;
+        sh:severity sh:Violation ;
+        sh:message "output values must be of type FormalParameter." ;
     ] ;
     sh:property [
         sh:path connoss:partOfCommunity ;
@@ -662,9 +485,9 @@ connossProfiles:SoftwareProfileShape
         sh:description "A (research) community, consortium, or network that this research artifact (e.g., software) is developed within or affiliated with (e.g., EOSC, NFDI)." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 41 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "partOfCommunity is recommended." ;
+        sh:or ( [ sh:class schema:Organization ] [ sh:node connossProfiles:TextValue ] [ sh:node connossProfiles:URLValue ] ) ;
+        sh:severity sh:Violation ;
+        sh:message "partOfCommunity values must be of type Organization, Text or URL." ;
     ] ;
     sh:property [
         sh:path connoss:latestRelease ;
@@ -672,15 +495,10 @@ connossProfiles:SoftwareProfileShape
         sh:description "Link to the latest release." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 42 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "latestRelease is recommended." ;
-    ] ;
-    sh:property [
-        sh:path connoss:latestRelease ;
         sh:maxCount 1 ;
+        sh:or ( [ sh:class connoss:Software ] [ sh:node connossProfiles:URLValue ] ) ;
         sh:severity sh:Violation ;
-        sh:message "latestRelease must not have more than one value." ;
+        sh:message "latestRelease must have at most one value, of type Software or URL." ;
     ] ;
     sh:property [
         sh:path connoss:latestReleaseVersion ;
@@ -688,15 +506,10 @@ connossProfiles:SoftwareProfileShape
         sh:description "Version of the latest release." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 43 ;
-        sh:minCount 1 ;
-        sh:severity sh:Warning ;
-        sh:message "latestReleaseVersion is recommended." ;
-    ] ;
-    sh:property [
-        sh:path connoss:latestReleaseVersion ;
         sh:maxCount 1 ;
+        sh:node connossProfiles:TextValue ;
         sh:severity sh:Violation ;
-        sh:message "latestReleaseVersion must not have more than one value." ;
+        sh:message "latestReleaseVersion must have at most one value, of type Text." ;
     ] ;
     sh:property [
         sh:path schema:targetProduct ;
@@ -919,8 +732,9 @@ connossProfiles:SoftwareProfileShape
         sh:group connossProfiles:OptionalGroup ;
         sh:order 70 ;
         sh:maxCount 1 ;
+        sh:or ( [ sh:node connossProfiles:URLValue ] [ sh:class schema:WebPage ] ) ;
         sh:severity sh:Violation ;
-        sh:message "archivedAt must not have more than one value." ;
+        sh:message "archivedAt must have at most one value, of type URL or WebPage." ;
     ] ;
     sh:property [
         sh:path schema:conditionsOfAccess ;
@@ -929,8 +743,9 @@ connossProfiles:SoftwareProfileShape
         sh:group connossProfiles:OptionalGroup ;
         sh:order 71 ;
         sh:maxCount 1 ;
+        sh:node connossProfiles:TextValue ;
         sh:severity sh:Violation ;
-        sh:message "conditionsOfAccess must not have more than one value." ;
+        sh:message "conditionsOfAccess must have at most one value, of type Text." ;
     ] ;
     sh:property [
         sh:path codemeta:continuousIntegration ;
@@ -989,7 +804,9 @@ connossProfiles:SoftwareProfileShape
         sh:description "A documented concern, requirement, or consideration related to the software's design, deployment, or impact across legal and regulatory dimensions (e.g. licensing constraints, data protection, compliance requirements). Enables transparent disclosure of legal constraints and mitigation strategies." ;
         sh:group connossProfiles:OptionalGroup ;
         sh:order 78 ;
-        sh:severity sh:Info ;
+        sh:node connossProfiles:TextValue ;
+        sh:severity sh:Violation ;
+        sh:message "legalConsiderations values must be of type Text." ;
     ] ;
     sh:property [
         sh:path connoss:ethicalSocialConsiderations ;
@@ -997,7 +814,9 @@ connossProfiles:SoftwareProfileShape
         sh:description "A documented concern, requirement, or consideration related to the software's design, deployment, or impact across ethical and social dimensions. Enables transparent disclosure of constraints and mitigation strategies." ;
         sh:group connossProfiles:OptionalGroup ;
         sh:order 79 ;
-        sh:severity sh:Info ;
+        sh:node connossProfiles:TextValue ;
+        sh:severity sh:Violation ;
+        sh:message "ethicalSocialConsiderations values must be of type Text." ;
     ] ;
     sh:property [
         sh:path connoss:testedWith ;
@@ -1005,7 +824,9 @@ connossProfiles:SoftwareProfileShape
         sh:description "Links the software to a testing activity describing how the software is validated, including the test type, required inputs, and produced test results." ;
         sh:group connossProfiles:OptionalGroup ;
         sh:order 80 ;
-        sh:severity sh:Info ;
+        sh:class connoss:TestAction ;
+        sh:severity sh:Violation ;
+        sh:message "testedWith values must be of type TestAction." ;
     ] ;
     sh:property [
         sh:path connoss:implementsSpecification ;
@@ -1013,7 +834,9 @@ connossProfiles:SoftwareProfileShape
         sh:description "A specification that a software implements, including a standard, API or legally defined level of conformance. e.g. the HTTP standard, the OpenAPI spec, OAuth2." ;
         sh:group connossProfiles:OptionalGroup ;
         sh:order 81 ;
-        sh:severity sh:Info ;
+        sh:class schema:CreativeWork ;
+        sh:severity sh:Violation ;
+        sh:message "implementsSpecification values must be of type CreativeWork." ;
     ] ;
     sh:property [
         sh:path connoss:softwareContainer ;
@@ -1021,7 +844,9 @@ connossProfiles:SoftwareProfileShape
         sh:description "A container image or packaged runtime environment of the software." ;
         sh:group connossProfiles:OptionalGroup ;
         sh:order 82 ;
-        sh:severity sh:Info ;
+        sh:or ( [ sh:node connossProfiles:URLValue ] [ sh:class schema:CreativeWork ] ) ;
+        sh:severity sh:Violation ;
+        sh:message "softwareContainer values must be of type URL or CreativeWork." ;
     ] .
 
 connossProfiles:TestActionProfileShape
@@ -1045,7 +870,6 @@ connossProfiles:TestActionProfileShape
         sh:description "Specific test instructions for testing the software." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 1 ;
-        sh:minCount 1 ;
         sh:severity sh:Warning ;
         sh:message "testInstructions is recommended." ;
     ] ;
@@ -1055,7 +879,6 @@ connossProfiles:TestActionProfileShape
         sh:description "The type of test that it is performed on the object." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 2 ;
-        sh:minCount 1 ;
         sh:severity sh:Warning ;
         sh:message "testType is recommended." ;
     ] .
