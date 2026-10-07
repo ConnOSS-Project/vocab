@@ -4,10 +4,7 @@ repo_url: https://github.com/ConnOSS-Project/vocab
 repo_name: vocab
 nav:
     - Schema: index.md
-    - Profile:
-      - Overview: 'Profiles/index.md'
-      - 'Profiles/software-profile.md'
-      - 'Profiles/TestAction-profile.md'
+    - Profiles: 'Profiles/index.md'
 
     - Crosswalks: crosswalks.md
     - About: about.md
