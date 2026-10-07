@@ -199,13 +199,6 @@ codemeta:referencePublication a rdf:Property ;
     schema:rangeIncludes schema:ScholarlyArticle ;
     rdfs:comment "An academic publication related to the software." .
 
-codemeta:relatedSoftware a rdf:Property ;
-    rdfs:label "related software" ;
-    schema:domainIncludes connoss:Software ;
-    schema:rangeIncludes schema:SoftwareApplication,
-        schema:SoftwareSourceCode ;
-    rdfs:comment "A link to other software that is related by functionality, scientific purpose, or ecosystem context (e.g. alternative implementations, comparable tools, or complementary software)." .
-
 fair4ml:ethicalSocialConsiderations a rdf:Property ;
     rdfs:label "ethical social considerations" ;
     schema:domainIncludes connoss:Software ;
