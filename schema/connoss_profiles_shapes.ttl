@@ -1,0 +1,1061 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix codemeta: <https://w3id.org/codemeta/> .
+@prefix connoss: <https://purls.helmholtz-metadaten.de/connoss/> .
+@prefix connossProfiles: <https://purls.helmholtz-metadaten.de/connoss/Profiles/> .
+
+
+# schema.org data types
+
+connossProfiles:TextValue a sh:NodeShape ;
+    rdfs:label "Text" ;
+    rdfs:comment "A plain or language-tagged string literal." ;
+    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) .
+
+connossProfiles:URLValue a sh:NodeShape ;
+    rdfs:label "URL" ;
+    rdfs:comment "An IRI, or a literal typed as xsd:anyURI or schema:URL." ;
+    sh:or ( [ sh:nodeKind sh:IRI ] [ sh:datatype xsd:anyURI ] [ sh:datatype schema:URL ] ) .
+
+connossProfiles:DateValue a sh:NodeShape ;
+    rdfs:label "Date" ;
+    rdfs:comment "A date or date-time literal." ;
+    sh:or ( [ sh:datatype xsd:date ] [ sh:datatype xsd:dateTime ] [ sh:datatype schema:Date ] [ sh:datatype schema:DateTime ] ) .
+
+connossProfiles:NumberValue a sh:NodeShape ;
+    rdfs:label "Number" ;
+    rdfs:comment "A numeric literal." ;
+    sh:or ( [ sh:datatype xsd:integer ] [ sh:datatype xsd:decimal ] [ sh:datatype xsd:double ] [ sh:datatype xsd:float ] ) .
+
+
+# Property groups
+
+connossProfiles:RequiredGroup a sh:PropertyGroup ;
+    rdfs:label "Required" ;
+    sh:order 0 .
+
+connossProfiles:RecommendedGroup a sh:PropertyGroup ;
+    rdfs:label "Recommended" ;
+    sh:order 1 .
+
+connossProfiles:OptionalGroup a sh:PropertyGroup ;
+    rdfs:label "Optional" ;
+    sh:order 2 .
+
+
+# Profile shapes
+
+connossProfiles:SoftwareProfileShape
+    a sh:NodeShape ;
+    rdfs:label "Software Profile Shape" ;
+    rdfs:comment "Extension to schema.org and CodeMeta to describe software source code, software applications, and software releases." ;
+    sh:targetClass connoss:Software ;
+    sh:property [
+        sh:path schema:name ;
+        sh:name "name" ;
+        sh:description "The name of the item (software, Organization)." ;
+        sh:group connossProfiles:RequiredGroup ;
+        sh:order 0 ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:node connossProfiles:TextValue ;
+        sh:severity sh:Violation ;
+        sh:message "name is required and must be a single Text value." ;
+    ] ;
+    sh:property [
+        sh:path schema:description ;
+        sh:name "description" ;
+        sh:description "A short, clear text abstract or summary that describes what the software application does and its key features." ;
+        sh:group connossProfiles:RequiredGroup ;
+        sh:order 1 ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:node connossProfiles:TextValue ;
+        sh:severity sh:Violation ;
+        sh:message "description is required and must be a single Text value." ;
+    ] ;
+    sh:property [
+        sh:path schema:url ;
+        sh:name "url" ;
+        sh:description "URL of the item." ;
+        sh:group connossProfiles:RequiredGroup ;
+        sh:order 2 ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:node connossProfiles:URLValue ;
+        sh:severity sh:Violation ;
+        sh:message "url is required and must be a single URL value." ;
+    ] ;
+    sh:property [
+        sh:path schema:license ;
+        sh:name "license" ;
+        sh:description "The legal license that governs the copying, modification, distribution, and execution of the software application, typically indicated by URL." ;
+        sh:group connossProfiles:RequiredGroup ;
+        sh:order 3 ;
+        sh:minCount 1 ;
+        sh:or ( [ sh:class schema:CreativeWork ] [ sh:node connossProfiles:URLValue ] ) ;
+        sh:severity sh:Violation ;
+        sh:message "license is required and its values must be of type CreativeWork or URL." ;
+    ] ;
+    sh:property [
+        sh:path connoss:applicationDomain ;
+        sh:name "applicationDomain" ;
+        sh:description "The discipline, area, or research domain to which this software aligns or belongs to." ;
+        sh:group connossProfiles:RequiredGroup ;
+        sh:order 4 ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "applicationDomain is required." ;
+    ] ;
+    sh:property [
+        sh:path schema:codeRepository ;
+        sh:name "codeRepository" ;
+        sh:description "Link to the version control system where the software is developed and maintained (e.g. SVN, GitHub, CodePlex, institutional GitLab instance, etc.)." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 5 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "codeRepository is recommended." ;
+    ] ;
+    sh:property [
+        sh:path schema:codeRepository ;
+        sh:node connossProfiles:URLValue ;
+        sh:severity sh:Violation ;
+        sh:message "codeRepository values must be of type URL." ;
+    ] ;
+    sh:property [
+        sh:path schema:programmingLanguage ;
+        sh:name "programmingLanguage" ;
+        sh:description "The computer programming languages used to write the software or source code." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 6 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "programmingLanguage is recommended." ;
+    ] ;
+    sh:property [
+        sh:path schema:programmingLanguage ;
+        sh:or ( [ sh:class schema:ComputerLanguage ] [ sh:node connossProfiles:TextValue ] ) ;
+        sh:severity sh:Violation ;
+        sh:message "programmingLanguage values must be of type ComputerLanguage or Text." ;
+    ] ;
+    sh:property [
+        sh:path schema:runtimePlatform ;
+        sh:name "runtimePlatform" ;
+        sh:description "The execution environment required to run the software, including script interpreters (e.g., Python 3.9), virtual machines (e.g., Java Virtual Machine v17), and managed frameworks (e.g. .NET Core 6.0)." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 7 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "runtimePlatform is recommended." ;
+    ] ;
+    sh:property [
+        sh:path schema:runtimePlatform ;
+        sh:node connossProfiles:TextValue ;
+        sh:severity sh:Violation ;
+        sh:message "runtimePlatform values must be of type Text." ;
+    ] ;
+    sh:property [
+        sh:path schema:applicationCategory ;
+        sh:name "applicationCategory" ;
+        sh:description "The high-level functional classification of the software application, indicating its primary computational purpose or technical utility (e.g., Simulation, Data Visualization, Statistical Analysis)." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 8 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "applicationCategory is recommended." ;
+    ] ;
+    sh:property [
+        sh:path schema:applicationCategory ;
+        sh:or ( [ sh:node connossProfiles:TextValue ] [ sh:node connossProfiles:URLValue ] ) ;
+        sh:severity sh:Violation ;
+        sh:message "applicationCategory values must be of type Text or URL." ;
+    ] ;
+    sh:property [
+        sh:path schema:applicationSubCategory ;
+        sh:name "applicationSubCategory" ;
+        sh:description "A more granular technical or computational classification of the software (e.g., Agent-Based Modeling as a subcategory of Simulation & Modeling)." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 9 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "applicationSubCategory is recommended." ;
+    ] ;
+    sh:property [
+        sh:path schema:applicationSubCategory ;
+        sh:or ( [ sh:node connossProfiles:TextValue ] [ sh:node connossProfiles:URLValue ] ) ;
+        sh:severity sh:Violation ;
+        sh:message "applicationSubCategory values must be of type Text or URL." ;
+    ] ;
+    sh:property [
+        sh:path schema:availableOnDevice ;
+        sh:name "availableOnDevice" ;
+        sh:description "The specific hardware device, architecture, or machine model required to execute the software. This property is used when the software cannot run on standard generic hardware and explicitly depends on specialized physical machinery, processors, or laboratory equipment." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 10 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "availableOnDevice is recommended." ;
+    ] ;
+    sh:property [
+        sh:path schema:availableOnDevice ;
+        sh:node connossProfiles:TextValue ;
+        sh:severity sh:Violation ;
+        sh:message "availableOnDevice values must be of type Text." ;
+    ] ;
+    sh:property [
+        sh:path schema:downloadUrl ;
+        sh:name "downloadUrl" ;
+        sh:description "The direct URL from which the software binary, compiled package, executable, or compressed distribution archive (e.g., .tar.gz, .whl, .exe, .dmg) can be downloaded." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 11 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "downloadUrl is recommended." ;
+    ] ;
+    sh:property [
+        sh:path schema:downloadUrl ;
+        sh:node connossProfiles:URLValue ;
+        sh:severity sh:Violation ;
+        sh:message "downloadUrl values must be of type URL." ;
+    ] ;
+    sh:property [
+        sh:path schema:memoryRequirements ;
+        sh:name "memoryRequirements" ;
+        sh:description "The minimum amount of Random Access Memory (RAM) required to run the software or execute the pipeline." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 12 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "memoryRequirements is recommended." ;
+    ] ;
+    sh:property [
+        sh:path schema:memoryRequirements ;
+        sh:maxCount 1 ;
+        sh:or ( [ sh:node connossProfiles:TextValue ] [ sh:node connossProfiles:URLValue ] ) ;
+        sh:severity sh:Violation ;
+        sh:message "memoryRequirements must have at most one value, of type Text or URL." ;
+    ] ;
+    sh:property [
+        sh:path schema:operatingSystem ;
+        sh:name "operatingSystem" ;
+        sh:description "The operating system(s) required to execute the software (e.g. Windows 7, OSX 10.6, Android 1.6)." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 13 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "operatingSystem is recommended." ;
+    ] ;
+    sh:property [
+        sh:path schema:operatingSystem ;
+        sh:node connossProfiles:TextValue ;
+        sh:severity sh:Violation ;
+        sh:message "operatingSystem values must be of type Text." ;
+    ] ;
+    sh:property [
+        sh:path schema:processorRequirements ;
+        sh:name "processorRequirements" ;
+        sh:description "Processor architecture required to run the application (e.g. IA64)." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 14 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "processorRequirements is recommended." ;
+    ] ;
+    sh:property [
+        sh:path schema:processorRequirements ;
+        sh:maxCount 1 ;
+        sh:node connossProfiles:TextValue ;
+        sh:severity sh:Violation ;
+        sh:message "processorRequirements must have at most one value, of type Text." ;
+    ] ;
+    sh:property [
+        sh:path schema:releaseNotes ;
+        sh:name "releaseNotes" ;
+        sh:description "Description of what changed in this version." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 15 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "releaseNotes is recommended." ;
+    ] ;
+    sh:property [
+        sh:path schema:releaseNotes ;
+        sh:or ( [ sh:node connossProfiles:TextValue ] [ sh:node connossProfiles:URLValue ] ) ;
+        sh:severity sh:Violation ;
+        sh:message "releaseNotes values must be of type Text or URL." ;
+    ] ;
+    sh:property [
+        sh:path schema:softwareHelp ;
+        sh:name "softwareHelp" ;
+        sh:description "User guides, manuals, wikis, or help center pages that assist users in configuring and operating the software." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 16 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "softwareHelp is recommended." ;
+    ] ;
+    sh:property [
+        sh:path schema:softwareHelp ;
+        sh:class schema:CreativeWork ;
+        sh:severity sh:Violation ;
+        sh:message "softwareHelp values must be of type CreativeWork." ;
+    ] ;
+    sh:property [
+        sh:path schema:softwareRequirements ;
+        sh:name "softwareRequirements" ;
+        sh:description "External software components, libraries, frameworks, or runtime environments required for the application to function." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 17 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "softwareRequirements is recommended." ;
+    ] ;
+    sh:property [
+        sh:path schema:softwareRequirements ;
+        sh:class schema:SoftwareSourceCode ;
+        sh:severity sh:Violation ;
+        sh:message "softwareRequirements values must be of type SoftwareSourceCode." ;
+    ] ;
+    sh:property [
+        sh:path schema:softwareVersion ;
+        sh:name "softwareVersion" ;
+        sh:description "Version of the software instance." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 18 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "softwareVersion is recommended." ;
+    ] ;
+    sh:property [
+        sh:path schema:softwareVersion ;
+        sh:maxCount 1 ;
+        sh:node connossProfiles:TextValue ;
+        sh:severity sh:Violation ;
+        sh:message "softwareVersion must have at most one value, of type Text." ;
+    ] ;
+    sh:property [
+        sh:path schema:storageRequirements ;
+        sh:name "storageRequirements" ;
+        sh:description "The minimum amount of persistent storage (disk space) required to install and execute the software." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 19 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "storageRequirements is recommended." ;
+    ] ;
+    sh:property [
+        sh:path schema:storageRequirements ;
+        sh:maxCount 1 ;
+        sh:or ( [ sh:node connossProfiles:TextValue ] [ sh:node connossProfiles:URLValue ] ) ;
+        sh:severity sh:Violation ;
+        sh:message "storageRequirements must have at most one value, of type Text or URL." ;
+    ] ;
+    sh:property [
+        sh:path schema:author ;
+        sh:name "author" ;
+        sh:description "The person or organization that created the software." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 20 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "author is recommended." ;
+    ] ;
+    sh:property [
+        sh:path schema:author ;
+        sh:or ( [ sh:class schema:Organization ] [ sh:class schema:Person ] ) ;
+        sh:severity sh:Violation ;
+        sh:message "author values must be of type Organization or Person." ;
+    ] ;
+    sh:property [
+        sh:path schema:contributor ;
+        sh:name "contributor" ;
+        sh:description "The person or organization that provided secondary contributions to the software." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 21 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "contributor is recommended." ;
+    ] ;
+    sh:property [
+        sh:path schema:contributor ;
+        sh:or ( [ sh:class schema:Organization ] [ sh:class schema:Person ] ) ;
+        sh:severity sh:Violation ;
+        sh:message "contributor values must be of type Organization or Person." ;
+    ] ;
+    sh:property [
+        sh:path schema:copyrightHolder ;
+        sh:name "copyrightHolder" ;
+        sh:description "The person or organization that holds the legal copyright and intellectual property rights to the software application." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 22 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "copyrightHolder is recommended." ;
+    ] ;
+    sh:property [
+        sh:path schema:copyrightHolder ;
+        sh:or ( [ sh:class schema:Organization ] [ sh:class schema:Person ] ) ;
+        sh:severity sh:Violation ;
+        sh:message "copyrightHolder values must be of type Organization or Person." ;
+    ] ;
+    sh:property [
+        sh:path schema:datePublished ;
+        sh:name "datePublished" ;
+        sh:description "The date on which this specific version or release of the software application was officially made publicly available." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 23 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "datePublished is recommended." ;
+    ] ;
+    sh:property [
+        sh:path schema:datePublished ;
+        sh:maxCount 1 ;
+        sh:node connossProfiles:DateValue ;
+        sh:severity sh:Violation ;
+        sh:message "datePublished must have at most one value, of type Date." ;
+    ] ;
+    sh:property [
+        sh:path schema:funder ;
+        sh:name "funder" ;
+        sh:description "A person or organization that supports the development and maintenance of the software through financial contributions, grants, or sponsorships." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 24 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "funder is recommended." ;
+    ] ;
+    sh:property [
+        sh:path schema:funder ;
+        sh:or ( [ sh:class schema:Organization ] [ sh:class schema:Person ] ) ;
+        sh:severity sh:Violation ;
+        sh:message "funder values must be of type Organization or Person." ;
+    ] ;
+    sh:property [
+        sh:path schema:keywords ;
+        sh:name "keywords" ;
+        sh:description "Keywords, tags, or terms that describe the software application." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 25 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "keywords is recommended." ;
+    ] ;
+    sh:property [
+        sh:path schema:keywords ;
+        sh:node connossProfiles:TextValue ;
+        sh:severity sh:Violation ;
+        sh:message "keywords values must be of type Text." ;
+    ] ;
+    sh:property [
+        sh:path schema:publisher ;
+        sh:name "publisher" ;
+        sh:description "The person or organization responsible for making the software application publicly available, distributing it, or managing its official archival publication." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 26 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "publisher is recommended." ;
+    ] ;
+    sh:property [
+        sh:path schema:publisher ;
+        sh:or ( [ sh:class schema:Organization ] [ sh:class schema:Person ] ) ;
+        sh:severity sh:Violation ;
+        sh:message "publisher values must be of type Organization or Person." ;
+    ] ;
+    sh:property [
+        sh:path schema:identifier ;
+        sh:name "identifier" ;
+        sh:description "A unique, unambiguous string, URL, or token that permanently and globally identifies the software application or a specific version of it, such as ISBNs, GTIN codes, UUIDs etc." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 27 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "identifier is recommended." ;
+    ] ;
+    sh:property [
+        sh:path schema:identifier ;
+        sh:or ( [ sh:class schema:PropertyValue ] [ sh:node connossProfiles:URLValue ] ) ;
+        sh:severity sh:Violation ;
+        sh:message "identifier values must be of type PropertyValue or URL." ;
+    ] ;
+    sh:property [
+        sh:path schema:documentation ;
+        sh:name "documentation" ;
+        sh:description "Resources that describe the software's installation, usage, configuration, development, and deployment intended to support users and developers in understanding and applying the software." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 28 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "documentation is recommended." ;
+    ] ;
+    sh:property [
+        sh:path schema:contactPoint ;
+        sh:name "contactPoint" ;
+        sh:description "A contact point for this resource." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 29 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "contactPoint is recommended." ;
+    ] ;
+    sh:property [
+        sh:path schema:contactPoint ;
+        sh:class schema:ContactPoint ;
+        sh:severity sh:Violation ;
+        sh:message "contactPoint values must be of type ContactPoint." ;
+    ] ;
+    sh:property [
+        sh:path codemeta:buildInstructions ;
+        sh:name "buildInstructions" ;
+        sh:description "A link to the specific documentation, scripts, or instructions required to compile, build, or install the software application." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 30 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "buildInstructions is recommended." ;
+    ] ;
+    sh:property [
+        sh:path codemeta:buildInstructions ;
+        sh:or ( [ sh:node connossProfiles:URLValue ] [ sh:class schema:CreativeWork ] ) ;
+        sh:severity sh:Violation ;
+        sh:message "buildInstructions values must be of type URL or CreativeWork." ;
+    ] ;
+    sh:property [
+        sh:path codemeta:developmentStatus ;
+        sh:name "developmentStatus" ;
+        sh:description "A term describing the current maintenance and lifecycle status of the software application (e.g., active, inactive, suspended)." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 31 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "developmentStatus is recommended." ;
+    ] ;
+    sh:property [
+        sh:path codemeta:developmentStatus ;
+        sh:maxCount 1 ;
+        sh:node connossProfiles:TextValue ;
+        sh:severity sh:Violation ;
+        sh:message "developmentStatus must have at most one value, of type Text." ;
+    ] ;
+    sh:property [
+        sh:path codemeta:maintainer ;
+        sh:name "maintainer" ;
+        sh:description "Individual responsible for maintaining the software (usually includes an email contact address)" ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 32 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "maintainer is recommended." ;
+    ] ;
+    sh:property [
+        sh:path codemeta:maintainer ;
+        sh:class schema:Person ;
+        sh:severity sh:Violation ;
+        sh:message "maintainer values must be of type Person." ;
+    ] ;
+    sh:property [
+        sh:path codemeta:readme ;
+        sh:name "readme" ;
+        sh:description "link to software Readme file" ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 33 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "readme is recommended." ;
+    ] ;
+    sh:property [
+        sh:path codemeta:readme ;
+        sh:node connossProfiles:URLValue ;
+        sh:severity sh:Violation ;
+        sh:message "readme values must be of type URL." ;
+    ] ;
+    sh:property [
+        sh:path codemeta:referencePublication ;
+        sh:name "referencePublication" ;
+        sh:description "An academic publication related to the software." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 34 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "referencePublication is recommended." ;
+    ] ;
+    sh:property [
+        sh:path codemeta:referencePublication ;
+        sh:class schema:ScholarlyArticle ;
+        sh:severity sh:Violation ;
+        sh:message "referencePublication values must be of type ScholarlyArticle." ;
+    ] ;
+    sh:property [
+        sh:path connoss:intendedUse ;
+        sh:name "intendedUse" ;
+        sh:description "A concise summary of the primary objective or intended use case for the software. Distinct from general description; this focuses on 'why' the software exists and what problems it solves." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 35 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "intendedUse is recommended." ;
+    ] ;
+    sh:property [
+        sh:path connoss:intendedUse ;
+        sh:maxCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "intendedUse must not have more than one value." ;
+    ] ;
+    sh:property [
+        sh:path connoss:developerDocumentation ;
+        sh:name "developerDocumentation" ;
+        sh:description "Documentation for developers, maintainers, and infrastructure people." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 36 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "developerDocumentation is recommended." ;
+    ] ;
+    sh:property [
+        sh:path connoss:userDocumentation ;
+        sh:name "userDocumentation" ;
+        sh:description "Documentation for end users of the software." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 37 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "userDocumentation is recommended." ;
+    ] ;
+    sh:property [
+        sh:path connoss:softwareInterface ;
+        sh:name "softwareInterface" ;
+        sh:description "The interaction interfaces through which users or other software systems can access, execute, or integrate with software (e.g., CLI, GUI, WebUI, Notebook, API, Library)." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 38 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "softwareInterface is recommended." ;
+    ] ;
+    sh:property [
+        sh:path connoss:input ;
+        sh:name "input" ;
+        sh:description "A formal specification of the data, files, or parameters that the software accepts as input, including format, type, and whether the input is required." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 39 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "input is recommended." ;
+    ] ;
+    sh:property [
+        sh:path connoss:output ;
+        sh:name "output" ;
+        sh:description "A formal specification of the data, files, or results that the software produces, including format and type." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 40 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "output is recommended." ;
+    ] ;
+    sh:property [
+        sh:path connoss:partOfCommunity ;
+        sh:name "partOfCommunity" ;
+        sh:description "A (research) community, consortium, or network that this research artifact (e.g., software) is developed within or affiliated with (e.g., EOSC, NFDI)." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 41 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "partOfCommunity is recommended." ;
+    ] ;
+    sh:property [
+        sh:path connoss:latestRelease ;
+        sh:name "latestRelease" ;
+        sh:description "Link to the latest release." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 42 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "latestRelease is recommended." ;
+    ] ;
+    sh:property [
+        sh:path connoss:latestRelease ;
+        sh:maxCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "latestRelease must not have more than one value." ;
+    ] ;
+    sh:property [
+        sh:path connoss:latestReleaseVersion ;
+        sh:name "latestReleaseVersion" ;
+        sh:description "Version of the latest release." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 43 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "latestReleaseVersion is recommended." ;
+    ] ;
+    sh:property [
+        sh:path connoss:latestReleaseVersion ;
+        sh:maxCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "latestReleaseVersion must not have more than one value." ;
+    ] ;
+    sh:property [
+        sh:path schema:targetProduct ;
+        sh:name "targetProduct" ;
+        sh:description "The specific operating system, platform, or parent software application to which the code or software applies, indicating compatibility or a target ecosystem (e.g., Linux, Windows 11, WordPress, MATLAB). If the software is compatible across multiple versions, the general product name can be used alone." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 45 ;
+        sh:class schema:SoftwareApplication ;
+        sh:severity sh:Violation ;
+        sh:message "targetProduct values must be of type SoftwareApplication." ;
+    ] ;
+    sh:property [
+        sh:path schema:applicationSuite ;
+        sh:name "applicationSuite" ;
+        sh:description "The name of the overarching software suite, distribution, or cohesive ecosystem to which the individual software application belongs." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 46 ;
+        sh:node connossProfiles:TextValue ;
+        sh:severity sh:Violation ;
+        sh:message "applicationSuite values must be of type Text." ;
+    ] ;
+    sh:property [
+        sh:path schema:countriesNotSupported ;
+        sh:name "countriesNotSupported" ;
+        sh:description "The list of countries where the software application is not supported, cannot be legally distributed, or is technically restricted from operating." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 47 ;
+        sh:node connossProfiles:TextValue ;
+        sh:severity sh:Violation ;
+        sh:message "countriesNotSupported values must be of type Text." ;
+    ] ;
+    sh:property [
+        sh:path schema:countriesSupported ;
+        sh:name "countriesSupported" ;
+        sh:description "The list of countries where the software application is explicitly supported, verified to work, or legally cleared for distribution." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 48 ;
+        sh:node connossProfiles:TextValue ;
+        sh:severity sh:Violation ;
+        sh:message "countriesSupported values must be of type Text." ;
+    ] ;
+    sh:property [
+        sh:path schema:featureList ;
+        sh:name "featureList" ;
+        sh:description "A list of the core functionalities or modules provided by the software, including components that external pipelines or applications can depend upon." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 49 ;
+        sh:or ( [ sh:node connossProfiles:TextValue ] [ sh:node connossProfiles:URLValue ] ) ;
+        sh:severity sh:Violation ;
+        sh:message "featureList values must be of type Text or URL." ;
+    ] ;
+    sh:property [
+        sh:path schema:installUrl ;
+        sh:name "installUrl" ;
+        sh:description "URL at which the app may be installed, if different from the URL of the item." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 51 ;
+        sh:node connossProfiles:URLValue ;
+        sh:severity sh:Violation ;
+        sh:message "installUrl values must be of type URL." ;
+    ] ;
+    sh:property [
+        sh:path schema:permissions ;
+        sh:name "permissions" ;
+        sh:description "The explicit security privileges, access rights, or network authorizations required by the software to execute its functions successfully." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 52 ;
+        sh:node connossProfiles:TextValue ;
+        sh:severity sh:Violation ;
+        sh:message "permissions values must be of type Text." ;
+    ] ;
+    sh:property [
+        sh:path schema:screenshot ;
+        sh:name "screenshot" ;
+        sh:description "A URL pointing to an image demonstrating the software's user interface, command-line execution, or visual data output." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 53 ;
+        sh:or ( [ sh:class schema:ImageObject ] [ sh:node connossProfiles:URLValue ] ) ;
+        sh:severity sh:Violation ;
+        sh:message "screenshot values must be of type ImageObject or URL." ;
+    ] ;
+    sh:property [
+        sh:path schema:supportingData ;
+        sh:name "supportingData" ;
+        sh:description "Reference datasets, auxiliary data streams, or data feeds that are bundled with, or required by the software." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 55 ;
+        sh:class schema:DataFeed ;
+        sh:severity sh:Violation ;
+        sh:message "supportingData values must be of type DataFeed." ;
+    ] ;
+    sh:property [
+        sh:path schema:citation ;
+        sh:name "citation" ;
+        sh:description "A citation or reference to another creative work, such as another publication, web page, scholarly article, etc." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 56 ;
+        sh:or ( [ sh:class schema:CreativeWork ] [ sh:node connossProfiles:URLValue ] ) ;
+        sh:severity sh:Violation ;
+        sh:message "citation values must be of type CreativeWork or URL." ;
+    ] ;
+    sh:property [
+        sh:path schema:copyrightYear ;
+        sh:name "copyrightYear" ;
+        sh:description "The year during which the claimed copyright for the software application was first asserted." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 57 ;
+        sh:node connossProfiles:NumberValue ;
+        sh:severity sh:Violation ;
+        sh:message "copyrightYear values must be of type Number." ;
+    ] ;
+    sh:property [
+        sh:path schema:dateCreated ;
+        sh:name "dateCreated" ;
+        sh:description "The date on which the software application repository or initial source code project was first created." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 58 ;
+        sh:maxCount 1 ;
+        sh:node connossProfiles:DateValue ;
+        sh:severity sh:Violation ;
+        sh:message "dateCreated must have at most one value, of type Date." ;
+    ] ;
+    sh:property [
+        sh:path schema:dateModified ;
+        sh:name "dateModified" ;
+        sh:description "The date on which the software application, source code repository, or specific release metadata was last updated or changed." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 59 ;
+        sh:maxCount 1 ;
+        sh:node connossProfiles:DateValue ;
+        sh:severity sh:Violation ;
+        sh:message "dateModified must have at most one value, of type Date." ;
+    ] ;
+    sh:property [
+        sh:path schema:encodingFormat ;
+        sh:name "encodingFormat" ;
+        sh:description "The media type, serialization format, or specific data profile used to represent the software application or its associated packages." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 60 ;
+        sh:or ( [ sh:node connossProfiles:TextValue ] [ sh:node connossProfiles:URLValue ] ) ;
+        sh:severity sh:Violation ;
+        sh:message "encodingFormat values must be of type Text or URL." ;
+    ] ;
+    sh:property [
+        sh:path schema:hasPart ;
+        sh:name "hasPart" ;
+        sh:description "Indicates a distinct creative work, component, or sub-module that is contained within this software application." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 61 ;
+        sh:class schema:CreativeWork ;
+        sh:severity sh:Violation ;
+        sh:message "hasPart values must be of type CreativeWork." ;
+    ] ;
+    sh:property [
+        sh:path schema:isAccessibleForFree ;
+        sh:name "isAccessibleForFree" ;
+        sh:description "A flag to signal that the publication is accessible for free." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 62 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:boolean ;
+        sh:severity sh:Violation ;
+        sh:message "isAccessibleForFree must have at most one value, of type Boolean." ;
+    ] ;
+    sh:property [
+        sh:path schema:isPartOf ;
+        sh:name "isPartOf" ;
+        sh:description "Indicates a larger software ecosystem or overarching project that this software application is a sub-module, component, or integrated piece of." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 63 ;
+        sh:class schema:CreativeWork ;
+        sh:severity sh:Violation ;
+        sh:message "isPartOf values must be of type CreativeWork." ;
+    ] ;
+    sh:property [
+        sh:path schema:sameAs ;
+        sh:name "sameAs" ;
+        sh:description "URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Wikidata entry, or official website." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 66 ;
+        sh:node connossProfiles:URLValue ;
+        sh:severity sh:Violation ;
+        sh:message "sameAs values must be of type URL." ;
+    ] ;
+    sh:property [
+        sh:path schema:relatedLink ;
+        sh:name "relatedLink" ;
+        sh:description "A link related to this object, e.g. related web pages" ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 67 ;
+        sh:node connossProfiles:URLValue ;
+        sh:severity sh:Violation ;
+        sh:message "relatedLink values must be of type URL." ;
+    ] ;
+    sh:property [
+        sh:path schema:creditText ;
+        sh:name "creditText" ;
+        sh:description "Text that can be used to credit person(s) and/or organization(s) associated with a published Creative Work." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 68 ;
+        sh:node connossProfiles:TextValue ;
+        sh:severity sh:Violation ;
+        sh:message "creditText values must be of type Text." ;
+    ] ;
+    sh:property [
+        sh:path schema:alternateName ;
+        sh:name "alternateName" ;
+        sh:description "An alias for the resource." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 69 ;
+        sh:maxCount 1 ;
+        sh:node connossProfiles:TextValue ;
+        sh:severity sh:Violation ;
+        sh:message "alternateName must have at most one value, of type Text." ;
+    ] ;
+    sh:property [
+        sh:path schema:archivedAt ;
+        sh:name "archivedAt" ;
+        sh:description "A link to the archived version or archival location where the original content has been preserved (for CreativeWork, MediaReview, etc.)" ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 70 ;
+        sh:maxCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "archivedAt must not have more than one value." ;
+    ] ;
+    sh:property [
+        sh:path schema:conditionsOfAccess ;
+        sh:name "conditionsOfAccess" ;
+        sh:description "Conditions that affect the availability of, or method(s) of access to an item. Typically used for real world items such as an ArchiveComponent held by an ArchiveOrganization." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 71 ;
+        sh:maxCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "conditionsOfAccess must not have more than one value." ;
+    ] ;
+    sh:property [
+        sh:path codemeta:continuousIntegration ;
+        sh:name "continuousIntegration" ;
+        sh:description "A link to the continuous integration (CI) service or build automation platform." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 72 ;
+        sh:node connossProfiles:URLValue ;
+        sh:severity sh:Violation ;
+        sh:message "continuousIntegration values must be of type URL." ;
+    ] ;
+    sh:property [
+        sh:path codemeta:embargoEndDate ;
+        sh:name "embargoEndDate" ;
+        sh:description "Software may be embargoed from public access until a specified date (e.g. pending publication, 1 year from publication)" ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 73 ;
+        sh:maxCount 1 ;
+        sh:node connossProfiles:DateValue ;
+        sh:severity sh:Violation ;
+        sh:message "embargoEndDate must have at most one value, of type Date." ;
+    ] ;
+    sh:property [
+        sh:path codemeta:hasSourceCode ;
+        sh:name "hasSourceCode" ;
+        sh:description "Link that states where the software code is for a given software. For example a software registry may indicate that one of its software entries hasSourceCode in a GitHub repository." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 74 ;
+        sh:class schema:SoftwareSourceCode ;
+        sh:severity sh:Violation ;
+        sh:message "hasSourceCode values must be of type SoftwareSourceCode." ;
+    ] ;
+    sh:property [
+        sh:path codemeta:isSourceCodeOf ;
+        sh:name "isSourceCodeOf" ;
+        sh:description "Link that states where software application is built from a given source code. This is the reverse property of 'hasSourceCode'." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 75 ;
+        sh:class schema:SoftwareApplication ;
+        sh:severity sh:Violation ;
+        sh:message "isSourceCodeOf values must be of type SoftwareApplication." ;
+    ] ;
+    sh:property [
+        sh:path codemeta:issueTracker ;
+        sh:name "issueTracker" ;
+        sh:description "link to software bug reporting or issue tracking system." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 76 ;
+        sh:node connossProfiles:URLValue ;
+        sh:severity sh:Violation ;
+        sh:message "issueTracker values must be of type URL." ;
+    ] ;
+    sh:property [
+        sh:path connoss:legalConsiderations ;
+        sh:name "legalConsiderations" ;
+        sh:description "A documented concern, requirement, or consideration related to the software's design, deployment, or impact across legal and regulatory dimensions (e.g. licensing constraints, data protection, compliance requirements). Enables transparent disclosure of legal constraints and mitigation strategies." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 78 ;
+        sh:severity sh:Info ;
+    ] ;
+    sh:property [
+        sh:path connoss:ethicalSocialConsiderations ;
+        sh:name "ethicalSocialConsiderations" ;
+        sh:description "A documented concern, requirement, or consideration related to the software's design, deployment, or impact across ethical and social dimensions. Enables transparent disclosure of constraints and mitigation strategies." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 79 ;
+        sh:severity sh:Info ;
+    ] ;
+    sh:property [
+        sh:path connoss:testedWith ;
+        sh:name "testedWith" ;
+        sh:description "Links the software to a testing activity describing how the software is validated, including the test type, required inputs, and produced test results." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 80 ;
+        sh:severity sh:Info ;
+    ] ;
+    sh:property [
+        sh:path connoss:implementsSpecification ;
+        sh:name "implementsSpecification" ;
+        sh:description "A specification that a software implements, including a standard, API or legally defined level of conformance. e.g. the HTTP standard, the OpenAPI spec, OAuth2." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 81 ;
+        sh:severity sh:Info ;
+    ] ;
+    sh:property [
+        sh:path connoss:softwareContainer ;
+        sh:name "softwareContainer" ;
+        sh:description "A container image or packaged runtime environment of the software." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 82 ;
+        sh:severity sh:Info ;
+    ] .
+
+connossProfiles:TestActionProfileShape
+    a sh:NodeShape ;
+    rdfs:label "Test Action Shape" ;
+    rdfs:comment "The act of testing the software according to its specifications, capturing the object tested, the resulting test report or outcome, and the type of test performed." ;
+    sh:targetClass connoss:TestAction ;
+    sh:property [
+        sh:path connoss:testInput ;
+        sh:name "testInput" ;
+        sh:description "Input used to performed the test. Some tests may not require any input, some may require multiple ones. If order or grouping is important in the case of multiple inputs, a ListItem could help." ;
+        sh:group connossProfiles:RequiredGroup ;
+        sh:order 0 ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "testInput is required." ;
+    ] ;
+    sh:property [
+        sh:path connoss:testInstructions ;
+        sh:name "testInstructions" ;
+        sh:description "Specific test instructions for testing the software." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 1 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "testInstructions is recommended." ;
+    ] ;
+    sh:property [
+        sh:path connoss:testType ;
+        sh:name "testType" ;
+        sh:description "The type of test that it is performed on the object." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 2 ;
+        sh:minCount 1 ;
+        sh:severity sh:Warning ;
+        sh:message "testType is recommended." ;
+    ] .
