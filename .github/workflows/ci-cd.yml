@@ -1,12 +1,23 @@
-name: ci_cd 
+name: ci_cd
 
 on:
   push:
     branches:
       - main
+    paths:
+      - "schema/**"          
+      - "src/**"             
+      - "docs/**"            
+      - "mkdocs.yml"
+      - ".github/workflows/ci-cd.yml"
+  workflow_dispatch:         
 
 permissions:
-  contents: write
+  contents: write            
+
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: true
 
 jobs:
   deploy:
@@ -14,9 +25,19 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
-      
         with:
-          python-version: 3.x
-      - run: pip install mkdocs-material mkdocs-redirects
-      - run: mkdocs gh-deploy --force --clean
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: pip install mkdocs-material mkdocs-redirects rdflib pandas
+
+      - name: Generate Types and Properties pages from connoss_Software.jsonld
+        run: python src/create_types_properties_docs.py
+
+      - name: Generate Profiles page from connoss_profiles_shapes.ttl
+        run: python src/create_profiles_docs.py
+
+      - name: Build and deploy to GitHub Pages
+        run: mkdocs gh-deploy --force --clean
