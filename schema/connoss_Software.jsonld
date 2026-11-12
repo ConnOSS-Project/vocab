@@ -42,23 +42,6 @@
         }
       ]
  	},
-	{
-      "@id": "codemeta:maintainer",
-      "@type": "rdf:Property",
-      "rdfs:comment": "A maintainer of a Dataset, software package (SoftwareApplication), or other Project. A maintainer is a Person or Organization that manages contributions to, and/or publication of, some (typically complex) artifact. It is common for distributions of software and data to be based on \"upstream\" sources. When maintainer is applied to a specific version of something e.g. a particular version or packaging of a Dataset, it is always possible that the upstream source has a different maintainer. The isBasedOn property can be used to indicate such relationships between datasets to make the different maintenance roles clear. Similarly in the case of software, a package may have dedicated maintainers working on integration into software distributions such as Ubuntu, as well as upstream maintainers of the underlying work.",
-      "rdfs:label": "maintainer",
-      "schema:domainIncludes": {
-        "@id": "connoss:Software"
-      },
-      "schema:rangeIncludes": [
-        {
-          "@id": "schema:Person"
-        },
-	{
-          "@id": "schema:Organization"
-        }
-      ]
- 	},
     {
       "@id": "codemeta:continuousIntegration",
       "@type": "rdf:Property",
@@ -81,10 +64,10 @@
       "schema:domainIncludes": {
         "@id": "connoss:Software"
       },
-      "schema:rangeIncludes": [
-        {
-          "@id": "schema:Text"
-        }
+     "schema:rangeIncludes": [
+        {"@id": "schema:DefinedTerm"},
+        { "@id": "schema:Text" },
+        { "@id": "schema:URL" }
       ]
     },
     {
@@ -96,26 +79,10 @@
         "@id": "connoss:Software"
       },
       "schema:rangeIncludes": [
-        {
-          "@id": "schema:Date"
-        }
+        {"@id": "schema:Date"},
+	{"@id": "schema:DateTime"},
       ]
     },
- {
-      "@id": "codemeta:funding",
-      "@type": "rdf:Property",
-      "rdfs:comment": "Funding source (e.g. specific grant).",
-      "rdfs:label": "funding",
-      "schema:domainIncludes": {
-        "@id": "connoss:Software"
-      },
-      "schema:rangeIncludes": [
-        {
-          "@id": "schema:Text"
-        }
-      ]
-    },
-
     {
       "@id": "codemeta:hasSourceCode",
       "@type": "rdf:Property",
@@ -161,7 +128,7 @@
     {
       "@id": "codemeta:readme",
       "@type": "rdf:Property",
-      "rdfs:comment": "Link to software Readme file.",
+      "rdfs:comment": "A link to software Readme file.",
       "rdfs:label": "readme",
       "schema:domainIncludes": {
         "@id": "connoss:Software"
@@ -175,7 +142,7 @@
     {
       "@id": "codemeta:referencePublication",
       "@type": "rdf:Property",
-      "rdfs:comment": "An academic publication related to the software.",
+      "rdfs:comment": "An academic publication related to the software component.",
       "rdfs:label": "reference publication",
       "schema:domainIncludes": {
         "@id": "connoss:Software"
@@ -204,19 +171,36 @@
       ]
  	},
     {
-      "@id": "schema:contactPoint",
+      "@id": "codemeta:citeAsID",
       "@type": "rdf:Property",
-      "rdfs:comment": "A contact point for a person or organization.",
-      "rdfs:label": "contact point",
+      "rdfs:comment": "A permanent identifier to a specific citable version of the software.",
+      "rdfs:label": "cite as ID",
       "schema:domainIncludes": {
         "@id": "connoss:Software"
       },
       "schema:rangeIncludes": [
         {
-          "@id": "schema:ContactPoint"
+          "@id": "schema:Text"
+        },
+	{
+          "@id": "schema:URL"
         }
       ]
-    },
+ 	},
+    {
+      "@id": "codemeta:citeWith",
+      "@type": "rdf:Property",
+      "rdfs:comment": "Companion works that should be cited with the version of this software.",
+      "rdfs:label": "cite with",
+      "schema:domainIncludes": {
+        "@id": "connoss:Software"
+      },
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:CreativeWork"
+        }
+      ]
+ 	},
     {
       "@id": "fair4ml:intendedUse",
       "@type": "rdf:Property",
@@ -274,9 +258,9 @@
       ]
     },
     {
-      "@id": "connoss:documentation",
+      "@id": "codemeta:documentation",
       "@type": "rdf:Property",
-      "rdfs:comment": "Resources that describe the software's installation, usage, configuration, development, and deployment intended to support users and developers in understanding and applying the software.",
+      "rdfs:comment": "A general property for linking to any form of software documentation, including but not limited to user guides, tutorials, help pages, manuals, and reference documentation.",
       "rdfs:label": "documentation",
       "schema:domainIncludes": {
         "@id": "connoss:Software"
@@ -284,6 +268,9 @@
       "schema:rangeIncludes": [
         {
           "@id": "schema:CreativeWork"
+        },
+	{
+          "@id": "schema:URL"
         }
       ]
     },
@@ -293,16 +280,19 @@
   "rdfs:comment": "Documentation for end users of the software.",
   "rdfs:label": "user documentation",
   "rdfs:subPropertyOf": {
-    "@id": "connoss:documentation"
+    "@id": "codemeta:documentation"
   },
   "schema:domainIncludes": {
     "@id": "connoss:Software"
   },
   "schema:rangeIncludes": [
-    {
-      "@id": "schema:CreativeWork"
-    }
-  ]
+        {
+          "@id": "schema:CreativeWork"
+        },
+	{
+          "@id": "schema:URL"
+        }
+      ]
   },
   {
   "@id": "connoss:developerDocumentation",
@@ -310,16 +300,19 @@
   "rdfs:comment": "Documentation for developers, maintainers, and infrastructure people.",
   "rdfs:label": "developer documentation",
   "rdfs:subPropertyOf": {
-    "@id": "connoss:documentation"
+    "@id": "codemeta:documentation"
   },
   "schema:domainIncludes": {
     "@id": "connoss:Software"
   },
   "schema:rangeIncludes": [
-    {
-      "@id": "schema:CreativeWork"
-    }
-  ]
+        {
+          "@id": "schema:CreativeWork"
+        },
+	{
+          "@id": "schema:URL"
+        }
+      ]
     },
     {
       "@id": "connoss:softwareInterface",

@@ -14,12 +14,15 @@
 connossProfiles:TextValue a sh:NodeShape ;
     rdfs:label "Text" ;
     rdfs:comment "A plain or language-tagged string literal." ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) .
+    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] [ sh:datatype schema:Text ] ) .
 
 connossProfiles:URLValue a sh:NodeShape ;
     rdfs:label "URL" ;
-    rdfs:comment "An IRI, or a literal typed as xsd:anyURI or schema:URL." ;
-    sh:or ( [ sh:nodeKind sh:IRI ] [ sh:datatype xsd:anyURI ] [ sh:datatype schema:URL ] ) .
+    rdfs:comment "An IRI, a literal typed as xsd:anyURI or schema:URL, or a plain string starting with http:// or https://." ;
+    sh:or ( [ sh:nodeKind sh:IRI ]
+            [ sh:datatype xsd:anyURI ]
+            [ sh:datatype schema:URL ]
+            [ sh:datatype xsd:string ; sh:pattern "^https?://" ] ) .
 
 connossProfiles:DateValue a sh:NodeShape ;
     rdfs:label "Date" ;
@@ -29,7 +32,7 @@ connossProfiles:DateValue a sh:NodeShape ;
 connossProfiles:NumberValue a sh:NodeShape ;
     rdfs:label "Number" ;
     rdfs:comment "A numeric literal." ;
-    sh:or ( [ sh:datatype xsd:integer ] [ sh:datatype xsd:decimal ] [ sh:datatype xsd:double ] [ sh:datatype xsd:float ] ) .
+    sh:or ( [ sh:datatype xsd:integer ] [ sh:datatype xsd:decimal ] [ sh:datatype xsd:double ] [ sh:datatype xsd:float ] [ sh:datatype schema:Number ] ) .
 
 
 # Property groups
@@ -317,6 +320,17 @@ connossProfiles:SoftwareProfileShape
         sh:severity sh:Violation ;
         sh:message "funder values must be of type Organization or Person." ;
     ] ;
+ sh:property [
+        sh:path schema:funding ;
+        sh:name "funding" ;
+        sh:description "A Grant that directly or indirectly provides funding or sponsorship for this item." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 24 ;
+        sh:class schema:Grant ;
+        sh:severity sh:Violation ;
+        sh:message "funding values must be of type Grant." ;
+    ] ;
+
     sh:property [
         sh:path schema:keywords ;
         sh:name "keywords" ;
@@ -338,6 +352,17 @@ connossProfiles:SoftwareProfileShape
         sh:message "publisher values must be of type Organization or Person." ;
     ] ;
     sh:property [
+        sh:path schema:maintainer ;
+        sh:name "maintainer" ;
+        sh:description "A maintainer of a Dataset, software package (SoftwareApplication), or other Project. A maintainer is a Person or Organization that manages contributions to, and/or publication of, some (typically complex) artifact. It is common for distributions of software and data to be based on upstream sources. When maintainer is applied to a specific version of something e.g. a particular version or packaging of a Dataset, it is always possible that the upstream source has a different maintainer. The isBasedOn property can be used to indicate such relationships between datasets to make the different maintenance roles clear. Similarly in the case of software, a package may have dedicated maintainers working on integration into software distributions such as Ubuntu, as well as upstream maintainers of the underlying work." ;
+        sh:group connossProfiles:RecommendedGroup ;
+        sh:order 26 ;
+        sh:or ( [ sh:class schema:Organization ] [ sh:class schema:Person ] ) ;
+        sh:severity sh:Violation ;
+        sh:message "maintainer values must be of type Organization or Person." ;
+    ] ;
+
+    sh:property [
         sh:path schema:identifier ;
         sh:name "identifier" ;
         sh:description "A unique, unambiguous string, URL, or token that permanently and globally identifies the software application or a specific version of it, such as ISBNs, GTIN codes, UUIDs etc." ;
@@ -346,16 +371,6 @@ connossProfiles:SoftwareProfileShape
         sh:or ( [ sh:class schema:PropertyValue ] [ sh:node connossProfiles:URLValue ] ) ;
         sh:severity sh:Violation ;
         sh:message "identifier values must be of type PropertyValue or URL." ;
-    ] ;
-    sh:property [
-        sh:path schema:documentation ;
-        sh:name "documentation" ;
-        sh:description "Resources that describe the software's installation, usage, configuration, development, and deployment intended to support users and developers in understanding and applying the software." ;
-        sh:group connossProfiles:RecommendedGroup ;
-        sh:order 28 ;
-        sh:class schema:CreativeWork ;
-        sh:severity sh:Violation ;
-        sh:message "documentation values must be of type CreativeWork." ;
     ] ;
     sh:property [
         sh:path schema:contactPoint ;
@@ -384,19 +399,9 @@ connossProfiles:SoftwareProfileShape
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 31 ;
         sh:maxCount 1 ;
-        sh:node connossProfiles:TextValue ;
+        sh:or ( [ sh:class schema:DefinedTerm ] [ sh:node connossProfiles:TextValue ] [ sh:node connossProfiles:URLValue ] ) ;
         sh:severity sh:Violation ;
-        sh:message "developmentStatus must have at most one value, of type Text." ;
-    ] ;
-    sh:property [
-        sh:path codemeta:maintainer ;
-        sh:name "maintainer" ;
-        sh:description "Individual responsible for maintaining the software (usually includes an email contact address)" ;
-        sh:group connossProfiles:RecommendedGroup ;
-        sh:order 32 ;
-        sh:class schema:Person ;
-        sh:severity sh:Violation ;
-        sh:message "maintainer values must be of type Person." ;
+        sh:message "developmentStatus must have at most one value, of type DefinedTerm, Text or URL." ;
     ] ;
     sh:property [
         sh:path codemeta:readme ;
@@ -455,9 +460,9 @@ connossProfiles:SoftwareProfileShape
         sh:description "The interaction interfaces through which users or other software systems can access, execute, or integrate with software (e.g., CLI, GUI, WebUI, Notebook, API, Library)." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 38 ;
-        sh:or ( [ sh:class schema:DefinedTerm ] [ sh:node connossProfiles:TextValue ] [ sh:nodeKind sh:BlankNodeOrIRI ] [ sh:node connossProfiles:URLValue ] ) ;
+        sh:or ( [ sh:class schema:DefinedTerm ] [ sh:node connossProfiles:TextValue ] [ sh:node connossProfiles:URLValue ] ) ;
         sh:severity sh:Violation ;
-        sh:message "softwareInterface values must be of type DefinedTerm, Text, Thing or URL." ;
+        sh:message "softwareInterface values must be of type DefinedTerm, Text or URL." ;
     ] ;
     sh:property [
         sh:path connoss:input ;
@@ -607,7 +612,7 @@ connossProfiles:SoftwareProfileShape
         sh:description "A citation or reference to another creative work, such as another publication, web page, scholarly article, etc." ;
         sh:group connossProfiles:OptionalGroup ;
         sh:order 56 ;
-        sh:or ( [ sh:class schema:CreativeWork ] [ sh:node connossProfiles:URLValue ] ) ;
+        sh:or ( [ sh:class schema:CreativeWork ] [ sh:node connossProfiles:TextValue ] ) ;
         sh:severity sh:Violation ;
         sh:message "citation values must be of type CreativeWork or URL." ;
     ] ;
@@ -642,16 +647,6 @@ connossProfiles:SoftwareProfileShape
         sh:node connossProfiles:DateValue ;
         sh:severity sh:Violation ;
         sh:message "dateModified must have at most one value, of type Date." ;
-    ] ;
-    sh:property [
-        sh:path schema:encodingFormat ;
-        sh:name "encodingFormat" ;
-        sh:description "The media type, serialization format, or specific data profile used to represent the software application or its associated packages." ;
-        sh:group connossProfiles:OptionalGroup ;
-        sh:order 60 ;
-        sh:or ( [ sh:node connossProfiles:TextValue ] [ sh:node connossProfiles:URLValue ] ) ;
-        sh:severity sh:Violation ;
-        sh:message "encodingFormat values must be of type Text or URL." ;
     ] ;
     sh:property [
         sh:path schema:hasPart ;
@@ -766,7 +761,7 @@ connossProfiles:SoftwareProfileShape
         sh:maxCount 1 ;
         sh:node connossProfiles:DateValue ;
         sh:severity sh:Violation ;
-        sh:message "embargoEndDate must have at most one value, of type Date." ;
+        sh:message "embargoEndDate must have at most one value, of type Date or DateTime." ;
     ] ;
     sh:property [
         sh:path codemeta:hasSourceCode ;
