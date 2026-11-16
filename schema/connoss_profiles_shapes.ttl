@@ -5,6 +5,7 @@
 @prefix schema: <https://schema.org/> .
 @prefix codemeta: <https://w3id.org/codemeta/> .
 @prefix bioschemas: <https://bioschemas.org/> .
+@prefix fair4ml: <https://w3id.org/fair4ml#>
 @prefix connoss: <https://purls.helmholtz-metadaten.de/connoss/> .
 @prefix connossProfiles: <https://purls.helmholtz-metadaten.de/connoss/Profiles/> .
 
@@ -429,7 +430,7 @@ connossProfiles:SoftwareProfileShape
         sh:message "referencePublication values must be of type ScholarlyArticle." ;
     ] ;
     sh:property [
-        sh:path connoss:intendedUse ;
+        sh:path fair4ml:intendedUse ;
         sh:name "intendedUse" ;
         sh:description "A concise summary of the primary objective or intended use case for the software. Distinct from general description; this focuses on 'why' the software exists and what problems it solves." ;
         sh:group connossProfiles:RecommendedGroup ;
@@ -445,9 +446,9 @@ connossProfiles:SoftwareProfileShape
         sh:description "Documentation for developers, maintainers, and infrastructure people." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 36 ;
-        sh:class schema:CreativeWork ;
+        sh:or ( [ sh:class schema:CreativeWork ] [ sh:node connossProfiles:URLValue ] ) ;
         sh:severity sh:Violation ;
-        sh:message "developerDocumentation values must be of type CreativeWork." ;
+        sh:message "developerDocumentation values must be of type CreativeWork or URL." ;
     ] ;
     sh:property [
         sh:path connoss:userDocumentation ;
@@ -455,9 +456,9 @@ connossProfiles:SoftwareProfileShape
         sh:description "Documentation for end users of the software." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 37 ;
-        sh:class schema:CreativeWork ;
+        sh:or ( [ sh:class schema:CreativeWork ] [ sh:node connossProfiles:URLValue ] ) ;
         sh:severity sh:Violation ;
-        sh:message "userDocumentation values must be of type CreativeWork." ;
+        sh:message "userDocumentation values must be of type CreativeWork or URL." ;
     ] ;
     sh:property [
         sh:path connoss:softwareInterface ;
@@ -798,6 +799,46 @@ connossProfiles:SoftwareProfileShape
         sh:severity sh:Violation ;
         sh:message "issueTracker values must be of type URL." ;
     ] ;
+    sh:property [
+        sh:path codemeta:documentation ;
+        sh:name "documentation" ;
+        sh:description "A general property for linking to any form of software documentation, including but not limited to user guides, tutorials, help pages, manuals, and reference documentation." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 39 ;
+        sh:or ( [ sh:class schema:CreativeWork ] [ sh:node connossProfiles:URLValue ] ) ;
+        sh:severity sh:Violation ;
+        sh:message "documentation values must be of type CreativeWork or URL." ;
+    ] ;
+sh:property [
+        sh:path codemeta:relatedSoftware ;
+        sh:name "relatedSoftware" ;
+        sh:description "A link to other software that is related by functionality, scientific purpose, or ecosystem context (e.g. alternative implementations, comparable tools, or complementary software). This property does not imply dependency, citation, or execution requirement. It is intended to support discovery, comparison, and interoperability mapping between software artifacts." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 83 ;
+        sh:or ( [ sh:class schema:SoftwareSourceCode ] [ sh:class schema:SoftwareApplication ] ) ;
+        sh:severity sh:Violation ;
+        sh:message "relatedSoftware values must be of type SoftwareSourceCode or SoftwareApplication." ;
+    ] ;
+    sh:property [
+        sh:path codemeta:citeAsID ;
+        sh:name "citeAsID" ;
+        sh:description "A permanent identifier to a specific citable version of the software." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 84 ;
+        sh:or ( [ sh:node connossProfiles:TextValue ] [ sh:node connossProfiles:URLValue ] ) ;
+        sh:severity sh:Violation ;
+        sh:message "citeAsID values must be of type Text or URL." ;
+    ] ;
+    sh:property [
+        sh:path codemeta:citeWith ;
+        sh:name "citeWith" ;
+        sh:description "Companion works that should be cited with the version of this software." ;
+        sh:group connossProfiles:OptionalGroup ;
+        sh:order 85 ;
+        sh:class schema:CreativeWork ;
+        sh:severity sh:Violation ;
+        sh:message "citeWith values must be of type CreativeWork." ;
+    ] .
     sh:property [
         sh:path connoss:legalConsiderations ;
         sh:name "legalConsiderations" ;

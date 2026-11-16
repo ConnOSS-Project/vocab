@@ -216,7 +216,7 @@
       ]
     },
     {
-      "@id": "fair4ml:legalConsiderations",
+      "@id": "connoss:legalConsiderations",
       "@type": "rdf:Property",
       "rdfs:comment": "A documented concern, requirement, or consideration related to the software's design, deployment, or impact across legal and regulatory dimensions (e.g. licensing constraints, data protection, compliance requirements). Enables transparent disclosure of legal constraints and mitigation strategies.",
       "rdfs:label": "legal considerations",
@@ -230,7 +230,7 @@
       ]
     },
     {
-      "@id": "fair4ml:ethicalSocialConsiderations",
+      "@id": "connoss:ethicalSocialConsiderations",
       "@type": "rdf:Property",
       "rdfs:comment": "A documented concern, requirement, or consideration related to the software's design, deployment, or impact across ethical and social dimensions. Enables transparent disclosure of constraints and mitigation strategies.",
       "rdfs:label": "ethical social considerations",
