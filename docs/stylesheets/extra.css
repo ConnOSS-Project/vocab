@@ -27,5 +27,5 @@ details summary::before {
 }
 
 .term-connoss  { color: #2e7d32 !important; font-weight: 600; }
-.term-schema   { color: var(--md-default-fg-color) !important; }
-.term-external { color: #1565C0 !important; }
+.term-schema   { color: var(--md-default-fg-color) !important; font-weight: 600; }
+.term-external { color: #1565C0 !important; font-weight: 600;}
