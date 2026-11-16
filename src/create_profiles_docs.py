@@ -158,8 +158,8 @@ def collect_rows(g, shape, profiles) -> dict:
 KEY = (
     "**Key to the specification tables**\n\n"
     '- <span class="term-connoss">Green</span> properties are introduced by ConnOSS\n'
-    '- <span class="term-schema">Red</span> properties exist in schema.org\n'
-    '- <span class="term-external">Black</span> properties are reused from external vocabularies (e.g. CodeMeta)\n\n'
+    '- <span class="term-schema">Black</span> properties exist in schema.org\n'
+    '- <span class="term-external">Blue</span> properties are reused from external vocabularies (e.g. CodeMeta)\n\n'
     "CD = Cardinality\n\n"
 )
 
