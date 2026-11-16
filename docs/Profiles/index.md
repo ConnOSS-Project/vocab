@@ -3,8 +3,8 @@
 **Key to the specification tables**
 
 - <span class="term-connoss">Green</span> properties are introduced by ConnOSS
-- <span class="term-schema">Red</span> properties exist in schema.org
-- <span class="term-external">Black</span> properties are reused from external vocabularies (e.g. CodeMeta)
+- <span class="term-schema">Black</span> properties exist in schema.org
+- <span class="term-external">Blue</span> properties are reused from external vocabularies (e.g. CodeMeta)
 
 CD = Cardinality
 
