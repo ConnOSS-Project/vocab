@@ -5,7 +5,7 @@
 @prefix schema: <https://schema.org/> .
 @prefix codemeta: <https://w3id.org/codemeta/> .
 @prefix bioschemas: <https://bioschemas.org/> .
-@prefix fair4ml: <https://w3id.org/fair4ml#>
+@prefix fair4ml: <https://w3id.org/fair4ml#> .
 @prefix connoss: <https://purls.helmholtz-metadaten.de/connoss/> .
 @prefix connossProfiles: <https://purls.helmholtz-metadaten.de/connoss/Profiles/> .
 
@@ -838,7 +838,7 @@ sh:property [
         sh:class schema:CreativeWork ;
         sh:severity sh:Violation ;
         sh:message "citeWith values must be of type CreativeWork." ;
-    ] .
+    ] ;
     sh:property [
         sh:path connoss:legalConsiderations ;
         sh:name "legalConsiderations" ;
