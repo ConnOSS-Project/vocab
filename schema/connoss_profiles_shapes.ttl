@@ -34,6 +34,11 @@ connossProfiles:NumberValue a sh:NodeShape ;
     rdfs:comment "A numeric literal." ;
     sh:or ( [ sh:datatype xsd:integer ] [ sh:datatype xsd:decimal ] [ sh:datatype xsd:double ] [ sh:datatype xsd:float ] [ sh:datatype schema:Number ] ) .
 
+connossProfiles:BooleanValue a sh:NodeShape ;
+    rdfs:label "Boolean" ;
+    rdfs:comment "A boolean literal (true or false)." ;
+    sh:or ( [ sh:datatype xsd:boolean ] [ sh:datatype schema:Boolean ] ) .
+
 
 # Property groups
 
@@ -665,7 +670,7 @@ connossProfiles:SoftwareProfileShape
         sh:group connossProfiles:OptionalGroup ;
         sh:order 62 ;
         sh:maxCount 1 ;
-        sh:datatype xsd:boolean ;
+        sh:node connossProfiles:BooleanValue ;
         sh:severity sh:Violation ;
         sh:message "isAccessibleForFree must have at most one value, of type Boolean." ;
     ] ;
