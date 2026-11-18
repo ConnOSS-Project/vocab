@@ -1,6 +1,6 @@
 # **About**
 
-ConnOSS vocabulary is a metadata schema for describing research software in a structured, machine-actionable, and interoperable way. It reuses and extends established vocabularies — including schema.org and CodeMeta — to capture the properties that matter most for discovering, reusing, and citing research software across scientific domains and communities.
+ConnOSS vocabulary is a metadata schema for describing research software in a structured, machine-actionable and interoperable way. It reuses and extends established vocabularies — including schema.org and CodeMeta — to capture the properties that matter most for discovering, reusing, and citing research software across scientific domains and communities.
 
 ## Team
 
@@ -20,4 +20,4 @@ ConnOSS vocabulary is a metadata schema for describing research software in a st
 
 ## Get Involved
 
-ConnOSS is an open, community-driven effort. Feedback, issues, and contributions are welcome via the [GitHub repository](https://github.com/ConnOSS-Project/vocab){:target="_blank"}.
+ConnOSS Metadata Schema is an open, community-driven effort. Feedback, issues, and contributions are welcome via the [GitHub repository](https://github.com/ConnOSS-Project/vocab){:target="_blank"}.
