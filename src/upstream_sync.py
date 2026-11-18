@@ -2,26 +2,22 @@
 Upstream sync for the ConnOSS schema and profiles.
 
 For every source in upstream/sources.yml:
-  1. find the latest upstream release and compare it with the version pinned in
-     upstream/sources.lock.json;
+  1. find the latest upstream release and compare it with the version pinned in upstream/sources.lock.json;
   2. diff the two versions term by term (label, description, domain, range, deprecation);
   3. keep only the changes that touch terms ConnOSS uses (vocabulary + SHACL profiles);
   4. apply the safe changes, flag the rest for review, and suggest new upstream terms.
 
-It also checks, against the latest releases, that every reused term still exists,
-is not deprecated, and lives in the namespace ConnOSS uses.
+It also checks, against the latest releases, that every reused term still exists, is not deprecated, and lives in the namespace ConnOSS uses.
 
-Safe = text ConnOSS copied verbatim from upstream: if a ConnOSS description equals the
-old upstream description, it is replaced by the new one. Descriptions that ConnOSS wrote
+Safe = text ConnOSS copied verbatim from upstream: if a ConnOSS description equals the old upstream description, it is replaced by the new one. Descriptions that ConnOSS wrote
 itself are never overwritten; the upstream change is listed for review instead.
 
-Files written: schema/connoss_Software.jsonld, schema/connoss_profiles_shapes.ttl,
-upstream/sources.lock.json, CHANGELOG.md, plus the files from build_artifacts.py.
+Files written: schema/connoss_Software.jsonld, schema/connoss_profiles_shapes.ttl, upstream/sources.lock.json, CHANGELOG.md, plus the files from build_artifacts.py.
 
 Usage:
   python src/upstream_sync.py                      # update files, print the report
   python src/upstream_sync.py --dry-run            # only print the report
-  python src/upstream_sync.py --pr-body pr.md      # also write the PR description
+  python src/upstream_sync.py --pr-body pr.md      # write the PR description
 """
 
 import argparse
@@ -52,7 +48,7 @@ SCHEMA = "http://schema.org/"
 CONNOSS = "https://purls.helmholtz-metadaten.de/connoss/"
 
 
-# ---------- what ConnOSS uses ----------
+# ---------- ConnOSS specific properties ----------
 
 class ConnOSS:
     """The two hand-edited files, as graphs (for reading) and as text (for patching)."""

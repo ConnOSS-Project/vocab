@@ -1,5 +1,5 @@
 """
-Generates the derived schema files, so that only two files are edited by hand:
+Generates the derived schema/profile files:
 
   schema/connoss_Software.jsonld        (vocabulary)   -> schema/connoss_Software.ttl
   schema/connoss_profiles_shapes.ttl    (SHACL profile) -> schema/connoss_profiles.jsonld

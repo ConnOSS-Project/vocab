@@ -5,12 +5,10 @@ Reads:   schema/connoss_profiles_shapes.ttl
 Writes:  docs/Profiles/index.md — ONE page containing every profile
          (one section per sh:NodeShape that has a sh:targetClass)
 
-Each section follows the Bioschemas profile layout: version, schema.org
-hierarchy, description, and one property table per marginality
+Each section follows the Bioschemas profile layout: version, schema.org hierarchy, description, and one property table per marginality
 (Required / Recommended / Optional) with Expected Type, Description and Cardinality.
 
-If the page contains the markers <!-- PROFILES:START --> and <!-- PROFILES:END -->,
-only the content between them is regenerated, so hand-written text around them is kept.
+If the page contains the markers <!-- PROFILES:START --> and <!-- PROFILES:END -->, only the content between them is regenerated, so hand-written text around them is kept.
 Without the markers, the whole page is written.
 """
 
@@ -29,7 +27,6 @@ SCHEMA_NS = ("https://schema.org/", "http://schema.org/")
 CODEMETA_NS = "https://w3id.org/codemeta/"
 BIOSCHEMAS_NS = "https://bioschemas.org/"
 
-# Information that is not stored in the shapes file. Edit here.
 PROFILE_INFO = {
     "Software": {
         "version": "1.0",

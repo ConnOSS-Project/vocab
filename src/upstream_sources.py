@@ -1,11 +1,9 @@
 """
-Reading upstream vocabularies (schema.org, CodeMeta) as configured in
-upstream/sources.yml.
+Reading upstream vocabularies (schema.org, CodeMeta) as configured in upstream/sources.yml.
 
 Every source is turned into the same simple structure, one entry per term:
 
-    {local_name: {"iri", "kind", "label", "comment", "domain", "range",
-                  "superseded_by", "status"}}
+    {local_name: {"iri", "kind", "label", "comment", "domain", "range", "superseded_by", "status"}}
 
 so that two versions of any source can be compared field by field.
 """

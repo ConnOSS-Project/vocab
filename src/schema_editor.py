@@ -1,8 +1,7 @@
 """
 In-place editing of the two hand-edited schema files.
 
-Only the entry that changes is rewritten; the rest of the file (formatting, comments,
-order) stays as it is, so pull requests show small, readable diffs.
+Only the entry that changes is rewritten; the rest of the file (formatting, comments, order) stays as it is, so pull requests show small, readable diffs.
 
   VocabFile   schema/connoss_Software.jsonld      one @graph node at a time
   ShapesFile  schema/connoss_profiles_shapes.ttl  one sh:property [ ... ] block at a time
@@ -21,7 +20,7 @@ def expand(compact: str) -> str:
     prefix, _, name = compact.partition(":")
     return PREFIXES[prefix] + name if prefix in PREFIXES and not name.startswith("//") else compact
 
-# ---------------------------------------------------------------- shared helpers
+# ----------------------- shared helpers ---------------------------
 
 DATA_TYPES = {  # schema.org data type -> (value shape in the profile, plain xsd fallback)
     "Text": ("TextValue", "xsd:string"),
@@ -84,7 +83,7 @@ def _scan(text: str, start: int = 0):
         i += 1
 
 
-# ---------------------------------------------------------------- vocabulary (JSON-LD)
+# ----------------------- vocabulary (JSON-LD) ------------------------
 
 class VocabFile:
     def __init__(self, text: str):
@@ -143,7 +142,7 @@ class VocabFile:
         node["schema:rangeIncludes"] = [{"@id": t} for t in types]
 
 
-# ---------------------------------------------------------------- profiles (SHACL Turtle)
+# -------------------- profiles (SHACL Turtle) ----------------------------
 
 class ShapesFile:
     def __init__(self, text: str):
