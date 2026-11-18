@@ -3,8 +3,8 @@
     "owl": "http://www.w3.org/2002/07/owl#",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "schema": "http://schema.org/",
-    "codemeta": "https://w3id.org/codemeta/",
+    "schema": "https://schema.org/",
+    "codemeta": "https://w3id.org/codemeta/terms/",
     "fair4ml": "https://w3id.org/fair4ml#",
     "bioschemas": "https://bioschemas.org/",
     "maSMP": "https://discovery.biothings.io/view/maSMP/",
@@ -23,7 +23,7 @@
       "schema:license": {
         "@id": "https://creativecommons.org/licenses/by-sa/4.0/"
       },
-      "schema:schemaVersion": "https://schema.org/docs/releases.html#v29.4"
+      "schema:schemaVersion": "https://schema.org/docs/releases.html#v30.1"
     },
     {
       "@id": "codemeta:buildInstructions",

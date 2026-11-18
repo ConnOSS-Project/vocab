@@ -1,17 +1,19 @@
+# Generated from connoss_Software.jsonld by src/build_artifacts.py - do not edit.
+
 @prefix bioschemas: <https://bioschemas.org/> .
-@prefix codemeta: <https://w3id.org/codemeta/> .
+@prefix codemeta: <https://w3id.org/codemeta/terms/> .
 @prefix connoss: <https://purls.helmholtz-metadaten.de/connoss/> .
 @prefix fair4ml: <https://w3id.org/fair4ml#> .
 @prefix maSMP: <https://discovery.biothings.io/view/maSMP/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <http://schema.org/> .
+@prefix schema: <https://schema.org/> .
 
 connoss:Software a rdfs:Class ;
     rdfs:label "Software" ;
     schema:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
-    schema:schemaVersion "https://schema.org/docs/releases.html#v29.4" ;
+    schema:schemaVersion "https://schema.org/docs/releases.html#v30.1" ;
     rdfs:comment "Extension to schema.org and CodeMeta to describe software source code, software applications, and software releases." ;
     rdfs:subClassOf schema:SoftwareApplication,
         schema:SoftwareSourceCode .

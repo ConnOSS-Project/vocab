@@ -1,0 +1,47 @@
+name: upstream-sync
+
+# Checks schema.org and CodeMeta for new releases
+# and opens a pull request that updates the ConnOSS schema and profile.
+
+on:
+  schedule:
+    - cron: "0 6 1 */3 *"      # 06:00 UTC on the 1st of Jan, Apr, Jul, Oct (every 3 months)
+  workflow_dispatch:           # run it any time from the Actions tab
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: upstream-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install rdflib pyyaml
+
+      - name: Compare upstream releases and update the schema
+        run: python src/upstream_sync.py --pr-body "$RUNNER_TEMP/pr-body.md"
+
+      - name: Open or update the pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: upstream-sync
+          delete-branch: true
+          title: "Upstream sync: update ConnOSS schema and profile"
+          commit-message: "Sync with upstream vocabularies"
+          body-path: ${{ runner.temp }}/pr-body.md
+          labels: upstream-sync
+          add-paths: |
+            schema/*
+            upstream/sources.lock.json
+            CHANGELOG.md

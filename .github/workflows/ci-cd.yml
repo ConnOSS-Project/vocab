@@ -28,10 +28,13 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.x"
+          python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install mkdocs-material mkdocs-redirects rdflib pandas
+        run: pip install mkdocs-material mkdocs-redirects rdflib pandas pyyaml
+
+      - name: Generate connoss_Software.ttl and connoss_profiles.jsonld
+        run: python src/build_artifacts.py
 
       - name: Generate Types and Properties pages from connoss_Software.jsonld
         run: python src/create_types_properties_docs.py

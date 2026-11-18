@@ -1,0 +1,47 @@
+# Upstream vocabularies that ConnOSS reuses.
+# The upstream-sync workflow checks each source for a newer release than the one
+# pinned in sources.lock.json and opens a PR with the resulting changes.
+#
+# namespaces: every IRI prefix under which this source's terms may appear
+#             (the longest matching prefix wins; all are treated as the same term).
+# versions:   how to discover released versions
+#   - json:      read version keys from a JSON file (key = object holding the versions)
+#   - git-tags:  tags of a git repository matching `pattern`
+#   - git-dirs:  sub-directories of `path` in a git repository
+# data:       where to get the term definitions of one version ({version} is substituted)
+#   - schemaorg-csv: schema.org release CSVs (properties + types)
+#   - rdf:           any RDF vocabulary file (rdfs:label, rdfs:comment,
+#                    schema:domainIncludes/rangeIncludes, schema:supersededBy)
+# watch_types: new upstream properties on these types are suggested as candidates
+#              (omit to suggest every new term of the source)
+
+schema_version_source: schemaorg   # its release goes into schema:schemaVersion
+
+sources:
+  schemaorg:
+    name: Schema.org
+    namespaces: ["https://schema.org/", "http://schema.org/"]
+    versions:
+      method: json
+      url: https://raw.githubusercontent.com/schemaorg/schemaorg/main/versions.json
+      key: releaseLog
+    data:
+      format: schemaorg-csv
+      properties: https://raw.githubusercontent.com/schemaorg/schemaorg/main/data/releases/{version}/schemaorg-all-https-properties.csv
+      types: https://raw.githubusercontent.com/schemaorg/schemaorg/main/data/releases/{version}/schemaorg-all-https-types.csv
+    version_iri: https://schema.org/docs/releases.html#v{version}
+    release_notes: https://schema.org/docs/releases.html#v{version}
+    watch_types: [Thing, CreativeWork, SoftwareApplication, SoftwareSourceCode, Action]
+
+  codemeta:
+    name: CodeMeta
+    namespaces: ["https://w3id.org/codemeta/terms/", "https://w3id.org/codemeta/", "https://codemeta.github.io/terms/"]
+    versions:
+      method: git-tags
+      repo: https://github.com/codemeta/codemeta.git
+      pattern: '^\d+(\.\d+)*$'
+    data:
+      format: rdf
+      url: https://raw.githubusercontent.com/codemeta/codemeta/{version}/codemeta_all.jsonld
+    release_notes: https://github.com/codemeta/codemeta/releases/tag/{version}
+
