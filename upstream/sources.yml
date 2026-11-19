@@ -1,22 +1,18 @@
 # Upstream vocabularies that ConnOSS reuses.
-# The upstream-sync workflow checks each source for a newer release than the one
-# pinned in sources.lock.json and opens a PR with the resulting changes.
+# The upstream-sync workflow checks each source for a newer release than the one pinned in sources.lock.json and opens a PR with the resulting changes.
 #
-# namespaces: every IRI prefix under which this source's terms may appear
-#             (the longest matching prefix wins; all are treated as the same term).
-# versions:   how to discover released versions
-#   - json:      read version keys from a JSON file (key = object holding the versions)
+# namespaces: every IRI prefix under which this source's terms may appear (the longest matching prefix wins; all are treated as the same term).
+# versions: how to discover released versions
+#   - json: read version keys from a JSON file (key = object holding the versions)
 #   - git-tags:  tags of a git repository matching `pattern`
 #   - git-dirs:  sub-directories of `path` in a git repository
-# data:       where to get the term definitions of one version ({version} is substituted)
+# data: where to get the term definitions of one version ({version} is substituted)
 #   - schemaorg-csv: schema.org release CSVs (properties + types)
-#   - rdf:           any RDF vocabulary file (rdfs:label, rdfs:comment,
-#                    schema:domainIncludes/rangeIncludes, schema:supersededBy)
-# watch_types: new upstream properties on these types are suggested as candidates
-#              (omit to suggest every new term of the source)
+#   - rdf: any RDF vocabulary file (rdfs:label, rdfs:comment, schema:domainIncludes/rangeIncludes, schema:supersededBy)
+# watch_types: new upstream properties on these types are suggested as candidates (omit to suggest every new term of the source)
+# add_new_terms: true = new upstream properties are added to the vocabulary and, in the Optional group, to the Software profile (instead of only being suggested)
 
-schema_version_source: schemaorg   # its release goes into schema:schemaVersion
-
+schema_version_source: schemaorg   
 sources:
   schemaorg:
     name: Schema.org
@@ -44,4 +40,5 @@ sources:
       format: rdf
       url: https://raw.githubusercontent.com/codemeta/codemeta/{version}/codemeta_all.jsonld
     release_notes: https://github.com/codemeta/codemeta/releases/tag/{version}
+    add_new_terms: true     # new CodeMeta properties are added to the vocabulary and the Software profile
 
