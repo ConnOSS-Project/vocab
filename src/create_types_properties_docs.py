@@ -17,7 +17,7 @@ from rdflib.namespace import RDF, RDFS, OWL
 from pandas import DataFrame
 
 CONNOSS_NS = "https://purls.helmholtz-metadaten.de/connoss/"
-SCHEMA_NS = "http://schema.org/"
+SCHEMA_NS = "https://schema.org/"
 CODEMETA_NS = "https://w3id.org/codemeta/"
 FAIR4ML_NS = "https://w3id.org/fair4ml#"
 BIOSCHEMAS_NS = "https://bioschemas.org/"

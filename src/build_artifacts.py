@@ -68,7 +68,8 @@ def profiles_jsonld(vocab: Graph) -> str:
     old_nodes = {n["@id"]: n for n in old.get("@graph", [])}
 
     software = URIRef(CONNOSS + "Software")
-    schema_version = next((str(o) for o in vocab.objects(software, URIRef("http://schema.org/schemaVersion"))), None)
+    schema_version = next((str(o) for ns in ("https://schema.org/", "http://schema.org/")
+                           for o in vocab.objects(software, URIRef(ns + "schemaVersion"))), None)
 
     graph = []
     targets = sorted(set(shapes.subjects(SH.targetClass, None)),
