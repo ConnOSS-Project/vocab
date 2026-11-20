@@ -83,9 +83,9 @@ connossProfiles:SoftwareProfileShape
         sh:order 1 ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-        sh:node connossProfiles:TextValue ;
+        sh:or ( [ sh:class schema:TextObject ] [ sh:node connossProfiles:TextValue ] ) ;
         sh:severity sh:Violation ;
-        sh:message "description is required and must be a single Text value." ;
+        sh:message "description is required and must be a single value, of type Text or TextObject." ;
     ] ;
     sh:property [
         sh:path schema:url ;
@@ -147,9 +147,9 @@ connossProfiles:SoftwareProfileShape
         sh:description "The execution environment required to run the software, including script interpreters (e.g., Python 3.9), virtual machines (e.g., Java Virtual Machine v17), and managed frameworks (e.g. .NET Core 6.0)." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 7 ;
-        sh:node connossProfiles:TextValue ;
+        sh:or ( [ sh:class schema:RuntimePlatform ] [ sh:node connossProfiles:TextValue ] ) ;
         sh:severity sh:Violation ;
-        sh:message "runtimePlatform values must be of type Text." ;
+        sh:message "runtimePlatform values must be of type RuntimePlatform or Text." ;
     ] ;
     sh:property [
         sh:path schema:applicationCategory ;
@@ -208,9 +208,9 @@ connossProfiles:SoftwareProfileShape
         sh:description "The operating system(s) required to execute the software (e.g. Windows 7, OSX 10.6, Android 1.6)." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 13 ;
-        sh:node connossProfiles:TextValue ;
+        sh:or ( [ sh:class schema:OperatingSystem ] [ sh:node connossProfiles:TextValue ] ) ;
         sh:severity sh:Violation ;
-        sh:message "operatingSystem values must be of type Text." ;
+        sh:message "operatingSystem values must be of type OperatingSystem or Text." ;
     ] ;
     sh:property [
         sh:path schema:processorRequirements ;
@@ -249,9 +249,9 @@ connossProfiles:SoftwareProfileShape
         sh:description "External software components, libraries, frameworks, or runtime environments required for the application to function." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 17 ;
-        sh:class schema:SoftwareSourceCode ;
+        sh:or ( [ sh:class schema:SoftwareApplication ] [ sh:node connossProfiles:TextValue ] [ sh:node connossProfiles:URLValue ] ) ;
         sh:severity sh:Violation ;
-        sh:message "softwareRequirements values must be of type SoftwareSourceCode." ;
+        sh:message "softwareRequirements values must be of type SoftwareApplication, Text or URL." ;
     ] ;
     sh:property [
         sh:path schema:softwareVersion ;
@@ -343,9 +343,9 @@ connossProfiles:SoftwareProfileShape
         sh:description "Keywords, tags, or terms that describe the software application." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 25 ;
-        sh:node connossProfiles:TextValue ;
+        sh:or ( [ sh:class schema:DefinedTerm ] [ sh:node connossProfiles:TextValue ] [ sh:node connossProfiles:URLValue ] ) ;
         sh:severity sh:Violation ;
-        sh:message "keywords values must be of type Text." ;
+        sh:message "keywords values must be of type DefinedTerm, Text or URL." ;
     ] ;
     sh:property [
         sh:path schema:publisher ;
@@ -374,9 +374,9 @@ connossProfiles:SoftwareProfileShape
         sh:description "A unique, unambiguous string, URL, or token that permanently and globally identifies the software application or a specific version of it, such as ISBNs, GTIN codes, UUIDs etc." ;
         sh:group connossProfiles:RecommendedGroup ;
         sh:order 27 ;
-        sh:or ( [ sh:class schema:PropertyValue ] [ sh:node connossProfiles:URLValue ] ) ;
+        sh:or ( [ sh:class schema:PropertyValue ] [ sh:node connossProfiles:TextValue ] [ sh:node connossProfiles:URLValue ] ) ;
         sh:severity sh:Violation ;
-        sh:message "identifier values must be of type PropertyValue or URL." ;
+        sh:message "identifier values must be of type PropertyValue, Text or URL." ;
     ] ;
     sh:property [
         sh:path schema:contactPoint ;
@@ -681,9 +681,9 @@ connossProfiles:SoftwareProfileShape
         sh:description "Indicates a larger software ecosystem or overarching project that this software application is a sub-module, component, or integrated piece of." ;
         sh:group connossProfiles:OptionalGroup ;
         sh:order 63 ;
-        sh:class schema:CreativeWork ;
+        sh:or ( [ sh:class schema:CreativeWork ] [ sh:node connossProfiles:URLValue ] ) ;
         sh:severity sh:Violation ;
-        sh:message "isPartOf values must be of type CreativeWork." ;
+        sh:message "isPartOf values must be of type CreativeWork or URL." ;
     ] ;
     sh:property [
         sh:path schema:sameAs ;

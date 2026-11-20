@@ -28,7 +28,7 @@
     {
       "@id": "codemeta:buildInstructions",
       "@type": "rdf:Property",
-      "rdfs:comment": "Link to the installation instructions or documentation.",
+      "rdfs:comment": "A link to installation instructions or build documentation.",
       "rdfs:label": "build instructions",
       "schema:domainIncludes": {
         "@id": "connoss:Software"
@@ -37,15 +37,15 @@
         {
           "@id": "schema:CreativeWork"
         },
-	{
+        {
           "@id": "schema:URL"
         }
       ]
- 	},
+    },
     {
       "@id": "codemeta:continuousIntegration",
       "@type": "rdf:Property",
-      "rdfs:comment": "Link to the continuous integration service.",
+      "rdfs:comment": "A link to continuous integration service.",
       "rdfs:label": "continuous integration",
       "schema:domainIncludes": {
         "@id": "connoss:Software"
@@ -59,34 +59,44 @@
     {
       "@id": "codemeta:developmentStatus",
       "@type": "rdf:Property",
-      "rdfs:comment": "Description of development status, e.g. Active, inactive, suspended. See repostatus.org.",
+      "rdfs:comment": "Description of development status, e.g. active, inactive, suspended. See repostatus.org.",
       "rdfs:label": "development status",
       "schema:domainIncludes": {
         "@id": "connoss:Software"
       },
-     "schema:rangeIncludes": [
-        {"@id": "schema:DefinedTerm"},
-        { "@id": "schema:Text" },
-        { "@id": "schema:URL" }
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:DefinedTerm"
+        },
+        {
+          "@id": "schema:Text"
+        },
+        {
+          "@id": "schema:URL"
+        }
       ]
     },
     {
       "@id": "codemeta:embargoEndDate",
       "@type": "rdf:Property",
-      "rdfs:comment": "Software may be embargoed from public access until a specified date (e.g. pending publication, 1 year from publication).",
+      "rdfs:comment": "Software may be embargoed from public access until a specified date (e.g. pending publication, 1 year from publication)",
       "rdfs:label": "embargo end date",
       "schema:domainIncludes": {
         "@id": "connoss:Software"
       },
       "schema:rangeIncludes": [
-        {"@id": "schema:Date"},
-	{"@id": "schema:DateTime"}
+        {
+          "@id": "schema:Date"
+        },
+        {
+          "@id": "schema:DateTime"
+        }
       ]
     },
     {
       "@id": "codemeta:hasSourceCode",
       "@type": "rdf:Property",
-      "rdfs:comment": "Link that states where the software code is for a given software. For example a software registry may indicate that one of its software entries hasSourceCode in a GitHub repository.",
+      "rdfs:comment": "A link that states where the software code is for a given software. For example a software registry may indicate that one of its software entries hasSourceCode in a GitHub repository.",
       "rdfs:label": "has Source Code",
       "schema:domainIncludes": {
         "@id": "connoss:Software"
@@ -100,7 +110,7 @@
     {
       "@id": "codemeta:isSourceCodeOf",
       "@type": "rdf:Property",
-      "rdfs:comment": "Link that states where software application is built from a given source code. This is the reverse property of 'hasSourceCode'.",
+      "rdfs:comment": "A link that states where software application is built from a given source code. This is the inverse property of 'hasSourceCode'.",
       "rdfs:label": "is Source Code of",
       "schema:domainIncludes": {
         "@id": "connoss:Software"
@@ -114,7 +124,7 @@
     {
       "@id": "codemeta:issueTracker",
       "@type": "rdf:Property",
-      "rdfs:comment": "Link to software bug reporting or issue tracking system.",
+      "rdfs:comment": "A link to software bug reporting or issue tracking system.",
       "rdfs:label": "issue tracker",
       "schema:domainIncludes": {
         "@id": "connoss:Software"
@@ -173,24 +183,24 @@
     {
       "@id": "codemeta:citeAsID",
       "@type": "rdf:Property",
-      "rdfs:comment": "A permanent identifier to a specific citable version of the software.",
+      "rdfs:comment": "A permanent identifier to a specific citable version of the software",
       "rdfs:label": "cite as ID",
       "schema:domainIncludes": {
         "@id": "connoss:Software"
       },
       "schema:rangeIncludes": [
         {
-          "@id": "schema:Text"
+          "@id": "schema:String"
         },
-	{
+        {
           "@id": "schema:URL"
         }
       ]
- 	},
+    },
     {
       "@id": "codemeta:citeWith",
       "@type": "rdf:Property",
-      "rdfs:comment": "Companion works that should be cited with the version of this software.",
+      "rdfs:comment": "Companion works that should be cited with the version of this software",
       "rdfs:label": "cite with",
       "schema:domainIncludes": {
         "@id": "connoss:Software"
@@ -200,7 +210,7 @@
           "@id": "schema:CreativeWork"
         }
       ]
- 	},
+    },
     {
       "@id": "fair4ml:intendedUse",
       "@type": "rdf:Property",
@@ -432,7 +442,7 @@
     {
       "@id": "schema:relatedLink",
       "@type": "rdf:Property",
-      "rdfs:comment": "A link related to this object, e.g. related web pages.",
+      "rdfs:comment": "A link related to this web page, for example to other related web pages.",
       "rdfs:label": "related link",
       "schema:domainIncludes": {
         "@id": "connoss:Software"

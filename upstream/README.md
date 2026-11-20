@@ -34,33 +34,36 @@ The generated files are rebuilt by `python src/build_artifacts.py` (the deploy w
    classes/properties) and in the profiles (`sh:path`, `sh:class`) is collected and matched to a
    source by namespace. Namespace aliases (`http`/`https` schema.org, the old and new CodeMeta
    namespaces) count as the same term.
-4. **Update the schema and profile.** ConnOSS follows upstream wherever its current value is
-   still the old upstream value. These changes are written into both
-   `connoss_Software.jsonld` and `connoss_profiles_shapes.ttl`:
-   - **Descriptions** that ConnOSS took over unchanged get the new upstream text.
-   - **Expected types (ranges):** the vocabulary's `schema:rangeIncludes` and the profile's
-     type constraint (`sh:class` / `sh:node` / `sh:or`, plus the "of type …" part of
-     `sh:message`) are rewritten to the new range. Data types use the profile's value shapes
-     (`TextValue`, `URLValue`, `DateValue`, …).
+4. **Make reused terms match upstream.** On every run, whether or not there is a new release,
+   every Schema.org and CodeMeta property ConnOSS reuses is brought in line with the latest
+   upstream release:
+   - **Vocabulary** (`connoss_Software.jsonld`, and the generated `.ttl`): description and range
+     (`schema:rangeIncludes`) are set to exactly the upstream values.
+   - **Profile** (`connoss_profiles_shapes.ttl`, and the generated `.jsonld`): the range is set to
+     the upstream range: the type constraint (`sh:class` / `sh:node` / `sh:or`) and the "of type …"
+     part of `sh:message`. Data types use the profile's value shapes (`TextValue`, `URLValue`, …).
+     **Profile descriptions are ConnOSS's own and are never changed.**
    - **Deprecated terms with one replacement** (as with `codemeta:maintainer` →
-     `schema:maintainer` in CodeMeta 4.0) are renamed: `@id`, references, label, `sh:path`,
-     `sh:name` and `sh:message`; description and range are taken over from the new term
-     where ConnOSS had the old upstream values.
+     `schema:maintainer`) are renamed: `@id`, references, label, `sh:path`, `sh:name`,
+     `sh:message`, with the description and range of the new term.
    - **New terms** of sources with `add_new_terms: true` (CodeMeta) are added to the
      vocabulary and to the Software profile, in the Optional group.
    - **Version pins** and `schema:schemaVersion`.
 
-   Only the affected entries are rewritten, so the rest of each file (formatting, comments,
-   order) stays as it is and the PR diff is small.
-5. **List what needs a decision.** Where ConnOSS deliberately differs from upstream (its own
-   description, a narrower or wider range), nothing is overwritten; the upstream change goes into
-   the PR's "Needs review" checklist. So do removed terms, deprecations without a single
-   replacement, namespace changes, renamed terms whose own description may no longer fit, new
-   properties (to choose Required/Recommended/Optional), and profile properties not defined in
-   the vocabulary. New schema.org properties on the watched types are listed as candidates only.
+   Never changed: `connoss:` and other non-upstream terms, cardinalities (`sh:maxCount`,
+   `sh:minCount`) and the Required/Recommended/Optional groups. Only the affected entries are
+   rewritten, so the rest of each file keeps its formatting and the PR diff stays small.
+5. **List what needs a decision.** The PR's "Needs review" checklist contains removed terms,
+   deprecations without a single replacement, namespace changes, renamed terms (to check the
+   profile description still fits), new properties (to choose Required/Recommended/Optional),
+   upstream ranges that use a type schema.org does not define (such as `schema:String` in
+   CodeMeta 4.0), and profile properties not defined in the vocabulary. New schema.org
+   properties on the watched types are listed as candidates only.
 6. **Write the result.** Bump the lock file, add a changelog entry, rebuild the generated files,
    and open (or update) the `upstream-sync` pull request with the full report. If nothing
-   changed, no PR is opened; the report still appears in the workflow run summary.
+   changed, no PR is opened; the report still appears in the workflow run summary. A PR can
+   also be opened without a new release, for example when someone edited a reused term so it no
+   longer matches upstream.
 
 Every automatic change is visible in the PR diff and listed in the PR description, so you
 review it before it reaches `main`.

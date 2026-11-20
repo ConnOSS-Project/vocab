@@ -8,16 +8,23 @@ For every source in upstream/sources.yml (schema.org, CodeMeta):
   3. update connoss_Software.jsonld and connoss_profiles_shapes.ttl to follow upstream;
   4. list what could not be updated safely for review, and suggest new upstream terms.
 
-What is updated automatically, in both the vocabulary and the profile:
-  - descriptions and ranges (expected types), when ConnOSS still has the old upstream value;
+Rule: terms reused from Schema.org and CodeMeta always match the latest upstream release.
+On every run (not only when a new release came out):
+  - vocabulary (connoss_Software.jsonld): description and range are set to exactly the
+    upstream values;
+  - profile (connoss_profiles_shapes.ttl): the range (type constraint and the "of type ..."
+    part of sh:message) is set to the upstream range. Profile descriptions are ConnOSS's own
+    and are never changed.
+
+Also updated automatically:
   - terms deprecated upstream with a single replacement (e.g. codemeta:maintainer ->
-    schema:maintainer): renamed, with description and range taken over from the new term;
+    schema:maintainer): renamed in vocabulary and profile;
   - new terms of sources with `add_new_terms: true` (CodeMeta): added to the vocabulary and,
     in the Optional group, to the Software profile;
   - schema:schemaVersion.
 
-Where ConnOSS deliberately differs from upstream (its own description, a narrower range),
-nothing is overwritten; the upstream change is listed for review instead.
+connoss: and other non-upstream terms, cardinalities and Required/Recommended/Optional
+groups are never changed.
 
 Usage:
   python src/upstream_sync.py                      # update files, print the report
@@ -180,55 +187,43 @@ def code(x) -> str:
 
 # ---------------------------------------------------------------- applying one term
 
-def follow_description(cx, rep, iri, cfg, old_text, new_text, label):
-    """Vocabulary + profile descriptions follow upstream where they still equal the old upstream text."""
-    term = code(up.compact(iri))
-    node_id, node = cx.vocab_node(iri, cfg)
-    if node and node.get("rdfs:comment") is not None:
-        mine = node["rdfs:comment"]
-        if up.norm(mine) == up.norm(old_text) and up.norm(mine) != up.norm(new_text):
-            node["rdfs:comment"] = new_text
-            cx.vocab_file.replace(node_id, node)
-            rep.add(rep.applied, "Vocabulary: description of {} updated to the {} text: {}".format(term, label, quote(new_text)))
-        elif up.norm(mine) != up.norm(new_text):
-            rep.add(rep.review, "**Description changed upstream** – {} (vocabulary has its own text). "
-                    "Old: {} → new: {}".format(term, quote(old_text), quote(new_text)))
-    path = cx.shapes_iri(iri, cfg)
-    for prop in cx.shape_props(path):
-        mine = str(cx.shapes.value(prop, SH.description) or "")
-        if not mine or up.norm(mine) == up.norm(new_text):
-            continue
-        if up.norm(mine) == up.norm(old_text) and cx.shapes_file.set_description(path, mine, new_text):
-            rep.add(rep.applied, "Profile: description of {} updated to the {} text.".format(term, label))
-        else:
-            rep.add(rep.review, "**Description changed upstream** – {} (profile has its own text). "
-                    "Old: {} → new: {}".format(term, quote(old_text), quote(new_text)))
+def same_text(a, b) -> bool:
+    """Exact comparison, ignoring only line breaks and repeated spaces."""
+    return " ".join(str(a or "").split()) == " ".join(str(b or "").split())
 
 
-def follow_range(cx, rep, iri, cfg, old_range, new_range, label):
-    """Vocabulary range and profile type constraint follow upstream where they still match the old range."""
+def enforce_upstream(cx, rep, iri, cfg, term_def, label):
+    """A reused Schema.org/CodeMeta property gets exactly the upstream description and range in the
+    vocabulary, and exactly the upstream range in the profile. Profile descriptions are left as they are."""
     term = code(up.compact(iri))
+    new_range = term_def["range"]
     new_list = ", ".join(code(x) for x in new_range)
+
+    unknown = [t for t in new_range if t.startswith("schema:") and cx.known_types and t not in cx.known_types]
+    if unknown:
+        rep.add(rep.review, "**Upstream uses an unknown type** – {} has the range {} in {}, but schema.org does not "
+                "define {}. The vocabulary copies it as is; the profile treats it as Text where possible."
+                .format(term, new_list, label, ", ".join(code(t) for t in unknown)))
+
     node_id, node = cx.vocab_node(iri, cfg)
-    if node and "schema:rangeIncludes" in node:
-        mine = VocabFile.get_range(node)
-        if range_key(mine) == range_key(old_range) and range_key(mine) != range_key(new_range):
+    if node:
+        changes = []
+        if term_def["comment"] and not same_text(node.get("rdfs:comment"), term_def["comment"]):
+            node["rdfs:comment"] = term_def["comment"]
+            changes.append("description")
+        if new_range and set(VocabFile.get_range(node)) != set(new_range):
             VocabFile.set_range(node, new_range)
+            changes.append("range ({})".format(new_list))
+        if changes:
             cx.vocab_file.replace(node_id, node)
-            rep.add(rep.applied, "Vocabulary: range of {} set to {} ({}).".format(term, new_list, label))
-        elif range_key(mine) != range_key(new_range):
-            rep.add(rep.review, "**Expected types changed upstream** – {}: {} now expects {}; the vocabulary "
-                    "has its own range ({}).".format(term, label, new_list, ", ".join(code(x) for x in mine)))
+            rep.add(rep.applied, "Vocabulary: {} – {} set to {}.".format(term, " and ".join(changes), label))
+
     path = cx.shapes_iri(iri, cfg)
     props = cx.shape_props(path)
-    if props:
-        accepted = [cx.shape_types(p) for p in props]
-        if all(range_key(a) == range_key(old_range) for a in accepted):
-            if range_key(accepted[0]) != range_key(new_range) and cx.shapes_file.set_range(path, new_range):
-                rep.add(rep.applied, "Profile: {} now accepts {} ({}).".format(term, new_list, label))
-        elif any(range_key(a) != range_key(new_range) for a in accepted):
-            rep.add(rep.review, "**Expected types changed upstream** – {}: {} now expects {}; the profile "
-                    "restricts it differently, please check.".format(term, label, new_list))
+    if props and new_range:
+        if any(range_key(cx.shape_types(p)) != range_key(new_range) for p in props) \
+                and cx.shapes_file.set_range(path, new_range):
+            rep.add(rep.applied, "Profile: {} now accepts {} ({}).".format(term, new_list, label))
 
 
 def follow_replacement(cx, rep, iri, cfg, old_term, target_iri, target_cfg, target, label):
@@ -247,12 +242,9 @@ def follow_replacement(cx, rep, iri, cfg, old_term, target_iri, target_cfg, targ
             node["@id"] = new_id
             if node.get("rdfs:label"):
                 node["rdfs:label"] = camel_to_words(local(new_id))
-            if up.norm(node.get("rdfs:comment")) == up.norm(old_term["comment"]) and target["comment"]:
+            if target["comment"]:
                 node["rdfs:comment"] = target["comment"]
-            elif node.get("rdfs:comment"):
-                rep.add(rep.review, "**Renamed** – {} → {}: the vocabulary keeps its own description; check that "
-                        "it still fits: {}".format(term, new_term, quote(node["rdfs:comment"])))
-            if range_key(VocabFile.get_range(node)) == range_key(old_term["range"]) and target["range"]:
+            if target["range"]:
                 VocabFile.set_range(node, target["range"])
             cx.vocab_file.replace(node_id, node)
             cx.vocab_file.rename_refs(node_id, new_id)
@@ -263,15 +255,10 @@ def follow_replacement(cx, rep, iri, cfg, old_term, target_iri, target_cfg, targ
             rep.add(rep.review, "**Deprecated** – the profile uses both {} and its replacement {}; "
                     "remove one.".format(term, new_term))
         elif cx.shapes_file.rename_path(path, new_path, local(iri), local(target_iri)):
-            for prop in cx.shape_props(path):
-                mine = str(cx.shapes.value(prop, SH.description) or "")
-                if mine and up.norm(mine) == up.norm(old_term["comment"]) and target["comment"]:
-                    cx.shapes_file.set_description(new_path, mine, target["comment"])
-                elif mine:
-                    rep.add(rep.review, "**Renamed** – {} → {}: the profile keeps its own description; check "
-                            "that it still fits.".format(term, new_term))
-                if range_key(cx.shape_types(prop)) == range_key(old_term["range"]) and target["range"]:
-                    cx.shapes_file.set_range(new_path, target["range"])
+            if target["range"]:
+                cx.shapes_file.set_range(new_path, target["range"])
+            rep.add(rep.review, "**Renamed** – {} → {}: the profile keeps its own description; check "
+                    "that it still fits.".format(term, new_term))
             rep.add(rep.applied, "Profile: replaced deprecated {} with {} ({}).".format(term, new_term, label))
 
 
@@ -331,6 +318,9 @@ def check_source(key, cfg, data, sources, latest_terms, cx, rep):
             defines = any(w == "vocabulary" or w.endswith("profile") for w in where)
 
             if n is None:
+                upstream_ranges = {r for terms in latest_terms.values() for t in terms.values() for r in t["range"]}
+                if all(w == "vocabulary (as rangeIncludes)" for w in where) and up.compact(iri) in upstream_ranges:
+                    continue  # copied from an upstream range; reported as "Upstream uses an unknown type"
                 why = "was removed in {}".format(label) if (bumped and o) else "is not defined in {}".format(label)
                 close = difflib.get_close_matches(loc, list(new), n=1, cutoff=0.6)
                 hint = " Did you mean {}?".format(code(up.compact(new[close[0]]["iri"]))) if close else ""
@@ -349,12 +339,12 @@ def check_source(key, cfg, data, sources, latest_terms, cx, rep):
                 rep.add(rep.review, "**Deprecated** – {} was moved to the schema.org attic in {} (used in: {})."
                         .format(term, label, places))
                 continue
-            if not (bumped and o and defines):
+            if not defines:
                 continue
-            if up.norm(o["comment"]) != up.norm(n["comment"]):
-                follow_description(cx, rep, iri, cfg, o["comment"], n["comment"], label)
-            if range_key(o["range"]) != range_key(n["range"]) and n["range"]:
-                follow_range(cx, rep, iri, cfg, o["range"], n["range"], label)
+            if n["kind"] == "property":
+                enforce_upstream(cx, rep, iri, cfg, n, label)
+            if not (bumped and o):
+                continue
             removed = sorted(set(o["domain"]) - set(n["domain"]))
             if removed:
                 rep.add(rep.review, "**Domain changed upstream** – {} no longer applies to {} (used in: {})."
@@ -444,6 +434,7 @@ def main():
     lock = json.loads(LOCK.read_text(encoding="utf-8")) if LOCK.exists() else {}
     today = datetime.date.today().isoformat()
     cx, rep = ConnOSS(), Report()
+    cx.known_types = set()
 
     # load every source first: a deprecated CodeMeta term may be replaced by a schema.org term
     data, latest_terms, new_lock = {}, {}, dict(lock)
@@ -459,6 +450,8 @@ def main():
                 rep.add(rep.review, "**Not compared** – could not load {} {} ({}); only the checks against {} "
                         "were run.".format(cfg.get("name", key), pinned, e, latest))
         data[key], latest_terms[key], new_lock[key] = (pinned, latest, old, new), new, latest
+        if key == "schemaorg":
+            cx.known_types = {up.compact(t["iri"]) for t in new.values()}
 
         iri = cfg.get("version_iri")
         if key == config.get("schema_version_source") and iri and pinned and pinned != latest:

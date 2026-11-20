@@ -24,6 +24,7 @@ def expand(compact: str) -> str:
 
 DATA_TYPES = {  # schema.org data type -> (value shape in the profile, plain xsd fallback)
     "Text": ("TextValue", "xsd:string"),
+    "String": ("TextValue", "xsd:string"),   # not a schema.org type, but used by CodeMeta 4.0 for Text
     "URL": ("URLValue", "xsd:anyURI"),
     "Date": ("DateValue", "xsd:date"),
     "DateTime": ("DateValue", "xsd:dateTime"),
@@ -34,7 +35,7 @@ DATA_TYPES = {  # schema.org data type -> (value shape in the profile, plain xsd
     "Time": ("TimeValue", "xsd:time"),
 }
 # what counts as "the same type" when comparing ranges
-SAME = {"DateTime": "Date", "Integer": "Number", "Float": "Number"}
+SAME = {"DateTime": "Date", "Integer": "Number", "Float": "Number", "String": "Text"}
 
 
 def local(name: str) -> str:
@@ -241,6 +242,9 @@ class ShapesFile:
                     continue
                 if key == "sh:message":
                     s = re.sub(r"of type [^\"]*?\.(?=\"|\s*\")", "of type {}.".format(new_list), s)
+                    # "... must be a single Text value." -> "... must be a single value, of type Text or URL."
+                    s = re.sub(r"must be a single [^\"]*?value\.(?=\")",
+                               "must be a single value, of type {}.".format(new_list), s)
                 out.append(s)
             return out
 
