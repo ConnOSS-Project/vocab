@@ -1,4 +1,4 @@
-# Generated from connoss_Software.jsonld by src/build_artifacts.py - do not edit.
+# Generated from connoss_Software.jsonld
 
 @prefix bioschemas: <https://bioschemas.org/> .
 @prefix codemeta: <https://w3id.org/codemeta/terms/> .

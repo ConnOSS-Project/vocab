@@ -57,7 +57,7 @@ def vocab_turtle(vocab: Graph) -> str:
             g.bind(prefix, ns)
     for triple in vocab:
         g.add(triple)
-    header = "# Generated from connoss_Software.jsonld by src/build_artifacts.py - do not edit.\n\n"
+    header = "# Generated from connoss_Software.jsonld\n\n"
     return header + g.serialize(format="turtle")
 
 
