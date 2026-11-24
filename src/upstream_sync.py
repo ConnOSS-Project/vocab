@@ -2,29 +2,22 @@
 Upstream sync for the ConnOSS schema and profiles.
 
 For every source in upstream/sources.yml (schema.org, CodeMeta):
-  1. find the latest release and compare it with the version pinned in
-     upstream/sources.lock.json;
-  2. diff the two releases term by term (description, range, domain, deprecation);
-  3. update connoss_Software.jsonld and connoss_profiles_shapes.ttl to follow upstream;
+  1. find the latest release and compare it with the version pinned in upstream/sources.lock.json.
+  2. diff the two releases term by term (description, range, domain, deprecation).
+  3. update connoss_Software.jsonld and connoss_profiles_shapes.ttl to follow upstream.
   4. list what could not be updated safely for review, and suggest new upstream terms.
 
 Rule: terms reused from Schema.org and CodeMeta always match the latest upstream release.
-On every run (not only when a new release came out):
-  - vocabulary (connoss_Software.jsonld): description and range are set to exactly the
-    upstream values;
-  - profile (connoss_profiles_shapes.ttl): the range (type constraint and the "of type ..."
-    part of sh:message) is set to the upstream range. Profile descriptions are ConnOSS's own
-    and are never changed.
+On every run:
+  - vocabulary (connoss_Software.jsonld): description and range are set to exactly the upstream values;
+  - profile (connoss_profiles_shapes.ttl): the range (type constraint and the "of type ..." part of sh:message) is set to the upstream range. Profile descriptions are never changed.
 
 Also updated automatically:
-  - terms deprecated upstream with a single replacement (e.g. codemeta:maintainer ->
-    schema:maintainer): renamed in vocabulary and profile;
-  - new terms of sources with `add_new_terms: true` (CodeMeta): added to the vocabulary and,
-    in the Optional group, to the Software profile;
+  - terms deprecated upstream with a single replacement (e.g. codemeta:maintainer -> schema:maintainer): renamed in vocabulary and profile;
+  - new terms of sources with `add_new_terms: true` (CodeMeta): added to the vocabulary and in the Optional group to the Software profile;
   - schema:schemaVersion.
 
-connoss: and other non-upstream terms, cardinalities and Required/Recommended/Optional
-groups are never changed.
+"connoss:" terms, cardinalities and Required/Recommended/Optional groups are never changed.
 
 Usage:
   python src/upstream_sync.py                      # update files, print the report
@@ -71,7 +64,7 @@ DATATYPES = {"string": "schema:Text", "langString": "schema:Text", "anyURI": "sc
              "float": "schema:Number", "time": "schema:Time"}
 
 
-# ---------------------------------------------------------------- ConnOSS files
+# -------------------------- ConnOSS files ---------------------------------
 
 class ConnOSS:
     """Reads the two hand-edited files (as RDF) and edits them (as text)."""
@@ -161,7 +154,7 @@ class ConnOSS:
         return out
 
 
-# ---------------------------------------------------------------- report
+# ----------------------------- report ---------------------------------------
 
 class Report:
     def __init__(self):
@@ -185,7 +178,7 @@ def code(x) -> str:
     return "`{}`".format(x)
 
 
-# ---------------------------------------------------------------- applying one term
+# -------------------------- applying one term ----------------------------------
 
 def same_text(a, b) -> bool:
     """Exact comparison, ignoring only line breaks and repeated spaces."""
@@ -281,7 +274,7 @@ def add_new_term(cx, rep, cfg, t, label):
                 "Recommended if needed.".format(code(node_id)))
 
 
-# ---------------------------------------------------------------- one source
+# -------------------------------- one source --------------------------------
 
 def resolve(compact, sources, latest_terms):
     """"schema:funding" -> (source key, cfg, term) in the latest releases."""
@@ -380,7 +373,7 @@ def check_profile_paths(cx, sources, rep):
                     "connoss_Software.jsonld.".format(code(up.compact(iri)), ", ".join(profiles)))
 
 
-# ---------------------------------------------------------------- output
+# ------------------------------------ output --------------------------------------
 
 def report_markdown(rep, today):
     md = "## Upstream sync {}\n\n".format(today)
