@@ -3,7 +3,7 @@
     "schema": "https://schema.org/",
     "skos": "http://www.w3.org/2004/02/skos/core#",
     "wd": "http://www.wikidata.org/entity/",
-    "tt": "https://purls.helmholtz-metadaten.de/connoss/testTypes/"
+    "tt": "https://purls.helmholtz-metadaten.de/connoss/Properties/testType/"
   },
   "@id": "tt:",
   "@type": ["schema:DefinedTermSet", "skos:ConceptScheme"],

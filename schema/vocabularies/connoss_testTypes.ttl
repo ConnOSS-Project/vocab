@@ -5,7 +5,7 @@
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
 @prefix schema:  <http://schema.org/> .
 @prefix wd:      <http://www.wikidata.org/entity/> .
-@prefix tt:      <https://purls.helmholtz-metadaten.de/connoss/testTypes/> .
+@prefix tt:      <https://purls.helmholtz-metadaten.de/connoss/Properties/testType/> .
 
 
 tt:
