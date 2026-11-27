@@ -1,0 +1,242 @@
+# Generated from connoss_Software.jsonld
+
+@prefix bioschemas: <https://bioschemas.org/> .
+@prefix codemeta: <https://w3id.org/codemeta/terms/> .
+@prefix connoss: <https://purls.helmholtz-metadaten.de/connoss/> .
+@prefix fair4ml: <https://w3id.org/fair4ml#> .
+@prefix maSMP: <https://discovery.biothings.io/view/maSMP/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+
+connoss:Software a rdfs:Class ;
+    rdfs:label "Software" ;
+    rdfs:comment "Extension to schema.org and CodeMeta to describe software source code, software applications, and software releases." ;
+    rdfs:subClassOf schema:SoftwareApplication,
+        schema:SoftwareSourceCode ;
+    schema:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    schema:schemaVersion "https://schema.org/docs/releases.html#v30.1" .
+
+connoss:TestAction a rdfs:Class ;
+    rdfs:label "Test Action" ;
+    rdfs:comment "The act of testing the software according to its specifications, capturing the object tested, the resulting test report or outcome, and the type of test performed." ;
+    rdfs:subClassOf schema:Action ;
+    owl:equivalentClass maSMP:SoftwareTestAction .
+
+connoss:applicationDomain a rdf:Property ;
+    rdfs:label "application domain" ;
+    rdfs:comment "The discipline, area, or research/application domain to which this software aligns or belongs to." ;
+    schema:domainIncludes connoss:Software ;
+    schema:rangeIncludes schema:DefinedTerm,
+        schema:Text,
+        schema:URL .
+
+connoss:developerDocumentation a rdf:Property ;
+    rdfs:label "developer documentation" ;
+    rdfs:comment "Documentation for developers, maintainers, and infrastructure people." ;
+    rdfs:subPropertyOf codemeta:documentation ;
+    schema:domainIncludes connoss:Software ;
+    schema:rangeIncludes schema:CreativeWork,
+        schema:URL .
+
+connoss:ethicalSocialConsiderations a rdf:Property ;
+    rdfs:label "ethical social considerations" ;
+    rdfs:comment "A documented concern, requirement, or consideration related to the software's design, deployment, or impact across ethical and social dimensions. Enables transparent disclosure of constraints and mitigation strategies." ;
+    schema:domainIncludes connoss:Software ;
+    schema:rangeIncludes schema:Text .
+
+connoss:implementsSpecification a rdf:Property ;
+    rdfs:label "implements specification" ;
+    rdfs:comment "A specification that a software implements, including a standard, API or legally defined level of conformance. e.g., the HTTP standard, the OpenAPI spec, OAuth2." ;
+    schema:domainIncludes connoss:Software ;
+    schema:rangeIncludes schema:CreativeWork .
+
+connoss:input a rdf:Property ;
+    rdfs:label "input" ;
+    rdfs:comment "A formal specification of the data, files, or parameters that the software accepts as input, including format, type, and whether the input is required." ;
+    schema:domainIncludes connoss:Software ;
+    schema:rangeIncludes bioschemas:FormalParameter .
+
+connoss:latestRelease a rdf:Property ;
+    rdfs:label "latest release" ;
+    rdfs:comment "Link to the latest release." ;
+    schema:domainIncludes connoss:Software ;
+    schema:rangeIncludes connoss:Software,
+        schema:URL .
+
+connoss:latestReleaseVersion a rdf:Property ;
+    rdfs:label "latest release version" ;
+    rdfs:comment "Version of the latest release." ;
+    schema:domainIncludes connoss:Software ;
+    schema:rangeIncludes schema:Text .
+
+connoss:legalConsiderations a rdf:Property ;
+    rdfs:label "legal considerations" ;
+    rdfs:comment "A documented concern, requirement, or consideration related to the software's design, deployment, or impact across legal and regulatory dimensions (e.g. licensing constraints, data protection, compliance requirements). Enables transparent disclosure of legal constraints and mitigation strategies." ;
+    schema:domainIncludes connoss:Software ;
+    schema:rangeIncludes schema:Text .
+
+connoss:output a rdf:Property ;
+    rdfs:label "output" ;
+    rdfs:comment "A formal specification of the data, files, or results that the software produces, including format and type." ;
+    schema:domainIncludes connoss:Software ;
+    schema:rangeIncludes bioschemas:FormalParameter .
+
+connoss:partOfCommunity a rdf:Property ;
+    rdfs:label "part of community" ;
+    rdfs:comment "A (research) community, consortium, or network that this research artifact (e.g., software) is developed within or affiliated with (e.g., EOSC, NFDI)." ;
+    schema:domainIncludes connoss:Software ;
+    schema:rangeIncludes schema:Organization,
+        schema:Text,
+        schema:URL .
+
+connoss:softwareContainer a rdf:Property ;
+    rdfs:label "software container" ;
+    rdfs:comment "A container image or packaged runtime environment of the software." ;
+    schema:domainIncludes connoss:Software ;
+    schema:rangeIncludes schema:CreativeWork,
+        schema:URL .
+
+connoss:softwareInterface a rdf:Property ;
+    rdfs:label "software interface" ;
+    rdfs:comment "The interaction interface (or software product) through which users or other software systems can access, execute, or integrate this software (e.g., CLI, GUI, WebUI, Notebook, API, Library)." ;
+    schema:domainIncludes connoss:Software ;
+    schema:rangeIncludes schema:DefinedTerm,
+        schema:Text,
+        schema:Thing,
+        schema:URL .
+
+connoss:testInput a rdf:Property ;
+    rdfs:comment "Input used to performed the test. Some tests may not require any input, some may require multiple ones. If order or grouping is important in the case of multiple inputs, a ListItem could help." ;
+    owl:equivalentProperty maSMP:testInput ;
+    schema:domainIncludes connoss:TestAction ;
+    schema:rangeIncludes schema:ListItem,
+        schema:Thing .
+
+connoss:testInstructions a rdf:Property ;
+    rdfs:comment "Specific test instructions for testing the software." ;
+    schema:domainIncludes connoss:TestAction ;
+    schema:rangeIncludes schema:CreativeWork,
+        schema:Text .
+
+connoss:testType a rdf:Property ;
+    rdfs:label "test type" ;
+    rdfs:comment "The type of test that it is performed on the object." ;
+    owl:equivalentProperty maSMP:testType ;
+    schema:domainIncludes connoss:TestAction ;
+    schema:rangeIncludes schema:DefinedTerm,
+        schema:Text,
+        schema:URL .
+
+connoss:testedWith a rdf:Property ;
+    rdfs:label "tested with" ;
+    rdfs:comment "Links the software to a testing activity describing how the software is validated, including the test type, required inputs, and test instructions." ;
+    schema:domainIncludes connoss:Software ;
+    schema:rangeIncludes connoss:TestAction .
+
+connoss:userDocumentation a rdf:Property ;
+    rdfs:label "user documentation" ;
+    rdfs:comment "Documentation for end users of the software." ;
+    rdfs:subPropertyOf codemeta:documentation ;
+    schema:domainIncludes connoss:Software ;
+    schema:rangeIncludes schema:CreativeWork,
+        schema:URL .
+
+schema:relatedLink a rdf:Property ;
+    rdfs:label "related link" ;
+    rdfs:comment "A link related to this web page, for example to other related web pages." ;
+    schema:domainIncludes connoss:Software ;
+    schema:rangeIncludes schema:URL .
+
+codemeta:buildInstructions a rdf:Property ;
+    rdfs:label "build instructions" ;
+    rdfs:comment "A link to installation instructions or build documentation." ;
+    schema:domainIncludes connoss:Software ;
+    schema:rangeIncludes schema:CreativeWork,
+        schema:URL .
+
+codemeta:citeAsID a rdf:Property ;
+    rdfs:label "cite as ID" ;
+    rdfs:comment "A permanent identifier to a specific citable version of the software" ;
+    schema:domainIncludes connoss:Software ;
+    schema:rangeIncludes schema:String,
+        schema:URL .
+
+codemeta:citeWith a rdf:Property ;
+    rdfs:label "cite with" ;
+    rdfs:comment "Companion works that should be cited with the version of this software" ;
+    schema:domainIncludes connoss:Software ;
+    schema:rangeIncludes schema:CreativeWork .
+
+codemeta:continuousIntegration a rdf:Property ;
+    rdfs:label "continuous integration" ;
+    rdfs:comment "A link to continuous integration service." ;
+    schema:domainIncludes connoss:Software ;
+    schema:rangeIncludes schema:URL .
+
+codemeta:developmentStatus a rdf:Property ;
+    rdfs:label "development status" ;
+    rdfs:comment "Description of development status, e.g. active, inactive, suspended. See repostatus.org." ;
+    schema:domainIncludes connoss:Software ;
+    schema:rangeIncludes schema:DefinedTerm,
+        schema:Text,
+        schema:URL .
+
+codemeta:embargoEndDate a rdf:Property ;
+    rdfs:label "embargo end date" ;
+    rdfs:comment "Software may be embargoed from public access until a specified date (e.g. pending publication, 1 year from publication)" ;
+    schema:domainIncludes connoss:Software ;
+    schema:rangeIncludes schema:Date,
+        schema:DateTime .
+
+codemeta:hasSourceCode a rdf:Property ;
+    rdfs:label "has Source Code" ;
+    rdfs:comment "A link that states where the software code is for a given software. For example a software registry may indicate that one of its software entries hasSourceCode in a GitHub repository." ;
+    schema:domainIncludes connoss:Software ;
+    schema:rangeIncludes schema:SoftwareSourceCode .
+
+codemeta:isSourceCodeOf a rdf:Property ;
+    rdfs:label "is Source Code of" ;
+    rdfs:comment "A link that states where software application is built from a given source code. This is the inverse property of 'hasSourceCode'." ;
+    schema:domainIncludes connoss:Software ;
+    schema:rangeIncludes schema:SoftwareApplication .
+
+codemeta:issueTracker a rdf:Property ;
+    rdfs:label "issue tracker" ;
+    rdfs:comment "A link to software bug reporting or issue tracking system." ;
+    schema:domainIncludes connoss:Software ;
+    schema:rangeIncludes schema:URL .
+
+codemeta:readme a rdf:Property ;
+    rdfs:label "readme" ;
+    rdfs:comment "A link to software Readme file." ;
+    schema:domainIncludes connoss:Software ;
+    schema:rangeIncludes schema:URL .
+
+codemeta:referencePublication a rdf:Property ;
+    rdfs:label "reference publication" ;
+    rdfs:comment "An academic publication related to the software component." ;
+    schema:domainIncludes connoss:Software ;
+    schema:rangeIncludes schema:ScholarlyArticle .
+
+codemeta:relatedSoftware a rdf:Property ;
+    rdfs:label "related software" ;
+    rdfs:comment "A link to other software that is related by functionality, scientific purpose, or ecosystem context (e.g. alternative implementations, comparable tools, or complementary software). This property does not imply dependency, citation, or execution requirement. It is intended to support discovery, comparison, and interoperability mapping between software artifacts." ;
+    schema:domainIncludes connoss:Software ;
+    schema:rangeIncludes schema:SoftwareApplication,
+        schema:SoftwareSourceCode .
+
+fair4ml:intendedUse a rdf:Property ;
+    rdfs:label "intended use" ;
+    rdfs:comment "A concise summary of the primary objective or intended use case for the software. Distinct from general description; this focuses on 'why' the software exists and what problems it solves." ;
+    schema:domainIncludes connoss:Software ;
+    schema:rangeIncludes schema:Text .
+
+codemeta:documentation a rdf:Property ;
+    rdfs:label "documentation" ;
+    rdfs:comment "A general property for linking to any form of software documentation, including but not limited to user guides, tutorials, help pages, manuals, and reference documentation." ;
+    schema:domainIncludes connoss:Software ;
+    schema:rangeIncludes schema:CreativeWork,
+        schema:URL .
+
