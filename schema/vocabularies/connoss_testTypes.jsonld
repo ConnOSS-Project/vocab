@@ -1,0 +1,45 @@
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "wd": "http://www.wikidata.org/entity/",
+    "tt": "https://purls.helmholtz-metadaten.de/connoss/testTypes/"
+  },
+  "@id": "tt:",
+  "@type": ["schema:DefinedTermSet", "skos:ConceptScheme"],
+  "schema:name": "ConnOSS test types",
+  "schema:description": "Controlled vocabulary for connoss:testType, organised by test level and test objective.",
+  "schema:hasDefinedTerm": [
+    {
+      "@id": "tt:testLevel",
+      "@type": ["schema:DefinedTerm", "skos:Concept"],
+      "schema:name": "Test level",
+      "schema:termCode": "testLevel",
+      "skos:topConceptOf": { "@id": "tt:" },
+      "skos:narrower": [
+        { "@id": "tt:unit", "@type": ["schema:DefinedTerm", "skos:Concept"], "schema:name": "Unit testing", "schema:termCode": "unit", "skos:exactMatch": { "@id": "wd:Q907375" } },
+        { "@id": "tt:integration", "@type": ["schema:DefinedTerm", "skos:Concept"], "schema:name": "Integration testing", "schema:termCode": "integration", "skos:exactMatch": { "@id": "wd:Q782466" } },
+        { "@id": "tt:system", "@type": ["schema:DefinedTerm", "skos:Concept"], "schema:name": "System testing", "schema:termCode": "system", "skos:exactMatch": { "@id": "wd:Q1199682" } },
+        { "@id": "tt:acceptance", "@type": ["schema:DefinedTerm", "skos:Concept"], "schema:name": "Acceptance testing", "schema:termCode": "acceptance", "skos:exactMatch": { "@id": "wd:Q322514" } },
+        { "@id": "tt:endToEnd", "@type": ["schema:DefinedTerm", "skos:Concept"], "schema:name": "End-to-end testing", "schema:termCode": "endToEnd" }
+      ]
+    },
+    {
+      "@id": "tt:testObjective",
+      "@type": ["schema:DefinedTerm", "skos:Concept"],
+      "schema:name": "Test objective",
+      "schema:termCode": "testObjective",
+      "skos:topConceptOf": { "@id": "tt:" },
+      "skos:narrower": [
+        { "@id": "tt:functional", "@type": ["schema:DefinedTerm", "skos:Concept"], "schema:name": "Functional testing", "schema:termCode": "functional", "skos:exactMatch": { "@id": "wd:Q4493432" } },
+        { "@id": "tt:regression", "@type": ["schema:DefinedTerm", "skos:Concept"], "schema:name": "Regression testing", "schema:termCode": "regression", "skos:exactMatch": { "@id": "wd:Q917415" } },
+        { "@id": "tt:performance", "@type": ["schema:DefinedTerm", "skos:Concept"], "schema:name": "Performance testing", "schema:termCode": "performance", "skos:exactMatch": { "@id": "wd:Q1982529" } },
+        { "@id": "tt:security", "@type": ["schema:DefinedTerm", "skos:Concept"], "schema:name": "Security testing", "schema:termCode": "security", "skos:exactMatch": { "@id": "wd:Q13424265" } },
+        { "@id": "tt:usability", "@type": ["schema:DefinedTerm", "skos:Concept"], "schema:name": "Usability testing", "schema:termCode": "usability", "skos:exactMatch": { "@id": "wd:Q667421" } },
+        { "@id": "tt:validation", "@type": ["schema:DefinedTerm", "skos:Concept"], "schema:name": "Validation against reference data", "schema:termCode": "validation", "skos:closeMatch": { "@id": "wd:Q2919644" } },
+        { "@id": "tt:benchmark", "@type": ["schema:DefinedTerm", "skos:Concept"], "schema:name": "Benchmark", "schema:termCode": "benchmark", "skos:closeMatch": { "@id": "wd:Q816747" } },
+        { "@id": "tt:reproducibility", "@type": ["schema:DefinedTerm", "skos:Concept"], "schema:name": "Reproducibility testing", "schema:termCode": "reproducibility", "skos:closeMatch": { "@id": "wd:Q1425625" } }
+      ]
+    }
+  ]
+}

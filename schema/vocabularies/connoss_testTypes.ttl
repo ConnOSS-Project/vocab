@@ -1,0 +1,145 @@
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema:  <http://schema.org/> .
+@prefix wd:      <http://www.wikidata.org/entity/> .
+@prefix tt:      <https://purls.helmholtz-metadaten.de/connoss/testTypes/> .
+
+
+tt:
+    a skos:ConceptScheme , schema:DefinedTermSet ;
+    dcterms:title "ConnOSS Test Types"@en ;
+    dcterms:description "Controlled vocabulary for the values of connoss:testType. Each test is described by a test level and a test objective; the two groups are provided as SKOS collections."@en ;
+    dcterms:creator "ConnOSS project" ;
+    dcterms:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+    dcterms:created "2026-11-26"^^xsd:date ;
+    owl:versionInfo "0.1.0" ;
+    skos:hasTopConcept
+        tt:unit , tt:integration , tt:system , tt:acceptance , tt:endToEnd ,
+        tt:functional , tt:regression , tt:performance , tt:security , tt:usability ,
+        tt:validation , tt:benchmark , tt:reproducibility .
+
+
+tt:testLevels
+    a skos:Collection ;
+    skos:prefLabel "Test levels"@en , "Teststufen"@de ;
+    skos:definition "The scope of the software that a test covers, from a single unit to the complete system."@en ;
+    skos:member tt:unit , tt:integration , tt:system , tt:acceptance , tt:endToEnd .
+
+tt:testObjectives
+    a skos:Collection ;
+    skos:prefLabel "Test objectives"@en , "Testziele"@de ;
+    skos:definition "The quality or property of the software that a test is meant to check."@en ;
+    skos:member tt:functional , tt:regression , tt:performance , tt:security , tt:usability ,
+                tt:validation , tt:benchmark , tt:reproducibility .
+
+
+tt:unit
+    a skos:Concept , schema:DefinedTerm ;
+    skos:inScheme tt: ; skos:topConceptOf tt: ;
+    skos:notation "unit" ;
+    skos:prefLabel "Unit testing"@en , "Komponententest"@de ;
+    skos:altLabel "Unit test"@en , "Modultest"@de ;
+    skos:definition "Testing of the smallest separately testable parts of the software, such as individual functions, methods or classes, in isolation."@en ;
+    skos:exactMatch wd:Q907375 .
+
+tt:integration
+    a skos:Concept , schema:DefinedTerm ;
+    skos:inScheme tt: ; skos:topConceptOf tt: ;
+    skos:notation "integration" ;
+    skos:prefLabel "Integration testing"@en , "Integrationstest"@de ;
+    skos:definition "Testing of the interaction between components or modules that have been combined."@en ;
+    skos:exactMatch wd:Q782466 .
+
+tt:system
+    a skos:Concept , schema:DefinedTerm ;
+    skos:inScheme tt: ; skos:topConceptOf tt: ;
+    skos:notation "system" ;
+    skos:prefLabel "System testing"@en , "Systemtest"@de ;
+    skos:definition "Testing of the complete, integrated software against its specified requirements."@en ;
+    skos:exactMatch wd:Q1199682 .
+
+tt:acceptance
+    a skos:Concept , schema:DefinedTerm ;
+    skos:inScheme tt: ; skos:topConceptOf tt: ;
+    skos:notation "acceptance" ;
+    skos:prefLabel "Acceptance testing"@en , "Abnahmetest"@de ;
+    skos:definition "Testing whether the software meets the needs of its users or stakeholders, typically before it is released or adopted."@en ;
+    skos:exactMatch wd:Q322514 .
+
+tt:endToEnd
+    a skos:Concept , schema:DefinedTerm ;
+    skos:inScheme tt: ; skos:topConceptOf tt: ;
+    skos:notation "endToEnd" ;
+    skos:prefLabel "End-to-end testing"@en , "End-to-End-Test"@de ;
+    skos:definition "Testing of a complete usage scenario or workflow from start to finish, including all components and external systems involved."@en ;
+    skos:related tt:system .
+
+
+tt:functional
+    a skos:Concept , schema:DefinedTerm ;
+    skos:inScheme tt: ; skos:topConceptOf tt: ;
+    skos:notation "functional" ;
+    skos:prefLabel "Functional testing"@en , "Funktionstest"@de ;
+    skos:definition "Testing whether the software behaves as specified, i.e. produces the expected output for given input."@en ;
+    skos:exactMatch wd:Q4493432 .
+
+tt:regression
+    a skos:Concept , schema:DefinedTerm ;
+    skos:inScheme tt: ; skos:topConceptOf tt: ;
+    skos:notation "regression" ;
+    skos:prefLabel "Regression testing"@en , "Regressionstest"@de ;
+    skos:definition "Re-running existing tests after a change to check that previously working behaviour has not been broken."@en ;
+    skos:exactMatch wd:Q917415 .
+
+tt:performance
+    a skos:Concept , schema:DefinedTerm ;
+    skos:inScheme tt: ; skos:topConceptOf tt: ;
+    skos:notation "performance" ;
+    skos:prefLabel "Performance testing"@en , "Performancetest"@de ;
+    skos:altLabel "Leistungstest"@de ;
+    skos:definition "Testing of speed, resource use, scalability or stability of the software under a given workload."@en ;
+    skos:exactMatch wd:Q1982529 .
+
+tt:security
+    a skos:Concept , schema:DefinedTerm ;
+    skos:inScheme tt: ; skos:topConceptOf tt: ;
+    skos:notation "security" ;
+    skos:prefLabel "Security testing"@en , "Sicherheitstest"@de ;
+    skos:definition "Testing whether the software protects data and functionality against misuse, unauthorised access and known vulnerabilities."@en ;
+    skos:exactMatch wd:Q13424265 .
+
+tt:usability
+    a skos:Concept , schema:DefinedTerm ;
+    skos:inScheme tt: ; skos:topConceptOf tt: ;
+    skos:notation "usability" ;
+    skos:prefLabel "Usability testing"@en , "Usability-Test"@de ;
+    skos:definition "Testing how easily intended users can learn and use the software, usually by observing real users."@en ;
+    skos:exactMatch wd:Q667421 .
+
+tt:validation
+    a skos:Concept , schema:DefinedTerm ;
+    skos:inScheme tt: ; skos:topConceptOf tt: ;
+    skos:notation "validation" ;
+    skos:prefLabel "Validation against reference data"@en , "Validierung mit Referenzdaten"@de ;
+    skos:definition "Testing whether the software produces scientifically correct results, by comparing its output with reference data, analytical solutions or results from established tools."@en ;
+    skos:closeMatch wd:Q2919644 .
+
+tt:benchmark
+    a skos:Concept , schema:DefinedTerm ;
+    skos:inScheme tt: ; skos:topConceptOf tt: ;
+    skos:notation "benchmark" ;
+    skos:prefLabel "Benchmark"@en , "Benchmark"@de ;
+    skos:definition "Running the software on a standard set of tasks or data to measure and compare its performance or accuracy with other software or earlier versions."@en ;
+    skos:closeMatch wd:Q816747 ;
+    skos:related tt:performance .
+
+tt:reproducibility
+    a skos:Concept , schema:DefinedTerm ;
+    skos:inScheme tt: ; skos:topConceptOf tt: ;
+    skos:notation "reproducibility" ;
+    skos:prefLabel "Reproducibility testing"@en , "Reproduzierbarkeitstest"@de ;
+    skos:definition "Testing whether the software produces the same results when run again with the same input, possibly in a different environment."@en ;
+    skos:closeMatch wd:Q1425625 .
